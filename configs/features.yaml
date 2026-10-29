@@ -1,0 +1,14 @@
+roi:
+  # Initial conservative ROI for the fixed 640x480 vial-fill view.
+  # QA overlays must be inspected before treating it as calibrated.
+  x: 295
+  y: 275
+  width: 50
+  height: 125
+color:
+  min_saturation: 50
+  min_value: 25
+  max_value: 242
+  glare_value: 238
+  min_valid_fraction: 0.08
+  morphology_kernel: 3

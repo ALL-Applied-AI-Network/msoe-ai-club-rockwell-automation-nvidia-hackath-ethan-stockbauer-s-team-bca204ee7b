@@ -1,3 +1,28 @@
+# Team 7 Mixing Copilot
+
+Mixing Copilot is an auditable computer-vision pipeline for associating CSI vial-fill footage with
+recipes, correcting camera/video timestamp drift, measuring liquid color, and producing an
+interpretable recipe-aware color-mismatch index for dashboard integration.
+
+The current prototype processes all 30 labeled vials in Video 5. It does **not** claim confirmed
+contamination detection: verified anomaly labels and measured dispense volumes are unavailable.
+
+Implemented capabilities:
+
+- read-only dataset audit with hashes and video/CSV metadata;
+- still-to-video visual matching and robust affine timestamp correction;
+- deterministic five-stage frame extraction with contact-sheet QA;
+- configurable OpenCV liquid-color features and confidence overlays;
+- per-frame and per-vial CSV/Parquet datasets;
+- Delta E2000 baseline and typed `predict_vial(...)` interface;
+- optional strictly causal TCN architecture, intentionally untrained;
+- unit tests and Windows-compatible CLI.
+
+See [docs/USAGE.md](docs/USAGE.md) for setup, commands, outputs, and interpretation. The real CSI
+dataset and generated artifacts are deliberately excluded from Git.
+
+---
+
 # Rockwell Automation + NVIDIA Innovation Lab · Fall 2026
 
 This is your team's repository for the four-week physical AI hackathon run by Rockwell Automation, NVIDIA, the MSOE AI Club and UWM's Connected Systems Institute. Build everything here. Sponsors can follow your work as it progresses, and your final submission links straight to this repository.

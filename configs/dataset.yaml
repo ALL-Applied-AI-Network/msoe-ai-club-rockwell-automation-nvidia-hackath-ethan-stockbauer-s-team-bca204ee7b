@@ -1,0 +1,17 @@
+dataset_root: "C:/Users/emman/Downloads/csi-vial-fill-dataset/csi-vial-fill-dataset"
+output_root: "."
+video_id: 5
+camera_id: vial_fill
+alignment:
+  bootstrap_offset_s: 0.63
+  bootstrap_scale: 1.216
+  bootstrap_only: true
+  coarse_step_s: 0.25
+  search_radius_s: 3.0
+  max_anchors: 140
+  residual_threshold_s: 0.35
+  minimum_inliers: 12
+extraction:
+  stages: [pre_fill, early_fill, mid_fill, late_fill, post_fill]
+  pre_offset_s: 1.0
+  post_offset_s: 1.0

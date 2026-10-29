@@ -1,0 +1,20 @@
+{
+  "vial_id": 30,
+  "recipe_id": 14,
+  "observed_rgb": [70, 51, 37],
+  "observed_lab": [23.53, 5.0, 11.0],
+  "expected_rgb": [220, 226, 255],
+  "expected_lab": [90.18, 3.57, -14.81],
+  "expected_color_source": "synthetic_tank_setpoint_weighted_srgb_unvalidated",
+  "delta_e_2000": 64.48,
+  "mismatch_score": 1.0,
+  "measurement_confidence": 1.0,
+  "alignment_confidence": 0.4594,
+  "evidence_image_paths": [
+    "data/interim/frames/vial_fill_video_5/video5_vial30_late_fill.jpg",
+    "data/interim/frames/vial_fill_video_5/video5_vial30_post_fill.jpg"
+  ],
+  "explanation": "Observed color differs from an unvalidated synthetic recipe proxy; this is not a contamination probability.",
+  "verification_status": "unverified",
+  "ground_truth_anomaly": null
+}

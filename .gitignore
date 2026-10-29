@@ -1,0 +1,28 @@
+.tools/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+*.egg-info/
+
+# Source datasets and generated outputs are local-only.
+data/raw/
+data/interim/
+data/processed/
+artifacts/qa/
+artifacts/metrics/
+artifacts/models/
+artifacts/predictions/*.json
+reports/*.json
+reports/*.csv
+
+# Large media/model artifacts.
+*.mp4
+*.avi
+*.mov
+*.parquet
+*.joblib
+*.pt
+*.pth
