@@ -66,11 +66,6 @@ try:
     tl.set_current_time(a.frame / stage.GetTimeCodesPerSecond())
     kit.update()
 
-    rp = rep.create.render_product(prim, (rw, rh))
-    ann = rep.AnnotatorRegistry.get_annotator("rgb"); ann.attach([rp])
-    rep.orchestrator.set_capture_on_play(False)
-    kit.update()
-
     # RTX's first sync of a scaled camera (CapSealCam carries the 0.0254 inch scale) misreads its
     # clippingRange and renders black. Changing and restoring the value in the session layer forces a
     # correct re-sync; the authored camera in the USD file is untouched.
@@ -114,6 +109,11 @@ try:
                 f"bound materials: {', '.join(materials) or '(none)'}"
             )
         print(f"applied recipe liquid color to {len(updated)} shader(s): {updated}", flush=True)
+
+    rp = rep.create.render_product(prim, (rw, rh))
+    ann = rep.AnnotatorRegistry.get_annotator("rgb"); ann.attach([rp])
+    rep.orchestrator.set_capture_on_play(False)
+    kit.update()
 
     clip = UsdGeom.Camera(stage.GetPrimAtPath(prim)).GetClippingRangeAttr()
     near_far = clip.Get()

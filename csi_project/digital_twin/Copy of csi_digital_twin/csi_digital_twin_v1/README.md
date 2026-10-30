@@ -62,6 +62,27 @@ Keep the folder structure as it is: the files reference each other by relative p
 
 The current scene does not parameterize liquid volume or recipe-specific dispense motion. The generated images are therefore recipe-conditioned by approximate color only; manifests mark this with `label_quality=recipe_color_approximation` and list the unrendered recipe components. Inspect one render per recipe before generating a larger dataset, and do not treat these as physically calibrated volume/dispense examples.
 
+To create a transition-focused dataset, use `tools/render_transition_dataset.py`. It starts at each recipe switch, blends the previous recipe color into the new recipe color, and writes labels for color carryover and simulated fill-volume defects. Transitions, rather than individual frames, determine the train/validation/test split:
+
+```bash
+/isaac-sim/python.sh tools/render_transition_dataset.py \
+  --labels-csv data/video5_vial_recipes.csv \
+  --out dataset/recipe_transitions \
+  --samples-per-vial 4 --subframes 8 --seed 7
+```
+
+The transition manifest includes `recipe_before`, `recipe_after`, `vial_index_after_switch`, `rejected`, `defect`, and expected/observed color and volume fields. Color carryover is rendered; volume and dispense defects are currently metadata-only proxies until the USD animation is parameterized. Use the transition-level split for model evaluation so frames from one switch cannot leak across splits.
+
+Before adding a CNN or TCN, run the dependency-free metadata baseline:
+
+```bash
+python tools/train_transition_baseline.py \
+  --manifest dataset/recipe_transitions/manifest.jsonl \
+  --target next
+```
+
+This predicts whether the next vial will be rejected from the current vial's metadata and color features. Use it as a sanity check, not as the final vision model. Once it is reproducible, replace `features()` with frozen image-encoder embeddings and feed ordered per-vial vectors into a causal TCN.
+
 ```bash
 /isaac-sim/python.sh tools/render_batch1.py \
   --labels-csv data/video5_vial_recipes.csv \
