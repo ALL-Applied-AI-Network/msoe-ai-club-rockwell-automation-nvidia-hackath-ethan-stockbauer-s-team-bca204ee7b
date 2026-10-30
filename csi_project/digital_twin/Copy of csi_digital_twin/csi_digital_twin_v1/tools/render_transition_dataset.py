@@ -31,6 +31,20 @@ from render_batch1 import (
     positive_int,
 )
 
+NEXT_FILL_START = 21
+EXPECTED_RECIPES = {
+    5: (10, 10, 10, 30, ("t200", "t400", "t100")),
+    6: (30, 10, 0, 40, ("t200", "t100")),
+    7: (20, 0, 50, 70, ("t400", "t100")),
+    8: (20, 20, 20, 60, ("t200", "t400", "t100")),
+    9: (10, 35, 35, 80, ("t200", "t400", "t100")),
+    10: (45, 15, 15, 75, ("t200", "t400", "t100")),
+    11: (10, 10, 50, 70, ("t200", "t400", "t100")),
+    12: (10, 50, 10, 70, ("t200", "t400", "t100")),
+    13: (0, 50, 20, 70, ("t200", "t400")),
+    14: (60, 0, 10, 70, ("t400", "t100")),
+}
+
 
 def read_recipes(path):
     with path.open(newline="", encoding="utf-8-sig") as handle:
@@ -54,16 +68,63 @@ def read_recipes(path):
                 for tank in volumes) / total
             for channel in range(3)
         ]
+        dispense_order = tuple(
+            tank.strip().lower()
+            for tank in row.get("dispense_order", "").split(">")
+            if tank.strip()
+        )
+        expected = EXPECTED_RECIPES.get(int(row["recipe_id"]))
+        actual = (
+            volumes["t100_ml"],
+            volumes["t200_ml"],
+            volumes["t400_ml"],
+            total,
+            dispense_order,
+        )
+        if expected is None or actual != expected:
+            raise ValueError(
+                f"recipe {row['recipe_id']} does not match the supported tank recipe: "
+                f"expected {expected}, got {actual}"
+            )
         recipes.append({
             "vial": int(row["vial"]),
             "recipe_id": int(row["recipe_id"]),
             "total_ml": total,
             "liquid_color_srgb": color,
+            "dispense_order": dispense_order,
+            "tank_volumes_ml": volumes,
         })
     if not recipes:
         raise ValueError("recipe CSV is empty")
     recipes.sort(key=lambda recipe: recipe["vial"])
     return recipes
+
+
+def dispensing_tank_color(recipe, frame):
+    """Return the tank color for the volume-proportional dispense segment."""
+    order = recipe["dispense_order"]
+    if not order:
+        return recipe["liquid_color_srgb"]
+    tank_volumes = recipe["tank_volumes_ml"]
+    elapsed = min(
+        ANIMATION_END - ANIMATION_START,
+        max(0, frame - ANIMATION_START),
+    )
+    progress_ml = (elapsed / (ANIMATION_END - ANIMATION_START)) * recipe["total_ml"]
+    accumulated_ml = 0.0
+    for tank in order:
+        tank_key = f"{tank}_ml"
+        try:
+            tank_volume = tank_volumes[tank_key]
+            tank_color = TANK_COLORS_SRGB[tank_key]
+        except KeyError as error:
+            raise ValueError(
+                f"unknown dispense tank {tank_key!r} in recipe {recipe['recipe_id']}"
+            ) from error
+        accumulated_ml += tank_volume
+        if progress_ml < accumulated_ml:
+            return list(tank_color)
+    return list(TANK_COLORS_SRGB[f"{order[-1]}_ml"])
 
 
 def color_distance(left, right):
@@ -82,62 +143,91 @@ def choose_split(transition_id):
     return ("train", "validation", "test")[transition_id % 3]
 
 
-def build_examples(recipes, samples_per_vial, carryover_tau, volume_tolerance, rng):
+def build_examples(
+    recipes,
+    transition_frames,
+    nozzle_residual_frames,
+    carryover_tau,
+    volume_tolerance,
+    scenario,
+    rng,
+):
     examples = []
     transition_id = -1
     for index, recipe in enumerate(recipes):
         if index == 0 or recipe["recipe_id"] != recipes[index - 1]["recipe_id"]:
             transition_id += 1
-        if index == 0:
+        if index == 0 or recipe["recipe_id"] == recipes[index - 1]["recipe_id"]:
             continue
 
         previous = recipes[index - 1]
-        position = transition_position(recipes, index)
-        carryover = math.exp(-(position - 1) / carryover_tau)
         current_color = recipe["liquid_color_srgb"]
         previous_color = previous["liquid_color_srgb"]
-        observed_color = [
-            carryover * old + (1.0 - carryover) * new
-            for old, new in zip(previous_color, current_color)
-        ]
-        color_error = color_distance(observed_color, current_color)
+        position = transition_position(recipes, index)
         volume_factor = rng.uniform(1.0 - volume_tolerance * 2, 1.0 + volume_tolerance * 2)
-        volume_error = abs(volume_factor - 1.0)
-        reasons = []
-        if color_error > volume_tolerance:
-            reasons.append("color_carryover")
-        if volume_error > volume_tolerance:
-            reasons.append("fill_volume")
-        rejected = bool(reasons)
-        split = choose_split(transition_id)
-        frames = rng.sample(
-            range(ANIMATION_START, ANIMATION_END + 1),
-            min(samples_per_vial, ANIMATION_END - ANIMATION_START + 1),
-        )
-        for frame in frames:
-            examples.append({
-                "vial": recipe["vial"],
-                "transition_id": transition_id,
-                "recipe_before": previous["recipe_id"],
-                "recipe_after": recipe["recipe_id"],
-                "vial_index_after_switch": position,
-                "frame": frame,
-                "expected_color_srgb": current_color,
-                "observed_color_srgb": observed_color,
-                "rendered_color_srgb": observed_color,
-                "expected_volume_ml": recipe["total_ml"],
-                "simulated_volume_ml": recipe["total_ml"] * volume_factor,
-                "color_error": color_error,
-                "volume_error_fraction": volume_error,
-                "rejected": rejected,
-                "label": "reject" if rejected else "pass",
-                "defect": "|".join(reasons),
-                "label_quality": "transition_proxy",
-                "rendered_recipe_components": ["liquid_color", "color_carryover"],
-                "unrendered_recipe_components": ["fill_volume", "dispense_sequence"],
-                "split": split,
-            })
-    rng.shuffle(examples)
+        variants = ("clean", "residual") if scenario == "both" else (scenario,)
+        for variant_name in variants:
+            for sequence_index in range(transition_frames * 2):
+                is_next = sequence_index >= transition_frames
+                frame = (
+                    ANIMATION_END - transition_frames + sequence_index + 1
+                    if not is_next
+                    else sequence_index - transition_frames + NEXT_FILL_START
+                )
+                next_index = sequence_index - transition_frames
+                residual_active = (
+                    variant_name == "residual"
+                    and is_next
+                    and next_index < nozzle_residual_frames
+                )
+                carryover = (
+                    math.exp(-next_index / carryover_tau)
+                    if variant_name == "residual" and is_next
+                    else 0.0
+                )
+                observed_color = (
+                    [
+                        carryover * old + (1.0 - carryover) * new
+                        for old, new in zip(previous_color, current_color)
+                    ]
+                    if is_next
+                    else previous_color
+                )
+                color_error = color_distance(observed_color, current_color)
+                volume_error = abs(volume_factor - 1.0) if is_next else 0.0
+                reasons = []
+                if color_error > volume_tolerance:
+                    reasons.append("color_carryover")
+                if volume_error > volume_tolerance:
+                    reasons.append("fill_volume")
+                stream_recipe = previous if residual_active or not is_next else recipe
+                examples.append({
+                    "scenario": variant_name,
+                    "sequence_index": sequence_index,
+                    "phase": "previous_fill" if not is_next else "next_fill",
+                    "vial": recipe["vial"],
+                    "transition_id": transition_id,
+                    "recipe_before": previous["recipe_id"],
+                    "recipe_after": recipe["recipe_id"],
+                    "vial_index_after_switch": position,
+                    "frame": frame,
+                    "expected_color_srgb": current_color,
+                    "observed_color_srgb": observed_color,
+                    "rendered_color_srgb": observed_color,
+                    "stream_color_srgb": dispensing_tank_color(stream_recipe, frame),
+                    "expected_volume_ml": recipe["total_ml"],
+                    "simulated_volume_ml": recipe["total_ml"] * volume_factor,
+                    "color_error": color_error,
+                    "volume_error_fraction": volume_error,
+                    "rejected": bool(reasons),
+                    "label": "reject" if reasons else "pass",
+                    "defect": "|".join(reasons),
+                    "label_quality": "transition_proxy",
+                    "rendered_recipe_components": ["liquid_color", "color_carryover"],
+                    "unrendered_recipe_components": ["fill_volume"],
+                    "split": choose_split(transition_id),
+                    "nozzle_residual": residual_active,
+                })
     return examples
 
 
@@ -147,7 +237,11 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--camera", choices=("FillCam", "CapSealCam"), default="FillCam")
     parser.add_argument("--stage", type=Path, default=HERE / "csi_line.usda")
-    parser.add_argument("--samples-per-vial", type=positive_int, default=4)
+    parser.add_argument("--transition-frames", type=positive_int, default=32,
+                        help="contiguous frames before and after each recipe changeover")
+    parser.add_argument("--nozzle-residual-frames", type=positive_int, default=4,
+                        help="next-recipe frames that retain the previous tank in residual scenarios")
+    parser.add_argument("--scenario", choices=("clean", "residual", "both"), default="both")
     parser.add_argument("--carryover-tau", type=float, default=2.0)
     parser.add_argument("--volume-tolerance", type=float, default=0.05)
     parser.add_argument("--subframes", type=positive_int, default=32)
@@ -172,9 +266,11 @@ def main():
 
     examples = build_examples(
         read_recipes(labels_csv),
-        args.samples_per_vial,
+        args.transition_frames,
+        args.nozzle_residual_frames,
         args.carryover_tau,
         args.volume_tolerance,
+        args.scenario,
         random.Random(args.seed),
     )
     image_dir = out / "images"
@@ -192,6 +288,7 @@ def main():
                     "--stage", str(stage), "--frame", str(example["frame"]),
                     "--subframes", str(args.subframes), "--out", str(output),
                     "--liquid-color", *(str(channel) for channel in example["rendered_color_srgb"]),
+                    "--stream-color", *(str(channel) for channel in example["stream_color_srgb"]),
                 ]
                 subprocess.run(command, check=True, cwd=str(HERE))
             record = {

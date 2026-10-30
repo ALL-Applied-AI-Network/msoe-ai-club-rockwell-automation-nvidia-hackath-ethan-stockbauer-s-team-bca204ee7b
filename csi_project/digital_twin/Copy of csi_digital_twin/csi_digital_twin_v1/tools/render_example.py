@@ -22,6 +22,8 @@ ap.add_argument("--out", default="render.png")
 ap.add_argument("--subframes", type=int, default=32, help="path-tracing subframes (quality)")
 ap.add_argument("--liquid-color", type=float, nargs=3, metavar=("R", "G", "B"),
                 help="recipe liquid color in sRGB [0,1]; overrides the bound Fill_liquid material")
+ap.add_argument("--stream-color", type=float, nargs=3, metavar=("R", "G", "B"),
+                help="currently dispensing tank color in sRGB [0,1]; overrides the nozzle stream")
 ap.add_argument("--kit-arg", action="append", default=[], help="extra Isaac Sim / Kit argument (repeatable)")
 a = ap.parse_args()
 
@@ -61,7 +63,6 @@ try:
                  if stage.GetPrimAtPath(p).IsValid()), None)
     if prim is None:
         raise RuntimeError(f"camera {a.camera} not found in {stage_path}")
-
     tl = omni.timeline.get_timeline_interface()
     tl.set_current_time(a.frame / stage.GetTimeCodesPerSecond())
     kit.update()
@@ -69,44 +70,52 @@ try:
     # RTX's first sync of a scaled camera (CapSealCam carries the 0.0254 inch scale) misreads its
     # clippingRange and renders black. Changing and restoring the value in the session layer forces a
     # correct re-sync; the authored camera in the USD file is untouched.
-    from pxr import Gf, Usd, UsdGeom, UsdShade
-    if a.liquid_color is not None:
-        if any(channel < 0 or channel > 1 for channel in a.liquid_color):
-            raise ValueError("--liquid-color channels must be between 0 and 1")
+    from pxr import Gf, Usd, UsdGeom, UsdLux, UsdShade
+    if not any(prim.HasAPI(UsdLux.LightAPI) for prim in stage.Traverse()):
         stage.SetEditTarget(stage.GetSessionLayer())
-        liquid_roots = [
-            p for p in stage.Traverse()
-            if p.GetName() == "Fill_liquid" and p.IsA(UsdGeom.Imageable)
-        ]
-        if len(liquid_roots) != 1:
-            raise RuntimeError(
-                f"expected one Fill_liquid prim, found {len(liquid_roots)}"
-            )
-        materials = {}
-        for prim in Usd.PrimRange(liquid_roots[0]):
-            material, _ = UsdShade.MaterialBindingAPI(prim).ComputeBoundMaterial()
-            if material:
-                materials[str(material.GetPath())] = material
+        dome = UsdLux.DomeLight.Define(stage, "/Render/StationDomeLight")
+        dome.CreateIntensityAttr(1000.0)
+        dome.CreateColorAttr(Gf.Vec3f(1.0, 1.0, 1.0))
+    if a.liquid_color is not None or a.stream_color is not None:
+        colors = {
+            "Fill_liquid": a.liquid_color,
+            "Fill_dispensing_stream": a.stream_color if a.stream_color is not None else a.liquid_color,
+        }
+        for name, color in colors.items():
+            if color is not None and any(channel < 0 or channel > 1 for channel in color):
+                raise ValueError(f"invalid {name} color channel")
+        stage.SetEditTarget(stage.GetSessionLayer())
+        materials_by_root = {}
+        for liquid_root in stage.Traverse():
+            color = colors.get(liquid_root.GetName())
+            if color is None or not liquid_root.IsA(UsdGeom.Imageable):
+                continue
+            materials = materials_by_root.setdefault(liquid_root.GetName(), {})
+            for liquid_prim in Usd.PrimRange(liquid_root):
+                material, _ = UsdShade.MaterialBindingAPI(liquid_prim).ComputeBoundMaterial()
+                if material:
+                    materials[str(material.GetPath())] = material
 
         updated = []
-        for material in materials.values():
-            for prim in Usd.PrimRange(material.GetPrim()):
-                shader = UsdShade.Shader(prim)
-                shader_id = shader.GetIdAttr().Get() if shader else None
-                if shader_id != "UsdPreviewSurface":
-                    continue
-                color_input = shader.GetInput("diffuseColor")
-                if not color_input:
-                    continue
-                def to_linear(channel):
-                    return channel / 12.92 if channel <= 0.04045 else ((channel + 0.055) / 1.055) ** 2.4
-                color_input.Set(Gf.Vec3f(*(to_linear(c) for c in a.liquid_color)))
-                updated.append(f"{material.GetPath()}:{prim.GetPath()}")
+        for root_name, materials in materials_by_root.items():
+            color = colors[root_name]
+            for material in materials.values():
+                for shader_prim in Usd.PrimRange(material.GetPrim()):
+                    shader = UsdShade.Shader(shader_prim)
+                    shader_id = shader.GetIdAttr().Get() if shader else None
+                    if shader_id != "UsdPreviewSurface":
+                        continue
+                    color_input = shader.GetInput("diffuseColor")
+                    if not color_input:
+                        continue
+                    def to_linear(channel):
+                        return channel / 12.92 if channel <= 0.04045 else ((channel + 0.055) / 1.055) ** 2.4
+                    color_input.Set(Gf.Vec3f(*(to_linear(c) for c in color)))
+                    updated.append(f"{root_name}:{material.GetPath()}:{shader_prim.GetPath()}")
 
         if not updated:
             raise RuntimeError(
-                "could not find a bound UsdPreviewSurface diffuseColor input for Fill_liquid; "
-                f"bound materials: {', '.join(materials) or '(none)'}"
+                "could not find a bound UsdPreviewSurface diffuseColor input for liquid or stream"
             )
         print(f"applied recipe liquid color to {len(updated)} shader(s): {updated}", flush=True)
 
@@ -117,11 +126,12 @@ try:
 
     clip = UsdGeom.Camera(stage.GetPrimAtPath(prim)).GetClippingRangeAttr()
     near_far = clip.Get()
-    stage.SetEditTarget(stage.GetSessionLayer())
-    clip.Set(Gf.Vec2f(near_far[0] * 0.5, near_far[1]))
-    kit.update()
-    clip.Set(near_far)
-    kit.update()
+    if near_far is not None:
+        stage.SetEditTarget(stage.GetSessionLayer())
+        clip.Set(Gf.Vec2f(near_far[0] * 0.5, near_far[1]))
+        kit.update()
+        clip.Set(near_far)
+        kit.update()
 
     for _ in range(2):
         rep.orchestrator.step(rt_subframes=a.subframes, delta_time=0.0)
