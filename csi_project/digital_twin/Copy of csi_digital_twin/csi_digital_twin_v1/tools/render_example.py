@@ -96,7 +96,7 @@ try:
                 if material:
                     materials[str(material.GetPath())] = material
 
-        updated = []
+        updated_by_root = {name: [] for name, color in colors.items() if color is not None}
         for root_name, materials in materials_by_root.items():
             color = colors[root_name]
             for material in materials.values():
@@ -111,13 +111,22 @@ try:
                     def to_linear(channel):
                         return channel / 12.92 if channel <= 0.04045 else ((channel + 0.055) / 1.055) ** 2.4
                     color_input.Set(Gf.Vec3f(*(to_linear(c) for c in color)))
-                    updated.append(f"{root_name}:{material.GetPath()}:{shader_prim.GetPath()}")
+                    updated_by_root[root_name].append(
+                        f"{material.GetPath()}:{shader_prim.GetPath()}"
+                    )
 
-        if not updated:
+        missing_roots = [name for name, shaders in updated_by_root.items() if not shaders]
+        if missing_roots:
             raise RuntimeError(
-                "could not find a bound UsdPreviewSurface diffuseColor input for liquid or stream"
+                "could not recolor requested material root(s): "
+                + ", ".join(missing_roots)
             )
-        print(f"applied recipe liquid color to {len(updated)} shader(s): {updated}", flush=True)
+        for root_name, shaders in updated_by_root.items():
+            print(
+                f"applied {root_name} sRGB {colors[root_name]} to "
+                f"{len(shaders)} shader(s): {shaders}",
+                flush=True,
+            )
 
     rp = rep.create.render_product(prim, (rw, rh))
     ann = rep.AnnotatorRegistry.get_annotator("rgb"); ann.attach([rp])

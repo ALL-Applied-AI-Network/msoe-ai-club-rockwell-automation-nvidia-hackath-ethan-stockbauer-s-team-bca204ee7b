@@ -60,6 +60,14 @@ Keep the folder structure as it is: the files reference each other by relative p
 ## Recipe-conditioned synthetic renders
 `tools/render_batch1.py` reads vial recipe metadata and samples valid fill-animation time codes; it does not use the source-video frame numbers. It estimates a liquid color by volume-weighting clear (T100), orange (T200), and blue (T400), then applies that color to the bound `Fill_liquid` `UsdPreviewSurface` material in the render session layer. This does not modify the USD assets.
 
+Important: `render_example.py` defaults to the authored scene material, which
+is blue. Recipe-conditioned tools must pass `--liquid-color`; the recipe video
+renderer does this for every in-fill frame and also passes `--stream-color`.
+The renderer converts the supplied sRGB values to linear values before
+assigning `UsdPreviewSurface.diffuseColor`. It now fails loudly if either
+requested material root cannot be recolored, instead of silently producing a
+blue fallback.
+
 The current scene does not parameterize liquid volume or recipe-specific dispense motion. The generated images are therefore recipe-conditioned by approximate color only; manifests mark this with `label_quality=recipe_color_approximation` and list the unrendered recipe components. Inspect one render per recipe before generating a larger dataset, and do not treat these as physically calibrated volume/dispense examples.
 
 To create a transition-focused dataset, use `tools/render_transition_dataset.py`. It starts at each recipe switch, blends the previous recipe color into the new recipe color, and writes labels for color carryover and simulated fill-volume defects. Transitions, rather than individual frames, determine the train/validation/test split:
@@ -82,6 +90,28 @@ python tools/train_transition_baseline.py \
 ```
 
 This predicts whether the next vial will be rejected from the current vial's metadata and color features. Use it as a sanity check, not as the final vision model. Once it is reproducible, replace `features()` with frozen image-encoder embeddings and feed ordered per-vial vectors into a causal TCN.
+
+To generate a recipe-configurable video dataset with labels matching the real
+frame-label CSV shape, use `tools/render_recipe_video.py` with the JSON recipe
+file. The renderer creates one fill sequence per recipe, inserts configurable
+between-fill frames, encodes the rendered frames as MP4, and writes a
+`*_frame_labels.csv` and `*_recipes.csv` files. The frame CSV includes the
+original recipe columns plus `mp4_frame` and `render_frame`. The recipe CSV
+uses the sample recipe-table columns and records the generated MP4 timing
+(`start_s`, `end_s`, `duration_s`, `start_frame`, and `end_frame`):
+
+```bash
+/isaac-sim/python.sh tools/render_recipe_video.py \
+  --recipes data/video5_vial_recipes.json \
+  --out dataset/video5_recipe_video \
+  --frames-per-vial 90 --gap-frames 6 --fps 30
+```
+
+`--dry-run` validates the JSON and writes the label timeline without starting
+Isaac Sim. Frames are temporary by default; pass `--keep-frames` to retain
+them for inspection. The liquid color is volume-weighted and the dispensing
+stream follows the configured `dispense_order`, so the labels describe the
+recipe even though the USD fill animation remains a generic 1-686 sequence.
 
 ```bash
 /isaac-sim/python.sh tools/render_batch1.py \
