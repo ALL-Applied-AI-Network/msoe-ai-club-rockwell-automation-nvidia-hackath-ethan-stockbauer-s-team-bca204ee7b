@@ -86,6 +86,7 @@ function parseCSV(csv) {
 function App() {
   const [page, setPage] = useState('Overview')
   const [selectedCamera, setSelectedCamera] = useState(null)
+  const [selectedInspectionVial, setSelectedInspectionVial] = useState(null)
 
   const [recipes, setRecipes] = useState([])
   const [selectedRecipeId, setSelectedRecipeId] = useState('')
@@ -514,6 +515,7 @@ function App() {
             inspections={opencvInspections}
             loading={dashboardLoading}
             error={dashboardError}
+            selectedVialId={selectedInspectionVial}
           />
         )}
 
@@ -1060,7 +1062,10 @@ function App() {
 
                   <button
                     className="text-button"
-                    onClick={() => setPage('Vision Inspection')}
+                    onClick={() => {
+                        setSelectedInspectionVial(inspection.vial_id)
+                        setPage('Vision Inspection')
+                      }}
                   >
                     View evidence
                   </button>
@@ -1083,8 +1088,12 @@ function App() {
   )
 }
 
-function VisionInspection({ inspections, loading, error }) {
-  const [selectedIndex, setSelectedIndex] = useState(0)
+function VisionInspection({ inspections, loading, error, selectedVialId }) {
+  const selectedIndex = selectedVialId == null
+    ? 0
+    : Math.max(0, inspections.findIndex(
+        (record) => String(record.vial_id) === String(selectedVialId)
+      ))
 
   const selected = inspections[selectedIndex]
   const selectedEvidence = selected?.evidence?.[0]
