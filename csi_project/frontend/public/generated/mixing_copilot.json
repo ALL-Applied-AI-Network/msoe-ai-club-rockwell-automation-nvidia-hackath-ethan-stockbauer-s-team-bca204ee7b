@@ -1,0 +1,3001 @@
+{
+  "generated_at_utc": "2026-11-01T06:16:23.236675Z",
+  "inspections": [
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 549,
+          "frame_url": "/generated/images/frame_vial0001_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 18.30513311701341,
+          "observed_lab": [
+            18.431373596191406,
+            -12.0,
+            8.0
+          ],
+          "observed_rgb": [
+            30,
+            49,
+            32
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0001_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 673,
+          "frame_url": "/generated/images/frame_vial0001_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 22.44619055542104,
+          "observed_lab": [
+            16.47058868408203,
+            -13.0,
+            8.0
+          ],
+          "observed_rgb": [
+            23,
+            45,
+            29
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0001_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.9299193785587948,
+        "frame_count": 4,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 4,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          22.74509906768799,
+          -10.5,
+          9.5
+        ],
+        "ok_frame_count": 4,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": null,
+      "recipe": {
+        "color_purpose": "mixed - low even (swapped in)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 10.0,
+        "t400_ml": 10.0,
+        "total_ml": 30.0,
+        "type": "Triple"
+      },
+      "recipe_id": 5,
+      "vial_id": 1,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.849073919773102,
+          "decoded_frame_index": 1701,
+          "frame_url": "/generated/images/frame_vial0002_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 56.69507422668019,
+          "observed_lab": [
+            26.07843017578125,
+            -10.0,
+            8.0
+          ],
+          "observed_rgb": [
+            50,
+            67,
+            49
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0002_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 1827,
+          "frame_url": "/generated/images/frame_vial0002_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 60.903626105568016,
+          "observed_lab": [
+            23.52941131591797,
+            -11.0,
+            8.0
+          ],
+          "observed_rgb": [
+            45,
+            61,
+            45
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0002_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          29.019607543945312,
+          -8.0,
+          8.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 5,
+      "recipe": {
+        "color_purpose": "mixed - low even (swapped in)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 10.0,
+        "t400_ml": 10.0,
+        "total_ml": 30.0,
+        "type": "Triple"
+      },
+      "recipe_id": 5,
+      "vial_id": 2,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.9123830080032348,
+          "decoded_frame_index": 2852,
+          "frame_url": "/generated/images/frame_vial0003_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 95.07493846985238,
+          "observed_lab": [
+            25.88235282897949,
+            -5.0,
+            10.0
+          ],
+          "observed_rgb": [
+            59,
+            63,
+            46
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0003_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.8993356607357661,
+          "decoded_frame_index": 2983,
+          "frame_url": "/generated/images/frame_vial0003_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 99.44907999979031,
+          "observed_lab": [
+            23.52941131591797,
+            -5.0,
+            9.0
+          ],
+          "observed_rgb": [
+            53,
+            58,
+            43
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0003_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.4606898708343506,
+        "frame_count": 5,
+        "low_confidence_frame_count": 1,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          25.88235282897949,
+          -5.0,
+          10.0
+        ],
+        "ok_frame_count": 4,
+        "status": "low_confidence"
+      },
+      "prediction": null,
+      "previous_recipe_id": 5,
+      "recipe": {
+        "color_purpose": "mixed - low even (swapped in)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 10.0,
+        "t400_ml": 10.0,
+        "total_ml": 30.0,
+        "type": "Triple"
+      },
+      "recipe_id": 5,
+      "vial_id": 3,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.3444444766044616,
+          "decoded_frame_index": 3881,
+          "frame_url": "/generated/images/frame_vial0004_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 129.3545874314706,
+          "observed_lab": [
+            33.33333206176758,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            77,
+            80,
+            63
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0004_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.35122407746315,
+          "decoded_frame_index": 3991,
+          "frame_url": "/generated/images/frame_vial0004_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 133.0235539571228,
+          "observed_lab": [
+            33.72549057006836,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            78,
+            81,
+            64
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0004_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": true,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.35122407746315,
+        "frame_count": 5,
+        "low_confidence_frame_count": 1,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          33.33333206176758,
+          -4.0,
+          10.0
+        ],
+        "ok_frame_count": 4,
+        "status": "low_confidence"
+      },
+      "prediction": null,
+      "previous_recipe_id": 5,
+      "recipe": {
+        "color_purpose": "pale orange (fresh ratio)",
+        "dispense_order": "T200>T100",
+        "t100_ml": 30.0,
+        "t200_ml": 10.0,
+        "t400_ml": null,
+        "total_ml": 40.0,
+        "type": "Pair 100+200"
+      },
+      "recipe_id": 6,
+      "vial_id": 4,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.0778316872914632,
+          "decoded_frame_index": 4908,
+          "frame_url": "/generated/images/frame_vial0005_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 163.59853549465078,
+          "observed_lab": [
+            28.235294342041016,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            66,
+            68,
+            49
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0005_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "low_confidence"
+        },
+        {
+          "confidence": 0.139348402818044,
+          "decoded_frame_index": 5021,
+          "frame_url": "/generated/images/frame_vial0005_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 167.38114439632173,
+          "observed_lab": [
+            28.627450942993164,
+            -4.0,
+            8.0
+          ],
+          "observed_rgb": [
+            67,
+            69,
+            55
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0005_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "low_confidence"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.6449525862932205,
+        "frame_count": 5,
+        "low_confidence_frame_count": 2,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          22.745098114013672,
+          -4.0,
+          8.0
+        ],
+        "ok_frame_count": 3,
+        "status": "low_confidence"
+      },
+      "prediction": {
+        "alignment_confidence": 0.4593799463632431,
+        "delta_e_2000": 57.2502834109446,
+        "evidence_image_paths": [
+          "/generated/images/frame_vial0005_late_fill.jpg",
+          "/generated/images/frame_vial0005_post_fill.jpg"
+        ],
+        "expected_color_source": "synthetic_tank_setpoint_weighted_srgb_unvalidated",
+        "expected_lab": [
+          87.37334704929799,
+          13.796095280578902,
+          13.97936746214219
+        ],
+        "expected_rgb": [
+          255,
+          209,
+          193
+        ],
+        "explanation": "Observed color differs from the documented synthetic recipe proxy by Delta E2000=57.3. The score is an interpretable mismatch index, not a contamination probability. Previous recipe context: 6.",
+        "ground_truth_anomaly": null,
+        "measurement_confidence": 0.10859004505475361,
+        "mismatch_score": 1.0,
+        "observed_lab": [
+          28.43137264251709,
+          -4.0,
+          9.0
+        ],
+        "observed_rgb": [
+          66,
+          68,
+          52
+        ],
+        "review_basis": "descriptive_delta_e_only",
+        "review_status": "discrepancy_measured",
+        "verification_status": "unverified"
+      },
+      "previous_recipe_id": 6,
+      "recipe": {
+        "color_purpose": "pale orange (fresh ratio)",
+        "dispense_order": "T200>T100",
+        "t100_ml": 30.0,
+        "t200_ml": 10.0,
+        "t400_ml": null,
+        "total_ml": 40.0,
+        "type": "Pair 100+200"
+      },
+      "recipe_id": 6,
+      "vial_id": 5,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 5972,
+          "frame_url": "/generated/images/frame_vial0006_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 199.0502679848272,
+          "observed_lab": [
+            19.60784339904785,
+            6.0,
+            14.0
+          ],
+          "observed_rgb": [
+            62,
+            44,
+            28
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0006_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 6090,
+          "frame_url": "/generated/images/frame_vial0006_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 203.0038957064352,
+          "observed_lab": [
+            14.117647171020508,
+            6.0,
+            11.0
+          ],
+          "observed_rgb": [
+            50,
+            31,
+            13
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0006_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.937149355252584,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          27.843137741088867,
+          -1.0,
+          11.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 6,
+      "recipe": {
+        "color_purpose": "pale orange (fresh ratio)",
+        "dispense_order": "T200>T100",
+        "t100_ml": 30.0,
+        "t200_ml": 10.0,
+        "t400_ml": null,
+        "total_ml": 40.0,
+        "type": "Pair 100+200"
+      },
+      "recipe_id": 6,
+      "vial_id": 6,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 7500,
+          "frame_url": "/generated/images/frame_vial0007_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 249.9990283717545,
+          "observed_lab": [
+            30.58823585510254,
+            -2.0,
+            9.0
+          ],
+          "observed_rgb": [
+            74,
+            73,
+            58
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0007_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 7611,
+          "frame_url": "/generated/images/frame_vial0007_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 253.70328449517143,
+          "observed_lab": [
+            30.980392456054688,
+            -2.0,
+            9.0
+          ],
+          "observed_rgb": [
+            74,
+            73,
+            57
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0007_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": true,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          30.980392456054688,
+          2.0,
+          13.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 6,
+      "recipe": {
+        "color_purpose": "pale blue (fresh ratio)",
+        "dispense_order": "T400>T100",
+        "t100_ml": 20.0,
+        "t200_ml": null,
+        "t400_ml": 50.0,
+        "total_ml": 70.0,
+        "type": "Pair 100+400"
+      },
+      "recipe_id": 7,
+      "vial_id": 7,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 8804,
+          "frame_url": "/generated/images/frame_vial0008_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 293.4637205781719,
+          "observed_lab": [
+            12.941176414489746,
+            0.0,
+            10.0
+          ],
+          "observed_rgb": [
+            40,
+            33,
+            18
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0008_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 8918,
+          "frame_url": "/generated/images/frame_vial0008_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 297.264961400341,
+          "observed_lab": [
+            11.764705657958984,
+            -5.0,
+            7.0
+          ],
+          "observed_rgb": [
+            25,
+            33,
+            21
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0008_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          31.764705657958984,
+          -4.0,
+          10.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 7,
+      "recipe": {
+        "color_purpose": "pale blue (fresh ratio)",
+        "dispense_order": "T400>T100",
+        "t100_ml": 20.0,
+        "t200_ml": null,
+        "t400_ml": 50.0,
+        "total_ml": 70.0,
+        "type": "Pair 100+400"
+      },
+      "recipe_id": 7,
+      "vial_id": 8,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.0825305755933125,
+          "decoded_frame_index": 10123,
+          "frame_url": "/generated/images/frame_vial0009_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 337.4268680705,
+          "observed_lab": [
+            28.235294342041016,
+            -3.0,
+            9.0
+          ],
+          "observed_rgb": [
+            67,
+            68,
+            52
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0009_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "low_confidence"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 10232,
+          "frame_url": "/generated/images/frame_vial0009_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 341.0742413108066,
+          "observed_lab": [
+            31.37254905700684,
+            -10.0,
+            -2.0
+          ],
+          "observed_rgb": [
+            48,
+            79,
+            82
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0009_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.1445187771320343,
+        "frame_count": 5,
+        "low_confidence_frame_count": 4,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          30.19607925415039,
+          -3.5,
+          10.0
+        ],
+        "ok_frame_count": 1,
+        "status": "low_confidence"
+      },
+      "prediction": null,
+      "previous_recipe_id": 7,
+      "recipe": {
+        "color_purpose": "pale blue (fresh ratio)",
+        "dispense_order": "T400>T100",
+        "t100_ml": 20.0,
+        "t200_ml": null,
+        "t400_ml": 50.0,
+        "total_ml": 70.0,
+        "type": "Pair 100+400"
+      },
+      "recipe_id": 7,
+      "vial_id": 9,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.7171403124332428,
+          "decoded_frame_index": 11511,
+          "frame_url": "/generated/images/frame_vial0010_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 383.69926319278585,
+          "observed_lab": [
+            31.764705657958984,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            75,
+            76,
+            59
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0010_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.7304750989278157,
+          "decoded_frame_index": 11676,
+          "frame_url": "/generated/images/frame_vial0010_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 389.20958170250736,
+          "observed_lab": [
+            31.37254905700684,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            74,
+            75,
+            58
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0010_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": true,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.7304750989278157,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          31.37254905700684,
+          -4.0,
+          9.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 7,
+      "recipe": {
+        "color_purpose": "even (links to Cfg D)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 20.0,
+        "t200_ml": 20.0,
+        "t400_ml": 20.0,
+        "total_ml": 60.0,
+        "type": "Triple"
+      },
+      "recipe_id": 8,
+      "vial_id": 10,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.0532451705932617,
+          "decoded_frame_index": 12887,
+          "frame_url": "/generated/images/frame_vial0011_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 429.5590003496007,
+          "observed_lab": [
+            27.843137741088867,
+            -2.0,
+            9.0
+          ],
+          "observed_rgb": [
+            67,
+            66,
+            51
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0011_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "low_confidence"
+        },
+        {
+          "confidence": 0.0660463047027588,
+          "decoded_frame_index": 13046,
+          "frame_url": "/generated/images/frame_vial0011_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 434.8828762641384,
+          "observed_lab": [
+            23.52941131591797,
+            -2.0,
+            8.0
+          ],
+          "observed_rgb": [
+            60,
+            56,
+            45
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0011_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "low_confidence"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.0660463047027588,
+        "frame_count": 5,
+        "low_confidence_frame_count": 3,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          23.52941131591797,
+          -3.0,
+          8.0
+        ],
+        "ok_frame_count": 2,
+        "status": "low_confidence"
+      },
+      "prediction": null,
+      "previous_recipe_id": 8,
+      "recipe": {
+        "color_purpose": "even (links to Cfg D)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 20.0,
+        "t200_ml": 20.0,
+        "t400_ml": 20.0,
+        "total_ml": 60.0,
+        "type": "Triple"
+      },
+      "recipe_id": 8,
+      "vial_id": 11,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.0728211679061253,
+          "decoded_frame_index": 14320,
+          "frame_url": "/generated/images/frame_vial0012_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 477.3284887924462,
+          "observed_lab": [
+            27.05882453918457,
+            -3.0,
+            10.0
+          ],
+          "observed_rgb": [
+            66,
+            64,
+            49
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0012_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "low_confidence"
+        },
+        {
+          "confidence": 0.0738320213556289,
+          "decoded_frame_index": 14484,
+          "frame_url": "/generated/images/frame_vial0012_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 482.8109211165215,
+          "observed_lab": [
+            25.88235282897949,
+            -3.0,
+            9.0
+          ],
+          "observed_rgb": [
+            64,
+            61,
+            49
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0012_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "low_confidence"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 2,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          23.92156982421875,
+          -4.0,
+          -15.0
+        ],
+        "ok_frame_count": 3,
+        "status": "low_confidence"
+      },
+      "prediction": null,
+      "previous_recipe_id": 8,
+      "recipe": {
+        "color_purpose": "even (links to Cfg D)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 20.0,
+        "t200_ml": 20.0,
+        "t400_ml": 20.0,
+        "total_ml": 60.0,
+        "type": "Triple"
+      },
+      "recipe_id": 8,
+      "vial_id": 12,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.2426369921763737,
+          "decoded_frame_index": 16010,
+          "frame_url": "/generated/images/frame_vial0013_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 533.6634782759758,
+          "observed_lab": [
+            32.94117736816406,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            77,
+            78,
+            61
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0013_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "low_confidence"
+        },
+        {
+          "confidence": 0.1988746573527653,
+          "decoded_frame_index": 16207,
+          "frame_url": "/generated/images/frame_vial0013_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 540.2400115209612,
+          "observed_lab": [
+            31.37254905700684,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            75,
+            75,
+            58
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0013_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "low_confidence"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": true,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.6453485333124797,
+        "frame_count": 5,
+        "low_confidence_frame_count": 2,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          13.72549057006836,
+          -6.0,
+          2.0
+        ],
+        "ok_frame_count": 3,
+        "status": "low_confidence"
+      },
+      "prediction": {
+        "alignment_confidence": 0.4593799463632431,
+        "delta_e_2000": 37.969040381490466,
+        "evidence_image_paths": [
+          "/generated/images/frame_vial0013_late_fill.jpg",
+          "/generated/images/frame_vial0013_post_fill.jpg"
+        ],
+        "expected_color_source": "synthetic_tank_setpoint_weighted_srgb_unvalidated",
+        "expected_lab": [
+          45.42511870157987,
+          35.21008624070632,
+          -23.204656964116577
+        ],
+        "expected_rgb": [
+          147,
+          85,
+          147
+        ],
+        "explanation": "Observed color differs from the documented synthetic recipe proxy by Delta E2000=38.0. The score is an interpretable mismatch index, not a contamination probability. Previous recipe context: 8.",
+        "ground_truth_anomaly": null,
+        "measurement_confidence": 0.22075582476456956,
+        "mismatch_score": 0.7593808076298093,
+        "observed_lab": [
+          32.15686321258545,
+          -4.0,
+          10.0
+        ],
+        "observed_rgb": [
+          76,
+          76,
+          59
+        ],
+        "review_basis": "descriptive_delta_e_only",
+        "review_status": "discrepancy_measured",
+        "verification_status": "unverified"
+      },
+      "previous_recipe_id": 8,
+      "recipe": {
+        "color_purpose": "dark saturated (low clear)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 35.0,
+        "t400_ml": 35.0,
+        "total_ml": 80.0,
+        "type": "Triple"
+      },
+      "recipe_id": 9,
+      "vial_id": 13,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.2785728199481964,
+          "decoded_frame_index": 17729,
+          "frame_url": "/generated/images/frame_vial0014_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 590.9521917606355,
+          "observed_lab": [
+            31.764705657958984,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            75,
+            76,
+            59
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0014_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "low_confidence"
+        },
+        {
+          "confidence": 0.4341382265090943,
+          "decoded_frame_index": 17925,
+          "frame_url": "/generated/images/frame_vial0014_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 597.5054042574477,
+          "observed_lab": [
+            31.764705657958984,
+            -4.0,
+            9.0
+          ],
+          "observed_rgb": [
+            75,
+            76,
+            59
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0014_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.3500287292400996,
+        "frame_count": 5,
+        "low_confidence_frame_count": 1,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          10.58823585510254,
+          -5.0,
+          4.0
+        ],
+        "ok_frame_count": 4,
+        "status": "low_confidence"
+      },
+      "prediction": null,
+      "previous_recipe_id": 9,
+      "recipe": {
+        "color_purpose": "dark saturated (low clear)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 35.0,
+        "t400_ml": 35.0,
+        "total_ml": 80.0,
+        "type": "Triple"
+      },
+      "recipe_id": 9,
+      "vial_id": 14,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 19488,
+          "frame_url": "/generated/images/frame_vial0015_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 649.605189578463,
+          "observed_lab": [
+            13.333333969116213,
+            -4.0,
+            12.0
+          ],
+          "observed_rgb": [
+            35,
+            35,
+            14
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0015_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 19691,
+          "frame_url": "/generated/images/frame_vial0015_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 656.3510141805577,
+          "observed_lab": [
+            12.549019813537598,
+            -5.0,
+            11.0
+          ],
+          "observed_rgb": [
+            31,
+            34,
+            15
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0015_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.8771109680334727,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          13.333333969116213,
+          -6.0,
+          6.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 9,
+      "recipe": {
+        "color_purpose": "dark saturated (low clear)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 35.0,
+        "t400_ml": 35.0,
+        "total_ml": 80.0,
+        "type": "Triple"
+      },
+      "recipe_id": 9,
+      "vial_id": 15,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.4659500122070312,
+          "decoded_frame_index": 20967,
+          "frame_url": "/generated/images/frame_vial0016_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 698.9094876136052,
+          "observed_lab": [
+            10.58823585510254,
+            -6.0,
+            2.0
+          ],
+          "observed_rgb": [
+            24,
+            31,
+            29
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0016_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.366675107439359,
+          "decoded_frame_index": 21134,
+          "frame_url": "/generated/images/frame_vial0016_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 704.4600313291705,
+          "observed_lab": [
+            10.58823585510254,
+            -6.0,
+            2.0
+          ],
+          "observed_rgb": [
+            22,
+            31,
+            28
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0016_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": true,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.7255111436843872,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          17.647058486938477,
+          -6.0,
+          3.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 9,
+      "recipe": {
+        "color_purpose": "pale wash (high clear)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 45.0,
+        "t200_ml": 15.0,
+        "t400_ml": 15.0,
+        "total_ml": 75.0,
+        "type": "Triple"
+      },
+      "recipe_id": 10,
+      "vial_id": 16,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 22390,
+          "frame_url": "/generated/images/frame_vial0017_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 746.3319205483631,
+          "observed_lab": [
+            32.94117736816406,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            78,
+            79,
+            61
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0017_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.8862561020851135,
+          "decoded_frame_index": 22555,
+          "frame_url": "/generated/images/frame_vial0017_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 751.8468044955578,
+          "observed_lab": [
+            27.843137741088867,
+            -5.0,
+            9.0
+          ],
+          "observed_rgb": [
+            64,
+            68,
+            52
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0017_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.9138488494157792,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          27.843137741088867,
+          -4.0,
+          10.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 10,
+      "recipe": {
+        "color_purpose": "pale wash (high clear)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 45.0,
+        "t200_ml": 15.0,
+        "t400_ml": 15.0,
+        "total_ml": 75.0,
+        "type": "Triple"
+      },
+      "recipe_id": 10,
+      "vial_id": 17,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.8458806032737096,
+          "decoded_frame_index": 23782,
+          "frame_url": "/generated/images/frame_vial0018_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 792.725978409796,
+          "observed_lab": [
+            11.372549057006836,
+            -5.0,
+            10.0
+          ],
+          "observed_rgb": [
+            29,
+            32,
+            15
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0018_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.8423252277374268,
+          "decoded_frame_index": 23945,
+          "frame_url": "/generated/images/frame_vial0018_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 798.1732445263084,
+          "observed_lab": [
+            10.58823585510254,
+            -5.0,
+            9.0
+          ],
+          "observed_rgb": [
+            27,
+            31,
+            15
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0018_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.7045442783832551,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          10.980392456054688,
+          -5.0,
+          5.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 10,
+      "recipe": {
+        "color_purpose": "pale wash (high clear)",
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 45.0,
+        "t200_ml": 15.0,
+        "t400_ml": 15.0,
+        "total_ml": 75.0,
+        "type": "Triple"
+      },
+      "recipe_id": 10,
+      "vial_id": 18,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.5774436475833257,
+          "decoded_frame_index": 25273,
+          "frame_url": "/generated/images/frame_vial0019_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 842.4365181199066,
+          "observed_lab": [
+            11.372549057006836,
+            -6.0,
+            1.0
+          ],
+          "observed_rgb": [
+            24,
+            33,
+            31
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0019_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.4390945029258728,
+          "decoded_frame_index": 25451,
+          "frame_url": "/generated/images/frame_vial0019_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 848.3741368990668,
+          "observed_lab": [
+            11.764705657958984,
+            -6.0,
+            1.0
+          ],
+          "observed_rgb": [
+            23,
+            33,
+            30
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0019_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": true,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.6855954877535503,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          14.90196132659912,
+          -6.0,
+          3.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 10,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 10.0,
+        "t400_ml": 50.0,
+        "total_ml": 70.0,
+        "type": "Triple"
+      },
+      "recipe_id": 11,
+      "vial_id": 19,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 26784,
+          "frame_url": "/generated/images/frame_vial0020_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 892.8129536200075,
+          "observed_lab": [
+            23.52941131591797,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            55,
+            57,
+            40
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0020_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 26964,
+          "frame_url": "/generated/images/frame_vial0020_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 898.8004220407656,
+          "observed_lab": [
+            15.29411792755127,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            38,
+            40,
+            24
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0020_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          28.627450942993164,
+          -4.0,
+          10.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 11,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 10.0,
+        "t400_ml": 50.0,
+        "total_ml": 70.0,
+        "type": "Triple"
+      },
+      "recipe_id": 11,
+      "vial_id": 20,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 28289,
+          "frame_url": "/generated/images/frame_vial0021_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 942.9597188241664,
+          "observed_lab": [
+            23.92156982421875,
+            -4.0,
+            12.0
+          ],
+          "observed_rgb": [
+            58,
+            58,
+            39
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0021_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 28471,
+          "frame_url": "/generated/images/frame_vial0021_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 949.0177664404538,
+          "observed_lab": [
+            23.92156982421875,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            59,
+            58,
+            41
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0021_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 2,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          23.92156982421875,
+          -4.0,
+          11.0
+        ],
+        "ok_frame_count": 3,
+        "status": "low_confidence"
+      },
+      "prediction": null,
+      "previous_recipe_id": 11,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 10.0,
+        "t400_ml": 50.0,
+        "total_ml": 70.0,
+        "type": "Triple"
+      },
+      "recipe_id": 11,
+      "vial_id": 21,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 29955,
+          "frame_url": "/generated/images/frame_vial0022_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 998.5063271772116,
+          "observed_lab": [
+            28.235294342041016,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            68,
+            67,
+            49
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0022_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 30132,
+          "frame_url": "/generated/images/frame_vial0022_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1004.3919986813404,
+          "observed_lab": [
+            28.235294342041016,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            68,
+            68,
+            48
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0022_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": true,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 2,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          28.235294342041016,
+          -4.0,
+          10.0
+        ],
+        "ok_frame_count": 3,
+        "status": "low_confidence"
+      },
+      "prediction": null,
+      "previous_recipe_id": 11,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 50.0,
+        "t400_ml": 10.0,
+        "total_ml": 70.0,
+        "type": "Triple"
+      },
+      "recipe_id": 12,
+      "vial_id": 22,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.4976466077168782,
+          "decoded_frame_index": 31656,
+          "frame_url": "/generated/images/frame_vial0023_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1055.2069629592595,
+          "observed_lab": [
+            26.666667938232425,
+            -10.0,
+            -5.0
+          ],
+          "observed_rgb": [
+            39,
+            67,
+            70
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0023_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.5047543850342432,
+          "decoded_frame_index": 31842,
+          "frame_url": "/generated/images/frame_vial0023_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1061.3958041896403,
+          "observed_lab": [
+            26.666667938232425,
+            -10.0,
+            -5.0
+          ],
+          "observed_rgb": [
+            39,
+            67,
+            69
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0023_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          26.666667938232425,
+          -10.0,
+          1.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 12,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 50.0,
+        "t400_ml": 10.0,
+        "total_ml": 70.0,
+        "type": "Triple"
+      },
+      "recipe_id": 12,
+      "vial_id": 23,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.4179661345481872,
+          "decoded_frame_index": 33383,
+          "frame_url": "/generated/images/frame_vial0024_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1112.776142373008,
+          "observed_lab": [
+            32.54901885986328,
+            -10.0,
+            1.0
+          ],
+          "observed_rgb": [
+            55,
+            82,
+            76
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0024_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.5177323377927144,
+          "decoded_frame_index": 33568,
+          "frame_url": "/generated/images/frame_vial0024_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1118.949929998748,
+          "observed_lab": [
+            26.666667938232425,
+            -10.0,
+            -5.0
+          ],
+          "observed_rgb": [
+            39,
+            67,
+            69
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0024_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.5177323377927144,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          26.666667938232425,
+          -9.0,
+          -3.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 12,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T200>T400>T100",
+        "t100_ml": 10.0,
+        "t200_ml": 50.0,
+        "t400_ml": 10.0,
+        "total_ml": 70.0,
+        "type": "Triple"
+      },
+      "recipe_id": 12,
+      "vial_id": 24,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 34973,
+          "frame_url": "/generated/images/frame_vial0025_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1165.7689025857148,
+          "observed_lab": [
+            35.09803771972656,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            82,
+            84,
+            65
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0025_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 35143,
+          "frame_url": "/generated/images/frame_vial0025_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1171.427782898614,
+          "observed_lab": [
+            34.509803771972656,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            81,
+            83,
+            64
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0025_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": true,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          14.90196132659912,
+          -8.0,
+          -3.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 12,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T200>T400",
+        "t100_ml": null,
+        "t200_ml": 50.0,
+        "t400_ml": 20.0,
+        "total_ml": 70.0,
+        "type": "Pair 200+400"
+      },
+      "recipe_id": 13,
+      "vial_id": 25,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 0.9279125467538836,
+          "decoded_frame_index": 36556,
+          "frame_url": "/generated/images/frame_vial0026_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1218.52520604137,
+          "observed_lab": [
+            10.196078300476074,
+            -6.0,
+            7.0
+          ],
+          "observed_rgb": [
+            24,
+            30,
+            17
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0026_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 36714,
+          "frame_url": "/generated/images/frame_vial0026_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1223.7880038059302,
+          "observed_lab": [
+            27.843137741088867,
+            -1.0,
+            9.0
+          ],
+          "observed_rgb": [
+            68,
+            66,
+            52
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0026_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.9279125467538836,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          10.196078300476074,
+          -6.0,
+          4.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 13,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T200>T400",
+        "t100_ml": null,
+        "t200_ml": 50.0,
+        "t400_ml": 20.0,
+        "total_ml": 70.0,
+        "type": "Pair 200+400"
+      },
+      "recipe_id": 13,
+      "vial_id": 26,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 38137,
+          "frame_url": "/generated/images/frame_vial0027_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1271.227382328426,
+          "observed_lab": [
+            10.58823585510254,
+            5.0,
+            8.0
+          ],
+          "observed_rgb": [
+            39,
+            24,
+            11
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0027_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 38299,
+          "frame_url": "/generated/images/frame_vial0027_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1276.6458985278784,
+          "observed_lab": [
+            10.58823585510254,
+            6.0,
+            8.0
+          ],
+          "observed_rgb": [
+            40,
+            24,
+            11
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0027_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          11.372549057006836,
+          4.0,
+          9.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 13,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T200>T400",
+        "t100_ml": null,
+        "t200_ml": 50.0,
+        "t400_ml": 20.0,
+        "total_ml": 70.0,
+        "type": "Pair 200+400"
+      },
+      "recipe_id": 13,
+      "vial_id": 27,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 39418,
+          "frame_url": "/generated/images/frame_vial0028_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1313.933183662631,
+          "observed_lab": [
+            32.156864166259766,
+            -3.0,
+            12.0
+          ],
+          "observed_rgb": [
+            81,
+            77,
+            56
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0028_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 39523,
+          "frame_url": "/generated/images/frame_vial0028_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1317.424715077844,
+          "observed_lab": [
+            32.54901885986328,
+            -3.0,
+            13.0
+          ],
+          "observed_rgb": [
+            81,
+            77,
+            56
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0028_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": true,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          32.156864166259766,
+          -3.0,
+          12.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 13,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T400>T100",
+        "t100_ml": 60.0,
+        "t200_ml": null,
+        "t400_ml": 10.0,
+        "total_ml": 70.0,
+        "type": "Pair 100+400"
+      },
+      "recipe_id": 14,
+      "vial_id": 28,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 40541,
+          "frame_url": "/generated/images/frame_vial0029_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1351.3595706850772,
+          "observed_lab": [
+            12.15686321258545,
+            11.5,
+            12.0
+          ],
+          "observed_rgb": [
+            50,
+            25,
+            10
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0029_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 40645,
+          "frame_url": "/generated/images/frame_vial0029_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1354.845672931403,
+          "observed_lab": [
+            12.15686321258545,
+            11.0,
+            12.0
+          ],
+          "observed_rgb": [
+            51,
+            25,
+            10
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0029_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 1.0,
+        "frame_count": 5,
+        "low_confidence_frame_count": 0,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          12.15686321258545,
+          9.0,
+          11.0
+        ],
+        "ok_frame_count": 5,
+        "status": "ok"
+      },
+      "prediction": null,
+      "previous_recipe_id": 14,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T400>T100",
+        "t100_ml": 60.0,
+        "t200_ml": null,
+        "t400_ml": 10.0,
+        "total_ml": 70.0,
+        "type": "Pair 100+400"
+      },
+      "recipe_id": 14,
+      "vial_id": 29,
+      "video_id": 5
+    },
+    {
+      "camera_id": "vial_fill",
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 41701,
+          "frame_url": "/generated/images/frame_vial0030_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1390.0449079382718,
+          "observed_lab": [
+            27.05882453918457,
+            3.0,
+            11.0
+          ],
+          "observed_rgb": [
+            79,
+            58,
+            44
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0030_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 41809,
+          "frame_url": "/generated/images/frame_vial0030_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1393.6486010470792,
+          "observed_lab": [
+            20.0,
+            7.0,
+            11.0
+          ],
+          "observed_rgb": [
+            62,
+            45,
+            31
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0030_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "ground_truth_anomaly": null,
+      "is_recipe_transition": false,
+      "label_status": "unverified",
+      "measurement": {
+        "alignment_confidence": 0.4593799463632431,
+        "confidence_median": 0.0747987847328186,
+        "frame_count": 5,
+        "low_confidence_frame_count": 3,
+        "measured_frame_count": 5,
+        "missing_frame_count": 0,
+        "observed_lab_median": [
+          26.86274719238281,
+          -2.0,
+          10.0
+        ],
+        "ok_frame_count": 2,
+        "status": "low_confidence"
+      },
+      "prediction": {
+        "alignment_confidence": 0.4593799463632431,
+        "delta_e_2000": 64.48398303788639,
+        "evidence_image_paths": [
+          "/generated/images/frame_vial0030_late_fill.jpg",
+          "/generated/images/frame_vial0030_post_fill.jpg"
+        ],
+        "expected_color_source": "synthetic_tank_setpoint_weighted_srgb_unvalidated",
+        "expected_lab": [
+          90.18210293474432,
+          3.5660770160511057,
+          -14.805248362116785
+        ],
+        "expected_rgb": [
+          220,
+          226,
+          255
+        ],
+        "explanation": "Observed color differs from the documented synthetic recipe proxy by Delta E2000=64.5. The score is an interpretable mismatch index, not a contamination probability. Previous recipe context: 14.",
+        "ground_truth_anomaly": null,
+        "measurement_confidence": 1.0,
+        "mismatch_score": 1.0,
+        "observed_lab": [
+          23.529412269592285,
+          5.0,
+          11.0
+        ],
+        "observed_rgb": [
+          70,
+          51,
+          37
+        ],
+        "review_basis": "descriptive_delta_e_only",
+        "review_status": "discrepancy_measured",
+        "verification_status": "unverified"
+      },
+      "previous_recipe_id": 14,
+      "recipe": {
+        "color_purpose": null,
+        "dispense_order": "T400>T100",
+        "t100_ml": 60.0,
+        "t200_ml": null,
+        "t400_ml": 10.0,
+        "total_ml": 70.0,
+        "type": "Pair 100+400"
+      },
+      "recipe_id": 14,
+      "vial_id": 30,
+      "video_id": 5
+    }
+  ],
+  "provenance": {
+    "discrepancy_semantics": "descriptive rule-based comparison, not contamination",
+    "expected_color_semantics": "unvalidated recipe-color proxy",
+    "integration_mode": "static_artifact_export",
+    "measurement_semantics": "OpenCV pixel measurements",
+    "mismatch_score_semantics": "normalized mismatch index, not probability",
+    "per_frame_path": "C:\\Users\\emman\\OneDrive\\Desktop\\Hackathon\\msoe-ai-club-rockwell-automation-nvidia-hackath-ethan-stockbauer-s-team-bca204ee7b\\data\\processed\\per_frame.csv",
+    "per_frame_sha256": "d9d510f1b4106e3e33d7a26d19b07ccb9ecf9744a4c120bfa903ecc1a078d34b",
+    "per_vial_path": "C:\\Users\\emman\\OneDrive\\Desktop\\Hackathon\\msoe-ai-club-rockwell-automation-nvidia-hackath-ethan-stockbauer-s-team-bca204ee7b\\data\\processed\\per_vial.csv",
+    "per_vial_sha256": "8e3ec0689c3c6f5ccf7275e288b2f4338ed6d00e7cd45d24a40fab2f0350e9d9",
+    "prediction_files_found": 3,
+    "source": "mixing_copilot_opencv"
+  },
+  "schema_version": "1.0",
+  "summary": {
+    "discrepancy_reviews": 3,
+    "frame_records": 149,
+    "inspected_vials": 30,
+    "low_confidence_frames": 23,
+    "measured_frames": 149,
+    "missing_or_not_measured_frames": 0,
+    "ok_frames": 126,
+    "predictions_available": 3,
+    "recipe_transitions": 9
+  },
+  "transitions": [
+    {
+      "evidence": [
+        {
+          "confidence": 0.3444444766044616,
+          "decoded_frame_index": 3881,
+          "frame_url": "/generated/images/frame_vial0004_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 129.3545874314706,
+          "observed_lab": [
+            33.33333206176758,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            77,
+            80,
+            63
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0004_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.35122407746315,
+          "decoded_frame_index": 3991,
+          "frame_url": "/generated/images/frame_vial0004_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 133.0235539571228,
+          "observed_lab": [
+            33.72549057006836,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            78,
+            81,
+            64
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0004_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "from_recipe_id": 5,
+      "ground_truth_anomaly": null,
+      "prediction": null,
+      "to_recipe_id": 6,
+      "vial_id": 4
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 7500,
+          "frame_url": "/generated/images/frame_vial0007_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 249.9990283717545,
+          "observed_lab": [
+            30.58823585510254,
+            -2.0,
+            9.0
+          ],
+          "observed_rgb": [
+            74,
+            73,
+            58
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0007_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 7611,
+          "frame_url": "/generated/images/frame_vial0007_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 253.70328449517143,
+          "observed_lab": [
+            30.980392456054688,
+            -2.0,
+            9.0
+          ],
+          "observed_rgb": [
+            74,
+            73,
+            57
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0007_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "from_recipe_id": 6,
+      "ground_truth_anomaly": null,
+      "prediction": null,
+      "to_recipe_id": 7,
+      "vial_id": 7
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 0.7171403124332428,
+          "decoded_frame_index": 11511,
+          "frame_url": "/generated/images/frame_vial0010_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 383.69926319278585,
+          "observed_lab": [
+            31.764705657958984,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            75,
+            76,
+            59
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0010_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.7304750989278157,
+          "decoded_frame_index": 11676,
+          "frame_url": "/generated/images/frame_vial0010_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 389.20958170250736,
+          "observed_lab": [
+            31.37254905700684,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            74,
+            75,
+            58
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0010_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "from_recipe_id": 7,
+      "ground_truth_anomaly": null,
+      "prediction": null,
+      "to_recipe_id": 8,
+      "vial_id": 10
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 0.2426369921763737,
+          "decoded_frame_index": 16010,
+          "frame_url": "/generated/images/frame_vial0013_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 533.6634782759758,
+          "observed_lab": [
+            32.94117736816406,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            77,
+            78,
+            61
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0013_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "low_confidence"
+        },
+        {
+          "confidence": 0.1988746573527653,
+          "decoded_frame_index": 16207,
+          "frame_url": "/generated/images/frame_vial0013_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 540.2400115209612,
+          "observed_lab": [
+            31.37254905700684,
+            -4.0,
+            10.0
+          ],
+          "observed_rgb": [
+            75,
+            75,
+            58
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0013_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "low_confidence"
+        }
+      ],
+      "from_recipe_id": 8,
+      "ground_truth_anomaly": null,
+      "prediction": {
+        "alignment_confidence": 0.4593799463632431,
+        "delta_e_2000": 37.969040381490466,
+        "evidence_image_paths": [
+          "/generated/images/frame_vial0013_late_fill.jpg",
+          "/generated/images/frame_vial0013_post_fill.jpg"
+        ],
+        "expected_color_source": "synthetic_tank_setpoint_weighted_srgb_unvalidated",
+        "expected_lab": [
+          45.42511870157987,
+          35.21008624070632,
+          -23.204656964116577
+        ],
+        "expected_rgb": [
+          147,
+          85,
+          147
+        ],
+        "explanation": "Observed color differs from the documented synthetic recipe proxy by Delta E2000=38.0. The score is an interpretable mismatch index, not a contamination probability. Previous recipe context: 8.",
+        "ground_truth_anomaly": null,
+        "measurement_confidence": 0.22075582476456956,
+        "mismatch_score": 0.7593808076298093,
+        "observed_lab": [
+          32.15686321258545,
+          -4.0,
+          10.0
+        ],
+        "observed_rgb": [
+          76,
+          76,
+          59
+        ],
+        "review_basis": "descriptive_delta_e_only",
+        "review_status": "discrepancy_measured",
+        "verification_status": "unverified"
+      },
+      "to_recipe_id": 9,
+      "vial_id": 13
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 0.4659500122070312,
+          "decoded_frame_index": 20967,
+          "frame_url": "/generated/images/frame_vial0016_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 698.9094876136052,
+          "observed_lab": [
+            10.58823585510254,
+            -6.0,
+            2.0
+          ],
+          "observed_rgb": [
+            24,
+            31,
+            29
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0016_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.366675107439359,
+          "decoded_frame_index": 21134,
+          "frame_url": "/generated/images/frame_vial0016_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 704.4600313291705,
+          "observed_lab": [
+            10.58823585510254,
+            -6.0,
+            2.0
+          ],
+          "observed_rgb": [
+            22,
+            31,
+            28
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0016_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "from_recipe_id": 9,
+      "ground_truth_anomaly": null,
+      "prediction": null,
+      "to_recipe_id": 10,
+      "vial_id": 16
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 0.5774436475833257,
+          "decoded_frame_index": 25273,
+          "frame_url": "/generated/images/frame_vial0019_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 842.4365181199066,
+          "observed_lab": [
+            11.372549057006836,
+            -6.0,
+            1.0
+          ],
+          "observed_rgb": [
+            24,
+            33,
+            31
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0019_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 0.4390945029258728,
+          "decoded_frame_index": 25451,
+          "frame_url": "/generated/images/frame_vial0019_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 848.3741368990668,
+          "observed_lab": [
+            11.764705657958984,
+            -6.0,
+            1.0
+          ],
+          "observed_rgb": [
+            23,
+            33,
+            30
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0019_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "from_recipe_id": 10,
+      "ground_truth_anomaly": null,
+      "prediction": null,
+      "to_recipe_id": 11,
+      "vial_id": 19
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 29955,
+          "frame_url": "/generated/images/frame_vial0022_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 998.5063271772116,
+          "observed_lab": [
+            28.235294342041016,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            68,
+            67,
+            49
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0022_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 30132,
+          "frame_url": "/generated/images/frame_vial0022_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1004.3919986813404,
+          "observed_lab": [
+            28.235294342041016,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            68,
+            68,
+            48
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0022_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "from_recipe_id": 11,
+      "ground_truth_anomaly": null,
+      "prediction": null,
+      "to_recipe_id": 12,
+      "vial_id": 22
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 34973,
+          "frame_url": "/generated/images/frame_vial0025_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1165.7689025857148,
+          "observed_lab": [
+            35.09803771972656,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            82,
+            84,
+            65
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0025_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 35143,
+          "frame_url": "/generated/images/frame_vial0025_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1171.427782898614,
+          "observed_lab": [
+            34.509803771972656,
+            -4.0,
+            11.0
+          ],
+          "observed_rgb": [
+            81,
+            83,
+            64
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0025_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "from_recipe_id": 12,
+      "ground_truth_anomaly": null,
+      "prediction": null,
+      "to_recipe_id": 13,
+      "vial_id": 25
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 39418,
+          "frame_url": "/generated/images/frame_vial0028_late_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1313.933183662631,
+          "observed_lab": [
+            32.156864166259766,
+            -3.0,
+            12.0
+          ],
+          "observed_rgb": [
+            81,
+            77,
+            56
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0028_late_fill.jpg",
+          "stage": "late_fill",
+          "status": "ok"
+        },
+        {
+          "confidence": 1.0,
+          "decoded_frame_index": 39523,
+          "frame_url": "/generated/images/frame_vial0028_post_fill.jpg",
+          "image_available": true,
+          "media_seconds": 1317.424715077844,
+          "observed_lab": [
+            32.54901885986328,
+            -3.0,
+            13.0
+          ],
+          "observed_rgb": [
+            81,
+            77,
+            56
+          ],
+          "qa_available": true,
+          "qa_url": "/generated/images/qa_vial0028_post_fill.jpg",
+          "stage": "post_fill",
+          "status": "ok"
+        }
+      ],
+      "from_recipe_id": 13,
+      "ground_truth_anomaly": null,
+      "prediction": null,
+      "to_recipe_id": 14,
+      "vial_id": 28
+    }
+  ]
+}

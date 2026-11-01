@@ -1,10 +1,9 @@
 
 import { useMemo, useState } from 'react'
 
-function RecipeCarryover({ recipes = [], transitionRecords = [] }) {
+function RecipeCarryover({ recipes = [], inspections = [] }) {
   const [previousId, setPreviousId] = useState('5')
   const [currentId, setCurrentId] = useState('6')
-  const [scenario, setScenario] = useState('residual')
 
   const previousRecipe = recipes.find(
     (recipe) => recipe.id === previousId
@@ -17,30 +16,19 @@ function RecipeCarryover({ recipes = [], transitionRecords = [] }) {
   const previousRow = previousRecipe?.vialRows?.[0]
   const currentRow = currentRecipe?.vialRows?.[0]
 
-  // The available inspection manifest represents Recipe 5 → Recipe 6.
-  const evidenceMatchesSelection =
-    previousId === '5' && currentId === '6'
-
-  const evidence = useMemo(
+  const transitionInspection = useMemo(
     () =>
-      transitionRecords.filter(
-        (record) => record.scenario === scenario
+      inspections.find(
+        (record) =>
+          record.is_recipe_transition &&
+          String(record.previous_recipe_id) === previousId &&
+          String(record.recipe_id) === currentId
       ),
-    [transitionRecords, scenario]
+    [inspections, previousId, currentId]
   )
-
-  const previousFillEvidence = evidence.find(
-    (record) => record.phase === 'previous_fill'
-  )
-
-  const nextFillEvidence = evidence.find(
-    (record) => record.phase === 'next_fill'
-  )
-
-  const formatAmount = (value) =>
-    value === undefined || value === null || value === ''
-      ? '—'
-      : `${value} mL`
+  const evidence = transitionInspection?.evidence || []
+  const previousFillEvidence = evidence[0]
+  const nextFillEvidence = evidence[1]
 
   const getIngredients = (row) => {
     if (!row) return []
@@ -198,8 +186,8 @@ function RecipeCarryover({ recipes = [], transitionRecords = [] }) {
           <p style={styles.warningText}>
             Because recipes share a fluid pathway, residual fluid
             from the previous recipe may affect the initial output
-            of the incoming recipe. The transition simulation
-            provides evidence of this behavior in selected test records.
+            of the incoming recipe. The OpenCV comparison can identify
+            color differences for review, but cannot prove their cause.
           </p>
         </div>
       </section>
@@ -210,50 +198,34 @@ function RecipeCarryover({ recipes = [], transitionRecords = [] }) {
           <div>
             <h3>Transition Inspection Evidence</h3>
             <p>
-              Review saved simulation examples for the available
-              Recipe 5 → Recipe 6 transition
+              Review measured evidence for the selected recipe change
             </p>
           </div>
-
-          <select
-            value={scenario}
-            onChange={(event) => setScenario(event.target.value)}
-            style={{ ...styles.select, maxWidth: 190 }}
-          >
-            <option value="residual">Residual carryover</option>
-            <option value="clean">Clean transition</option>
-          </select>
+          <span className="small-tag">OPENCV RESULTS</span>
         </div>
 
-        {/* Make the evidence source explicit */}
         <div style={styles.evidenceSource}>
-          <strong>Evidence source: Recipe 5 → Recipe 6</strong>
+          <strong>
+            Evidence source: Recipe {previousId} → Recipe {currentId}
+          </strong>
           <span>
-            The inspection manifest currently contains this transition only.
+            The first vial after the recipe change is selected from processed data.
           </span>
         </div>
 
-        {!evidenceMatchesSelection && (
+        {!transitionInspection && (
           <div style={styles.mismatchNotice}>
-            <strong>Different recipe selection</strong>
+            <strong>No measured transition record</strong>
             <p>
-              You are comparing Recipe {previousId} → Recipe {currentId},
-              but the inspection images and labels below still belong
-              to the Recipe 5 → Recipe 6 simulation. They are shown
-              for reference and are not evidence for your selected pair.
+              The exported dataset does not contain an inspected vial at this
+              selected recipe boundary.
             </p>
           </div>
         )}
 
-        {transitionRecords.length === 0 && (
+        {inspections.length === 0 && (
           <p className="disclaimer">
             No transition evidence is currently available.
-          </p>
-        )}
-
-        {transitionRecords.length > 0 && evidence.length === 0 && (
-          <p className="disclaimer">
-            No inspection records are available for this scenario.
           </p>
         )}
 
@@ -263,61 +235,52 @@ function RecipeCarryover({ recipes = [], transitionRecords = [] }) {
               (record, index) => (
                 <div key={index} style={styles.evidenceCard}>
                   <span style={styles.label}>
-                    {index === 0 ? 'PREVIOUS FILL' : 'NEXT FILL'}
+                    {index === 0 ? 'PRIMARY EVIDENCE' : 'SECONDARY EVIDENCE'}
                   </span>
 
                   {record ? (
                     <>
                       <div style={styles.evidenceImage}>
-                        <img
-                          src={`/data/images/${record.image?.split('/').pop()}`}
-                          alt={`${scenario} ${record.phase} inspection`}
-                          style={styles.image}
-                        />
+                        {record.qa_url ? (
+                          <img
+                            src={record.qa_url}
+                            alt={`${record.stage} OpenCV QA evidence`}
+                            style={styles.image}
+                          />
+                        ) : (
+                          <p className="disclaimer">QA image unavailable</p>
+                        )}
                       </div>
 
                       <div className="station-detail">
                         <span>Frame</span>
-                        <strong>{record.frame ?? '—'}</strong>
+                        <strong>{record.decoded_frame_index ?? '—'}</strong>
                       </div>
 
                       <div className="station-detail">
-                        <span>Inspection label</span>
-                        <strong
-                          className={
-                            record.label === 'reject' ? 'red' : 'green'
-                          }
-                        >
-                          {String(record.label || 'unknown').toUpperCase()}
-                        </strong>
+                        <span>Measurement status</span>
+                        <strong>{String(record.status).replace('_', ' ')}</strong>
                       </div>
 
                       <div className="station-detail">
-                        <span>Nozzle residual</span>
-                        <strong
-                          className={
-                            record.nozzle_residual ? 'red' : 'green'
-                          }
-                        >
-                          {record.nozzle_residual
-                            ? 'Detected'
-                            : 'Not detected'}
-                        </strong>
-                      </div>
-
-                      <div className="station-detail">
-                        <span>Color error</span>
+                        <span>Observed RGB</span>
                         <strong>
-                          {record.color_error == null
+                          {record.observed_rgb?.join(', ') || '—'}
+                        </strong>
+                      </div>
+
+                      <div className="station-detail">
+                        <span>Measurement confidence</span>
+                        <strong>
+                          {record.confidence == null
                             ? '—'
-                            : Number(record.color_error).toFixed(3)}
+                            : `${(record.confidence * 100).toFixed(1)}%`}
                         </strong>
                       </div>
                     </>
                   ) : (
                     <p className="disclaimer">
-                      No {index === 0 ? 'previous-fill' : 'next-fill'}
-                      record is available for this scenario.
+                      No additional evidence record is available.
                     </p>
                   )}
                 </div>
@@ -326,24 +289,22 @@ function RecipeCarryover({ recipes = [], transitionRecords = [] }) {
           </div>
         )}
 
-        {scenario === 'residual' &&
-          nextFillEvidence?.nozzle_residual && (
-            <div style={styles.alertBox}>
-              <strong style={{ color: '#ff8b7d' }}>
-                Residual fluid detected in selected next-fill record
-              </strong>
-              <p style={styles.warningText}>
-                The selected simulation record identifies nozzle
-                residual during the next-fill phase. This is
-                evidence from the simulation, not a live production alert.
-              </p>
-            </div>
-          )}
+        {transitionInspection?.prediction && (
+          <div style={styles.alertBox}>
+            <strong style={{ color: '#ffad65' }}>
+              Rule-based color discrepancy available for review
+            </strong>
+            <p style={styles.warningText}>
+              Delta E2000:{' '}
+              {transitionInspection.prediction.delta_e_2000?.toFixed(2) ?? '—'}.
+              This descriptive comparison is not verified contamination.
+            </p>
+          </div>
+        )}
 
         <p className="disclaimer">
-          The displayed images and labels are representative simulation
-          evidence. They do not establish a live contamination probability
-          or a verified production defect.
+          Expected colors are unvalidated recipe proxies. Mismatch values are
+          indexes, not probabilities, and ground-truth contamination remains unknown.
         </p>
       </section>
     </div>

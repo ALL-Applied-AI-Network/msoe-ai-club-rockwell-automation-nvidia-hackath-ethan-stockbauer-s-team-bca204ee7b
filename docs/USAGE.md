@@ -111,3 +111,31 @@ Isaac Sim's `FillCam` currently renders 640x480, matching the existing feature c
 the liquid ROI must still be inspected in the generated QA overlays. Supply a separately calibrated
 feature configuration if camera placement, resolution, or framing changes. Validation-only mode
 does not require a feature configuration.
+
+## Exporting results to the React dashboard
+
+The dashboard uses a static, versioned export of existing pipeline artifacts. This command reads
+the processed CSVs and any available per-vial prediction JSON files; it does not rerun OpenCV or the
+Causal TCN:
+
+```powershell
+.\.tools\python311\python.exe -m mixing_copilot.cli export-dashboard `
+  --output-root . `
+  --frontend-public-root csi_project\frontend\public
+```
+
+It writes `csi_project/frontend/public/generated/mixing_copilot.json` and copies representative
+extracted frames and QA overlays into `csi_project/frontend/public/generated/images/`. Absolute
+filesystem paths are replaced by browser-relative URLs. Missing predictions and images remain null
+or unavailable rather than being fabricated.
+
+The dashboard labels OpenCV pixel values as measurements and Delta E2000 results as descriptive,
+rule-based discrepancy reviews. Expected colors remain unvalidated recipe-color proxies;
+`mismatch_score` is not a probability, and null ground-truth anomaly fields remain null.
+
+After exporting, run the frontend:
+
+```powershell
+Set-Location csi_project\frontend
+npm run dev
+```
