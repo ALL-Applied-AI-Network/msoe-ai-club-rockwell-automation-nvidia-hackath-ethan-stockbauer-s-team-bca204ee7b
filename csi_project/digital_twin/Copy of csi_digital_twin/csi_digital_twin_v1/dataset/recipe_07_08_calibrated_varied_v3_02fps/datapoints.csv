@@ -1,0 +1,7 @@
+pair_id,scenario,contamination_ml,recipe_before,recipe_after,video,labels,frames,fps
+r07_to_r08,accepted,0.0,7,8,accepted/videos/r07_to_r08_pass.mp4,accepted/labels/r07_to_r08_pass.csv,92,2
+r08_to_r07,accepted,0.0,8,7,accepted/videos/r08_to_r07_pass.mp4,accepted/labels/r08_to_r07_pass.csv,92,2
+r07_to_r08,rejected,4.0,7,8,rejected/videos/r07_to_r08_fail_04ml.mp4,rejected/labels/r07_to_r08_fail_04ml.csv,92,2
+r07_to_r08,rejected,8.0,7,8,rejected/videos/r07_to_r08_fail_08ml.mp4,rejected/labels/r07_to_r08_fail_08ml.csv,92,2
+r08_to_r07,rejected,4.0,8,7,rejected/videos/r08_to_r07_fail_04ml.mp4,rejected/labels/r08_to_r07_fail_04ml.csv,92,2
+r08_to_r07,rejected,8.0,8,7,rejected/videos/r08_to_r07_fail_08ml.mp4,rejected/labels/r08_to_r07_fail_08ml.csv,92,2

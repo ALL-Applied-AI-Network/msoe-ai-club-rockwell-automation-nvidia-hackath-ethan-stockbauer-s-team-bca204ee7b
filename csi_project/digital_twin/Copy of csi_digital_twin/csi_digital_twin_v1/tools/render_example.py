@@ -12,6 +12,9 @@ CapSealCam is rendered with overscan and then given the real lens distortion (to
 import argparse, json, os, subprocess, sys, traceback
 from pathlib import Path
 
+from render_batch1 import DEFAULT_LIQUID_HEIGHT_SCALE, DEFAULT_LIQUID_OPACITY
+from render_geometry import align_stream_to_liquid_surface
+
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ap = argparse.ArgumentParser()
 ap.add_argument("--camera", required=True, choices=["CapSealCam", "FillCam"],
@@ -24,6 +27,11 @@ ap.add_argument("--liquid-color", type=float, nargs=3, metavar=("R", "G", "B"),
                 help="recipe liquid color in sRGB [0,1]; overrides the bound Fill_liquid material")
 ap.add_argument("--stream-color", type=float, nargs=3, metavar=("R", "G", "B"),
                 help="currently dispensing tank color in sRGB [0,1]; overrides the nozzle stream")
+ap.add_argument("--liquid-opacity", type=float, default=DEFAULT_LIQUID_OPACITY,
+                help="liquid opacity; lower values make the dyed liquid translucent")
+ap.add_argument("--liquid-height-scale", type=float, default=DEFAULT_LIQUID_HEIGHT_SCALE)
+ap.add_argument("--stream-opacity", type=float, default=0.42,
+                help="dispensing-stream opacity")
 ap.add_argument("--kit-arg", action="append", default=[], help="extra Isaac Sim / Kit argument (repeatable)")
 a = ap.parse_args()
 
@@ -38,6 +46,10 @@ if a.frame < 1 or (a.camera == "FillCam" and a.frame > 686):
     ap.error("use a positive time code; the fill animation covers 1-686")
 if a.subframes < 1:
     ap.error("--subframes must be positive")
+if not 0 <= a.liquid_opacity <= 1 or not 0 <= a.stream_opacity <= 1:
+    ap.error("opacity values must be between 0 and 1")
+if a.liquid_height_scale <= 0:
+    ap.error("--liquid-height-scale must be positive")
 Path(a.out).expanduser().resolve().parent.mkdir(parents=True, exist_ok=True)
 a.out = str(Path(a.out).expanduser().resolve())
 rw, rh = cam["render_px"]
@@ -71,6 +83,20 @@ try:
     # clippingRange and renders black. Changing and restoring the value in the session layer forces a
     # correct re-sync; the authored camera in the USD file is untouched.
     from pxr import Gf, Usd, UsdGeom, UsdLux, UsdShade
+    if a.liquid_height_scale != 1.0:
+        liquid_roots = [
+            p for p in stage.Traverse()
+            if p.GetName() == "Fill_liquid" and p.IsA(UsdGeom.Xform)
+        ]
+        if not liquid_roots and a.camera == "FillCam":
+            raise RuntimeError("no Fill_liquid Xform found in the FillCam stage")
+        if liquid_roots:
+            stage.SetEditTarget(stage.GetSessionLayer())
+            for liquid_root in liquid_roots:
+                height_scale = UsdGeom.Xformable(liquid_root).AddScaleOp(
+                    UsdGeom.XformOp.PrecisionFloat, "renderHeight"
+                )
+                height_scale.Set(Gf.Vec3f(1.0, 1.0, a.liquid_height_scale))
     if not any(prim.HasAPI(UsdLux.LightAPI) for prim in stage.Traverse()):
         stage.SetEditTarget(stage.GetSessionLayer())
         dome = UsdLux.DomeLight.Define(stage, "/Render/StationDomeLight")
@@ -111,6 +137,14 @@ try:
                     def to_linear(channel):
                         return channel / 12.92 if channel <= 0.04045 else ((channel + 0.055) / 1.055) ** 2.4
                     color_input.Set(Gf.Vec3f(*(to_linear(c) for c in color)))
+                    opacity_input = shader.GetInput("opacity")
+                    opacity = (
+                        a.liquid_opacity
+                        if root_name == "Fill_liquid"
+                        else a.stream_opacity
+                    )
+                    if opacity_input:
+                        opacity_input.Set(opacity)
                     updated_by_root[root_name].append(
                         f"{material.GetPath()}:{shader_prim.GetPath()}"
                     )
@@ -128,6 +162,16 @@ try:
                 flush=True,
             )
 
+    if a.camera == "FillCam":
+        alignment = align_stream_to_liquid_surface(stage, a.frame)
+        if alignment is not None:
+            print(
+                f"aligned stream to liquid surface at frame {a.frame}: "
+                f"gap {alignment[0]:.4f} m -> {alignment[1]:.4f} m",
+                flush=True,
+            )
+            kit.update()
+
     rp = rep.create.render_product(prim, (rw, rh))
     ann = rep.AnnotatorRegistry.get_annotator("rgb"); ann.attach([rp])
     rep.orchestrator.set_capture_on_play(False)
@@ -142,11 +186,23 @@ try:
         clip.Set(near_far)
         kit.update()
 
-    for _ in range(2):
+    data = None
+    for attempt in range(20):
         rep.orchestrator.step(rt_subframes=a.subframes, delta_time=0.0)
-    data = np.asarray(ann.get_data())
-    if data.ndim != 3 or data.shape[:2] != (rh, rw) or data.shape[2] < 3:
-        raise RuntimeError(f"RGB capture returned shape {data.shape}; check GPU/RTX startup errors")
+        kit.update()
+        data = np.asarray(ann.get_data())
+        if data.size == 0:
+            continue
+        if data.ndim != 3 or data.shape[:2] != (rh, rw) or data.shape[2] < 3:
+            raise RuntimeError(
+                f"RGB capture returned shape {data.shape}; check GPU/RTX startup errors"
+            )
+        break
+    else:
+        raise RuntimeError(
+            f"RGB capture returned no data after {attempt + 1} attempts; "
+            "check GPU/RTX startup errors"
+        )
     img = data[..., :3].copy()
 
     # Save and post-process before close(): Isaac's default fast shutdown exits

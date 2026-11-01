@@ -24,12 +24,19 @@ from pathlib import Path
 from render_batch1 import (
     ANIMATION_END,
     ANIMATION_START,
+    COLOR_MODEL,
+    DEFAULT_LIQUID_HEIGHT_SCALE,
     DEFAULT_ISAAC_PYTHON,
     HERE,
     RENDER,
     TANK_COLORS_SRGB,
+    calibrate_recipe_color_srgb,
+    last_colored_tank,
     positive_int,
+    recipe_color_at_progress_srgb,
+    recipe_color_srgb,
 )
+from render_geometry import STREAM_SURFACE_ALIGNMENT_MODEL
 
 NEXT_FILL_START = 21
 EXPECTED_RECIPES = {
@@ -63,11 +70,9 @@ def read_recipes(path):
         total = float(row["total_ml"])
         if total <= 0:
             raise ValueError(f"vial {row['vial']} must have a positive total_ml")
-        color = [
-            sum(volumes[tank] * TANK_COLORS_SRGB[tank][channel]
-                for tank in volumes) / total
-            for channel in range(3)
-        ]
+        color = calibrate_recipe_color_srgb(
+            int(row["recipe_id"]), recipe_color_srgb(volumes, total), 1.0
+        )
         dispense_order = tuple(
             tank.strip().lower()
             for tank in row.get("dispense_order", "").split(">")
@@ -127,6 +132,27 @@ def dispensing_tank_color(recipe, frame):
     return list(TANK_COLORS_SRGB[f"{order[-1]}_ml"])
 
 
+def progressive_recipe_color(recipe, frame, carryover_ml=0.0, carryover_tank=None):
+    elapsed = max(
+        0,
+        min(ANIMATION_END - ANIMATION_START, frame - ANIMATION_START),
+    )
+    progress_ml = (
+        elapsed / (ANIMATION_END - ANIMATION_START) * recipe["total_ml"]
+    )
+    color = recipe_color_at_progress_srgb(
+        recipe["tank_volumes_ml"],
+        recipe["dispense_order"],
+        recipe["total_ml"],
+        progress_ml,
+        carryover_ml=carryover_ml,
+        carryover_tank=carryover_tank,
+    )
+    return calibrate_recipe_color_srgb(
+        recipe["recipe_id"], color, progress_ml / recipe["total_ml"]
+    )
+
+
 def color_distance(left, right):
     return math.sqrt(sum((a - b) ** 2 for a, b in zip(left, right)))
 
@@ -162,7 +188,9 @@ def build_examples(
 
         previous = recipes[index - 1]
         current_color = recipe["liquid_color_srgb"]
-        previous_color = previous["liquid_color_srgb"]
+        carryover_tank = last_colored_tank(
+            previous["tank_volumes_ml"], previous["dispense_order"]
+        )
         position = transition_position(recipes, index)
         volume_factor = rng.uniform(1.0 - volume_tolerance * 2, 1.0 + volume_tolerance * 2)
         variants = ("clean", "residual") if scenario == "both" else (scenario,)
@@ -185,15 +213,24 @@ def build_examples(
                     if variant_name == "residual" and is_next
                     else 0.0
                 )
-                observed_color = (
-                    [
-                        carryover * old + (1.0 - carryover) * new
-                        for old, new in zip(previous_color, current_color)
-                    ]
-                    if is_next
-                    else previous_color
+                clean_color = (
+                    progressive_recipe_color(recipe, frame)
+                    if is_next else None
                 )
-                color_error = color_distance(observed_color, current_color)
+                observed_color = (
+                    progressive_recipe_color(
+                        recipe,
+                        frame,
+                        carryover_ml=carryover * recipe["total_ml"],
+                        carryover_tank=carryover_tank,
+                    )
+                    if is_next
+                    else progressive_recipe_color(previous, frame)
+                )
+                color_error = (
+                    color_distance(observed_color, clean_color)
+                    if is_next else 0.0
+                )
                 volume_error = abs(volume_factor - 1.0) if is_next else 0.0
                 reasons = []
                 if color_error > volume_tolerance:
@@ -215,6 +252,7 @@ def build_examples(
                     "observed_color_srgb": observed_color,
                     "rendered_color_srgb": observed_color,
                     "stream_color_srgb": dispensing_tank_color(stream_recipe, frame),
+                    "carryover_ml": carryover * recipe["total_ml"] if is_next else 0.0,
                     "expected_volume_ml": recipe["total_ml"],
                     "simulated_volume_ml": recipe["total_ml"] * volume_factor,
                     "color_error": color_error,
@@ -223,6 +261,7 @@ def build_examples(
                     "label": "reject" if reasons else "pass",
                     "defect": "|".join(reasons),
                     "label_quality": "transition_proxy",
+                    "color_model": COLOR_MODEL,
                     "rendered_recipe_components": ["liquid_color", "color_carryover"],
                     "unrendered_recipe_components": ["fill_volume"],
                     "split": choose_split(transition_id),
@@ -289,6 +328,7 @@ def main():
                     "--subframes", str(args.subframes), "--out", str(output),
                     "--liquid-color", *(str(channel) for channel in example["rendered_color_srgb"]),
                     "--stream-color", *(str(channel) for channel in example["stream_color_srgb"]),
+                    "--liquid-height-scale", str(DEFAULT_LIQUID_HEIGHT_SCALE),
                 ]
                 subprocess.run(command, check=True, cwd=str(HERE))
             record = {
@@ -297,6 +337,10 @@ def main():
                 "camera": args.camera,
                 "stage": str(stage),
                 "seed": args.seed,
+                "liquid_height_scale": DEFAULT_LIQUID_HEIGHT_SCALE,
+                "stream_surface_alignment": (
+                    STREAM_SURFACE_ALIGNMENT_MODEL if args.camera == "FillCam" else None
+                ),
             }
             manifest.write(json.dumps(record, sort_keys=True) + "\n")
     print(f"{'planned' if args.dry_run else 'rendered'} {len(examples)} images")
