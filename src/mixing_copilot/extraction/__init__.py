@@ -1,0 +1,1 @@
+"""Deterministic frame extraction."""
