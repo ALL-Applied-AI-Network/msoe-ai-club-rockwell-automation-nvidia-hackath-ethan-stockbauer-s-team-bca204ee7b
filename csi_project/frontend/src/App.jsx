@@ -96,6 +96,10 @@ function App() {
   const [transitionLoading, setTransitionLoading] = useState(true)
   const [transitionError, setTransitionError] = useState('')
 
+  const [dashboardData, setDashboardData] = useState(null)
+  const [dashboardLoading, setDashboardLoading] = useState(true)
+  const [dashboardError, setDashboardError] = useState('')
+
   // Load recipe CSV
   useEffect(() => {
     fetch('/data/recipes.csv')
@@ -139,6 +143,25 @@ function App() {
       .finally(() => setRecipeLoading(false))
   }, [])
 
+  // Load exported Mixing Copilot OpenCV results.
+  useEffect(() => {
+    fetch('/generated/mixing_copilot.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Dashboard export request failed: ${response.status}`)
+        }
+        return response.json()
+      })
+      .then((payload) => setDashboardData(payload))
+      .catch((error) => {
+        console.error('Could not load Mixing Copilot export:', error)
+        setDashboardError(
+          'Could not load generated Mixing Copilot results. Run the export-dashboard command.'
+        )
+      })
+      .finally(() => setDashboardLoading(false))
+  }, [])
+
   // Load transition manifest
   useEffect(() => {
     fetch('/data/transition_manifest.jsonl')
@@ -170,45 +193,32 @@ function App() {
   )
 
   const selectedRecipeRow = selectedRecipe?.vialRows?.[0]
+  const opencvInspections = dashboardData?.inspections || []
+  const opencvSummary = dashboardData?.summary || {}
+  const firstTransition = dashboardData?.transitions?.[0]
 
-  // Overview statistics calculated from the loaded transition manifest
-  const cleanRecords = transitionRecords.filter(
-    (record) => record.scenario === 'clean'
-  )
-
-  const residualRecords = transitionRecords.filter(
-    (record) => record.scenario === 'residual'
-  )
-
-  const totalPassed = transitionRecords.filter(
-    (record) => record.label === 'pass'
-  ).length
-
-  const totalRejected = transitionRecords.filter(
-    (record) => record.label === 'reject'
-  ).length
-
-  const carryoverRejections = transitionRecords.filter(
-    (record) =>
-      record.scenario === 'residual' &&
-      record.phase === 'next_fill' &&
-      record.label === 'reject'
-  ).length
-
-  const inspections = [
+  const measurementResults = [
     {
-      name: 'Clean transition',
-      passed: cleanRecords.filter((record) => record.label === 'pass').length,
-      rejected: cleanRecords.filter((record) => record.label === 'reject').length,
-      total: cleanRecords.length,
-      status: 'Review',
+      name: 'OpenCV frame measurements',
+      accepted: opencvSummary.ok_frames || 0,
+      review: opencvSummary.low_confidence_frames || 0,
+      total: opencvSummary.frame_records || 0,
+      status: 'MEASURED',
     },
     {
-      name: 'Residual carryover',
-      passed: residualRecords.filter((record) => record.label === 'pass').length,
-      rejected: residualRecords.filter((record) => record.label === 'reject').length,
-      total: residualRecords.length,
-      status: 'Alert',
+      name: 'Per-vial prediction coverage',
+      accepted: opencvSummary.predictions_available || 0,
+      review: Math.max(
+        (opencvSummary.inspected_vials || 0) -
+          (opencvSummary.predictions_available || 0),
+        0
+      ),
+      total: opencvSummary.inspected_vials || 0,
+      status: `${opencvSummary.predictions_available || 0} / ${opencvSummary.inspected_vials || 0} COVERAGE`,
+      acceptedLabel: 'Predictions available',
+      reviewLabel: 'Without predictions',
+      neutralRemainder: true,
+      note: `${opencvSummary.discrepancy_reviews || 0} descriptive discrepancy reviews · Rule-based, not verified defects`,
     },
   ]
 
@@ -261,7 +271,9 @@ function App() {
 
         <div className="sidebar-bottom">
           <span className="status-dot"></span>
-          Simulation dataset loaded
+          {dashboardData
+            ? 'OpenCV results loaded · Simulation available'
+            : 'Simulation dataset loaded'}
         </div>
       </aside>
 
@@ -284,7 +296,7 @@ function App() {
           </div>
           <div className="simulation-badge">
             <span className="status-dot"></span>
-            SIMULATION DATA
+            {dashboardData ? 'OPENCV RESULTS' : 'DATA LOADING'}
           </div>
         </section>
 
@@ -293,34 +305,34 @@ function App() {
           <>
             <section className="metrics">
               <div className="metric-card">
-                <span className="metric-label">TOTAL INSPECTIONS</span>
-                <strong>{transitionLoading ? '—' : transitionRecords.length}</strong>
-                <span className="metric-note">Loaded inspection records</span>
+                <span className="metric-label">INSPECTED VIALS</span>
+                <strong>{dashboardLoading ? '—' : opencvSummary.inspected_vials || 0}</strong>
+                <span className="metric-note">Processed OpenCV records</span>
               </div>
 
               <div className="metric-card">
-                <span className="metric-label">TOTAL PASSED</span>
+                <span className="metric-label">MEASURED FRAMES</span>
                 <strong className="green">
-                  {transitionLoading ? '—' : totalPassed}
+                  {dashboardLoading ? '—' : opencvSummary.measured_frames || 0}
                 </strong>
-                <span className="metric-note">Proxy inspection labels</span>
+                <span className="metric-note">OpenCV color measurements</span>
               </div>
 
               <div className="metric-card">
-                <span className="metric-label">TOTAL REJECTED</span>
-                <strong className="red">
-                  {transitionLoading ? '—' : totalRejected}
-                </strong>
-                <span className="metric-note">Proxy inspection labels</span>
-              </div>
-
-              <div className="metric-card">
-                <span className="metric-label">CARRYOVER REJECTIONS</span>
+                <span className="metric-label">LOW CONFIDENCE</span>
                 <strong className="orange">
-                  {transitionLoading ? '—' : carryoverRejections}
+                  {dashboardLoading ? '—' : opencvSummary.low_confidence_frames || 0}
+                </strong>
+                <span className="metric-note">Measurements requiring review</span>
+              </div>
+
+              <div className="metric-card">
+                <span className="metric-label">DISCREPANCY REVIEWS</span>
+                <strong className="orange">
+                  {dashboardLoading ? '—' : opencvSummary.discrepancy_reviews || 0}
                 </strong>
                 <span className="metric-note">
-                  Rejected residual next-fill records
+                  Descriptive Delta E results, not defects
                 </span>
               </div>
             </section>
@@ -330,21 +342,21 @@ function App() {
                 <div className="panel-heading">
                   <div>
                     <h3>Inspection Results</h3>
-                    <p>Comparison by test scenario</p>
+                    <p>Measurement and discrepancy coverage</p>
                   </div>
                   <span className="small-tag">
-                    {transitionLoading
+                    {dashboardLoading
                       ? 'LOADING'
-                      : `${transitionRecords.length} FRAMES`}
+                      : `${opencvSummary.frame_records || 0} FRAMES`}
                   </span>
                 </div>
 
-                {inspections.map((item) => (
+                {measurementResults.map((item) => (
                   <div className="scenario" key={item.name}>
                     <div className="scenario-heading">
                       <strong>{item.name}</strong>
                       <span
-                        className={item.status === 'Alert' ? 'alert' : 'review'}
+                        className="review"
                       >
                         {item.status}
                       </span>
@@ -356,19 +368,22 @@ function App() {
                         style={{
                           width: `${
                             item.total
-                              ? (item.passed / item.total) * 100
+                              ? (item.accepted / item.total) * 100
                               : 0
                           }%`,
                         }}
                       />
                       <div
-                        className="rejected-bar"
+                        className={item.neutralRemainder ? '' : 'rejected-bar'}
                         style={{
                           width: `${
                             item.total
-                              ? (item.rejected / item.total) * 100
+                              ? (item.review / item.total) * 100
                               : 0
                           }%`,
+                          ...(item.neutralRemainder
+                            ? { height: '100%', background: '#52677f' }
+                            : {}),
                         }}
                       />
                     </div>
@@ -376,19 +391,40 @@ function App() {
                     <div className="result-legend">
                       <span>
                         <i className="green-dot" />
-                        {item.passed} Passed
+                        {item.accepted}{' '}
+                        {item.acceptedLabel || 'Standard measurements'}
                       </span>
                       <span>
-                        <i className="red-dot" />
-                        {item.rejected} Rejected
+                        <i
+                          className={item.neutralRemainder ? '' : 'red-dot'}
+                          style={
+                            item.neutralRemainder
+                              ? {
+                                  display: 'inline-block',
+                                  width: 8,
+                                  height: 8,
+                                  borderRadius: '50%',
+                                  marginRight: 6,
+                                  verticalAlign: 'middle',
+                                  background: '#52677f',
+                                }
+                              : undefined
+                          }
+                        />
+                        {item.review} {item.reviewLabel || 'Review records'}
                       </span>
                     </div>
+                    {item.note && (
+                      <p className="disclaimer" style={{ marginTop: 10 }}>
+                        {item.note}
+                      </p>
+                    )}
                   </div>
                 ))}
 
                 <p className="disclaimer">
-                  Results are based on supplied transition-proxy labels,
-                  not live production measurements.
+                  Results come from the exported OpenCV pipeline. Review counts
+                  are descriptive quality checks, not contamination decisions.
                 </p>
               </div>
 
@@ -396,9 +432,11 @@ function App() {
                 <div className="panel-heading">
                   <div>
                     <h3>Station Status</h3>
-                    <p>Current simulation overview</p>
+                    <p>Current exported pipeline result</p>
                   </div>
-                  <span className="online-tag">DATA AVAILABLE</span>
+                  <span className="online-tag">
+                    {dashboardError ? 'DATA UNAVAILABLE' : 'OPENCV DATA'}
+                  </span>
                 </div>
 
                 <div className="station-visual">
@@ -411,19 +449,23 @@ function App() {
 
                 <div className="station-detail">
                   <span>Camera source</span>
-                  <strong>FillCam</strong>
+                  <strong>{opencvInspections[0]?.camera_id || '—'}</strong>
                 </div>
                 <div className="station-detail">
                   <span>Previous recipe</span>
-                  <strong>Recipe 5</strong>
+                  <strong>
+                    {firstTransition ? `Recipe ${firstTransition.from_recipe_id}` : '—'}
+                  </strong>
                 </div>
                 <div className="station-detail">
                   <span>Next recipe</span>
-                  <strong>Recipe 6</strong>
+                  <strong>
+                    {firstTransition ? `Recipe ${firstTransition.to_recipe_id}` : '—'}
+                  </strong>
                 </div>
                 <div className="station-detail">
-                  <span>Expected fill volume</span>
-                  <strong>40 mL</strong>
+                  <span>Generated</span>
+                  <strong>{dashboardData?.generated_at_utc || '—'}</strong>
                 </div>
               </div>
             </section>
@@ -439,20 +481,22 @@ function App() {
               <div className="alert-row">
                 <span className="alert-icon">!</span>
                 <div>
-                  <strong>Color carryover detected</strong>
+                  <strong>Rule-based discrepancy review</strong>
                   <p>
-                    Residual fluid was identified during the next-fill phase.
+                    {opencvSummary.discrepancy_reviews || 0} prediction records
+                    contain descriptive Delta E comparisons.
                   </p>
                 </div>
-                <span className="alert-level">HIGH</span>
+                <span className="alert-level warning-text">REVIEW</span>
               </div>
 
               <div className="alert-row">
                 <span className="alert-icon warning">!</span>
                 <div>
-                  <strong>Color transition inconsistency</strong>
+                  <strong>Measurement quality review</strong>
                   <p>
-                    Observed color differs from the expected recipe color.
+                    {opencvSummary.low_confidence_frames || 0} frames have low
+                    measurement confidence.
                   </p>
                 </div>
                 <span className="alert-level warning-text">REVIEW</span>
@@ -467,9 +511,9 @@ function App() {
         {/* VISION INSPECTION */}
         {page === 'Vision Inspection' && (
           <VisionInspection
-            transitionRecords={transitionRecords}
-            transitionLoading={transitionLoading}
-            transitionError={transitionError}
+            inspections={opencvInspections}
+            loading={dashboardLoading}
+            error={dashboardError}
           />
         )}
 
@@ -477,13 +521,13 @@ function App() {
         {page === 'Recipe & Carryover' && (
           <RecipeCarryover
             recipes={recipes}
-            transitionRecords={transitionRecords}
+            inspections={opencvInspections}
           />
         )}
 
         {/* COPILOT ANALYSIS */}
         {page === 'Copilot Analysis' && (
-          <CopilotAnalysis transitionRecords={transitionRecords} />
+          <CopilotAnalysis inspections={opencvInspections} />
         )}
 
         {/* CAMERAS */}
@@ -986,45 +1030,47 @@ function App() {
             <div className="panel-heading">
               <div>
                 <h3>Inspection History</h3>
-                <p>Selected inspection frames from transition 01</p>
+                <p>Processed vial records from the Mixing Copilot export</p>
               </div>
-              <span className="small-tag">4 EXAMPLES</span>
+              <span className="small-tag">{opencvInspections.length} VIALS</span>
             </div>
 
             <div className="history-list">
-              {cameras.map((camera) => (
-                <div className="history-row" key={camera.name}>
+              {opencvInspections.map((inspection) => (
+                <div className="history-row" key={inspection.vial_id}>
                   <div>
                     <strong>
-                      {camera.name} · Frame {camera.frame}
+                      Vial {inspection.vial_id} · Recipe {inspection.recipe_id}
                     </strong>
                     <p>
-                      {camera.scenario} / {camera.phase}
+                      {inspection.measurement.status.replace('_', ' ')} ·{' '}
+                      {inspection.measurement.frame_count} measured stages
                     </p>
                   </div>
 
                   <span
-                    className={`result-pill ${camera.result.toLowerCase()}`}
+                    className={`result-pill ${
+                      inspection.measurement.status === 'ok' ? 'pass' : 'reject'
+                    }`}
                   >
-                    {camera.result}
+                    {inspection.measurement.status === 'ok'
+                      ? 'MEASURED'
+                      : 'REVIEW'}
                   </span>
 
                   <button
                     className="text-button"
-                    onClick={() => {
-                      setPage('Cameras')
-                      setSelectedCamera(camera)
-                    }}
+                    onClick={() => setPage('Vision Inspection')}
                   >
-                    View frame
+                    View evidence
                   </button>
                 </div>
               ))}
             </div>
 
             <p className="disclaimer">
-              {cameras.length} representative camera examples are shown.
-              The loaded transition manifest contains {transitionRecords.length} records.
+              These are OpenCV measurement records. A review badge indicates
+              measurement quality or discrepancy evidence, not a verified defect.
             </p>
           </section>
         )}
@@ -1037,58 +1083,47 @@ function App() {
   )
 }
 
-function VisionInspection({
-  transitionRecords,
-  transitionLoading,
-  transitionError,
-}) {
+function VisionInspection({ inspections, loading, error }) {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
-  const selected = transitionRecords[selectedIndex]
-  const imageName = selected?.image
-    ? selected.image.split('/').pop()
-    : ''
-
-  const passed = transitionRecords.filter(
-    (record) => record.label === 'pass'
+  const selected = inspections[selectedIndex]
+  const selectedEvidence = selected?.evidence?.[0]
+  const measured = inspections.filter(
+    (record) => record.measurement.status === 'ok'
   ).length
+  const review = inspections.length - measured
 
-  const rejected = transitionRecords.filter(
-    (record) => record.label === 'reject'
-  ).length
-
-  const phaseName = (phase) => {
-    if (phase === 'previous_fill') return 'Previous recipe fill'
-    if (phase === 'next_fill') return 'Next recipe fill'
-    return phase || 'Unavailable'
-  }
+  const stageName = (stage) =>
+    stage ? stage.replaceAll('_', ' ') : 'Unavailable'
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <section className="metrics">
         <div className="metric-card">
-          <span className="metric-label">INSPECTION FRAMES</span>
-          <strong>{transitionLoading ? '—' : transitionRecords.length}</strong>
-          <span className="metric-note">Saved simulation frames</span>
+          <span className="metric-label">INSPECTED VIALS</span>
+          <strong>{loading ? '—' : inspections.length}</strong>
+          <span className="metric-note">Processed pipeline records</span>
         </div>
         <div className="metric-card">
-          <span className="metric-label">PASSED</span>
+          <span className="metric-label">MEASURED</span>
           <strong className="green">
-            {transitionLoading ? '—' : passed}
+            {loading ? '—' : measured}
           </strong>
-          <span className="metric-note">Proxy labels</span>
+          <span className="metric-note">Standard measurement status</span>
         </div>
         <div className="metric-card">
-          <span className="metric-label">REJECTED</span>
-          <strong className="red">
-            {transitionLoading ? '—' : rejected}
+          <span className="metric-label">REVIEW</span>
+          <strong className="orange">
+            {loading ? '—' : review}
           </strong>
-          <span className="metric-note">Proxy labels</span>
+          <span className="metric-note">Low or missing confidence</span>
         </div>
         <div className="metric-card">
-          <span className="metric-label">CAMERA STAGES</span>
-          <strong>1 / 3</strong>
-          <span className="metric-note">Evidence currently available</span>
+          <span className="metric-label">EVIDENCE IMAGES</span>
+          <strong>
+            {inspections.reduce((count, item) => count + item.evidence.length, 0)}
+          </strong>
+          <span className="metric-note">Extracted and QA pairs</span>
         </div>
       </section>
 
@@ -1098,7 +1133,7 @@ function VisionInspection({
             <h3>Multi-Stage Vision Inspection</h3>
             <p>Three inspection stages across the vial production process</p>
           </div>
-          <span className="small-tag">SIMULATION EVIDENCE</span>
+          <span className="small-tag">OPENCV EVIDENCE</span>
         </div>
 
         <div
@@ -1123,7 +1158,7 @@ function VisionInspection({
               ◉
             </div>
             <h3>Vial Fill</h3>
-            <p className="metric-note">Saved transition inspection frames</p>
+            <p className="metric-note">Extracted and measured vial frames</p>
             <span className="green">Image evidence available</span>
           </div>
 
@@ -1167,7 +1202,7 @@ function VisionInspection({
         </div>
 
         <p className="disclaimer">
-          Only vial-fill transition frames are currently connected.
+          Only vial-fill OpenCV frames are currently connected.
           Tank-level and cap/seal views are placeholders, not live camera feeds.
         </p>
       </section>
@@ -1179,29 +1214,29 @@ function VisionInspection({
               <h3>Selected Vial Evidence</h3>
               <p>
                 {selected
-                  ? `${selected.scenario || 'Scenario'} · ${phaseName(selected.phase)}`
+                  ? `Vial ${selected.vial_id} · Recipe ${selected.recipe_id}`
                   : 'Select a record from the timeline'}
               </p>
             </div>
             {selected && (
               <span
                 className={`result-pill ${
-                  selected.label === 'reject' ? 'reject' : 'pass'
+                  selected.measurement.status === 'ok' ? 'pass' : 'reject'
                 }`}
               >
-                {String(selected.label || 'unknown').toUpperCase()}
+                {selected.measurement.status === 'ok' ? 'MEASURED' : 'REVIEW'}
               </span>
             )}
           </div>
 
-          {transitionLoading && (
+          {loading && (
             <p className="disclaimer">Loading inspection evidence...</p>
           )}
-          {transitionError && (
-            <p className="disclaimer">{transitionError}</p>
+          {error && (
+            <p className="disclaimer">{error}</p>
           )}
 
-          {!transitionLoading && !transitionError && selected && (
+          {!loading && !error && selected && (
             <>
               <div
                 style={{
@@ -1217,64 +1252,68 @@ function VisionInspection({
                   overflow: 'hidden',
                 }}
               >
-                <img
-                  src={`/data/images/${imageName}`}
-                  alt="Selected vial inspection frame"
-                  style={{
-                    width: '100%',
-                    maxHeight: 420,
-                    objectFit: 'contain',
-                  }}
-                />
+                {selectedEvidence?.qa_url ? (
+                  <img
+                    src={selectedEvidence.qa_url}
+                    alt="Selected vial OpenCV QA evidence"
+                    style={{
+                      width: '100%',
+                      maxHeight: 420,
+                      objectFit: 'contain',
+                    }}
+                  />
+                ) : (
+                  <p className="disclaimer">QA image unavailable</p>
+                )}
                 <span className="frame-label">
-                  FRAME {selected.frame ?? '—'}
+                  FRAME {selectedEvidence?.decoded_frame_index ?? '—'}
                 </span>
               </div>
 
               <div style={{ marginTop: 16 }}>
                 <div className="station-detail">
-                  <span>Scenario</span>
-                  <strong>
-                    {selected.scenario === 'residual'
-                      ? 'Residual carryover'
-                      : 'Clean transition'}
-                  </strong>
+                  <span>Measurement status</span>
+                  <strong>{selected.measurement.status.replace('_', ' ')}</strong>
                 </div>
                 <div className="station-detail">
-                  <span>Inspection phase</span>
-                  <strong>{phaseName(selected.phase)}</strong>
+                  <span>Inspection stage</span>
+                  <strong>{stageName(selectedEvidence?.stage)}</strong>
                 </div>
                 <div className="station-detail">
                   <span>Vial</span>
-                  <strong>{selected.vial ?? '—'}</strong>
+                  <strong>{selected.vial_id ?? '—'}</strong>
                 </div>
                 <div className="station-detail">
-                  <span>Color error</span>
+                  <span>Observed RGB</span>
                   <strong>
-                    {selected.color_error == null
+                    {selectedEvidence?.observed_rgb == null
                       ? '—'
-                      : Number(selected.color_error).toFixed(3)}
+                      : selectedEvidence.observed_rgb.join(', ')}
                   </strong>
                 </div>
                 <div className="station-detail">
-                  <span>Nozzle residual</span>
-                  <strong
-                    className={selected.nozzle_residual ? 'red' : 'green'}
-                  >
-                    {selected.nozzle_residual ? 'Detected' : 'Not detected'}
-                  </strong>
-                </div>
-                <div className="station-detail">
-                  <span>Expected volume</span>
+                  <span>Measurement confidence</span>
                   <strong>
-                    {selected.expected_volume_ml ?? '—'} mL
+                    {selectedEvidence?.confidence == null
+                      ? '—'
+                      : `${(selectedEvidence.confidence * 100).toFixed(1)}%`}
+                  </strong>
+                </div>
+                <div className="station-detail">
+                  <span>Alignment confidence</span>
+                  <strong>
+                    {selected.measurement.alignment_confidence == null
+                      ? '—'
+                      : `${(
+                          selected.measurement.alignment_confidence * 100
+                        ).toFixed(1)}%`}
                   </strong>
                 </div>
               </div>
             </>
           )}
 
-          {!transitionLoading && !transitionError && !selected && (
+          {!loading && !error && !selected && (
             <p className="disclaimer">No inspection records found.</p>
           )}
         </div>
@@ -1286,15 +1325,15 @@ function VisionInspection({
               <p>Select a frame to inspect its evidence</p>
             </div>
             <span className="small-tag">
-              {transitionRecords.length} RECORDS
+              {inspections.length} VIALS
             </span>
           </div>
 
-          {transitionLoading && (
+          {loading && (
             <p className="disclaimer">Loading timeline...</p>
           )}
 
-          {!transitionLoading && !transitionError && (
+          {!loading && !error && (
             <div
               style={{
                 display: 'flex',
@@ -1303,13 +1342,13 @@ function VisionInspection({
                 marginTop: 16,
               }}
             >
-              {transitionRecords.map((record, index) => {
-                const isReject = record.label === 'reject'
+              {inspections.map((record, index) => {
+                const needsReview = record.measurement.status !== 'ok'
                 const active = index === selectedIndex
 
                 return (
                   <button
-                    key={`${record.scenario}-${record.phase}-${index}`}
+                    key={record.vial_id}
                     onClick={() => setSelectedIndex(index)}
                     style={{
                       display: 'flex',
@@ -1333,7 +1372,7 @@ function VisionInspection({
                         height: 10,
                         flexShrink: 0,
                         borderRadius: '50%',
-                        background: isReject ? '#f16b75' : '#43d6a0',
+                        background: needsReview ? '#f2a15d' : '#43d6a0',
                       }}
                     />
 
@@ -1346,24 +1385,27 @@ function VisionInspection({
                       }}
                     >
                       <strong style={{ fontSize: 12 }}>
-                        {record.scenario === 'residual'
-                          ? 'Residual carryover'
-                          : 'Clean transition'}
+                        Vial {record.vial_id} · Recipe {record.recipe_id}
                       </strong>
                       <small style={{ color: '#91add0' }}>
-                        {phaseName(record.phase)}
+                        {record.measurement.frame_count} stage records
                       </small>
                       <small style={{ color: '#91add0' }}>
-                        Vial {record.vial ?? '—'} · Frame {record.frame ?? '—'}
+                        Confidence{' '}
+                        {record.measurement.confidence_median == null
+                          ? '—'
+                          : `${(
+                              record.measurement.confidence_median * 100
+                            ).toFixed(1)}%`}
                       </small>
                     </span>
 
                     <span
                       className={`result-pill ${
-                        isReject ? 'reject' : 'pass'
+                        needsReview ? 'reject' : 'pass'
                       }`}
                     >
-                      {String(record.label || 'unknown').toUpperCase()}
+                      {needsReview ? 'REVIEW' : 'MEASURED'}
                     </span>
                   </button>
                 )
@@ -1374,8 +1416,8 @@ function VisionInspection({
       </section>
 
       <p className="disclaimer">
-        These are representative simulation examples labeled transition_proxy.
-        They are not live production decisions or verified machine-learning predictions.
+        These are measured OpenCV results. Confidence describes measurement
+        quality; it is not a defect or contamination probability.
       </p>
     </div>
   )

@@ -7,6 +7,7 @@ from pathlib import Path
 from mixing_copilot.alignment.pipeline import run_alignment
 from mixing_copilot.audit.manifest import audit_dataset
 from mixing_copilot.config import load_yaml, resolve_path
+from mixing_copilot.dashboard import export_dashboard
 from mixing_copilot.dataset.build import build_datasets, extract_features
 from mixing_copilot.dataset.synthetic import process_synthetic_dataset
 from mixing_copilot.extraction.frames import extract_vial_frames
@@ -136,6 +137,18 @@ def command_process_synthetic(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_export_dashboard(args: argparse.Namespace) -> int:
+    result = export_dashboard(
+        output_root=Path(args.output_root),
+        frontend_public_root=Path(args.frontend_public_root),
+        per_frame_path=Path(args.per_frame) if args.per_frame else None,
+        per_vial_path=Path(args.per_vial) if args.per_vial else None,
+        predictions_root=Path(args.predictions_root) if args.predictions_root else None,
+    )
+    print(json.dumps({"output": result["output_path"], "summary": result["summary"]}, indent=2))
+    return 0
+
+
 def command_run(args: argparse.Namespace) -> int:
     common = argparse.Namespace(config=args.config, camera=None, video_id=5, dry_run=False)
     if not args.skip_audit:
@@ -208,6 +221,18 @@ def build_parser() -> argparse.ArgumentParser:
         help="validate inputs and write a report without extracting or measuring frames",
     )
     synthetic.set_defaults(handler=command_process_synthetic)
+    dashboard = subparsers.add_parser(
+        "export-dashboard",
+        help="export existing measurements, predictions, and QA evidence for the React dashboard",
+    )
+    dashboard.add_argument("--output-root", default=".")
+    dashboard.add_argument(
+        "--frontend-public-root", default="csi_project/frontend/public"
+    )
+    dashboard.add_argument("--per-frame", help="override the processed per-frame CSV path")
+    dashboard.add_argument("--per-vial", help="override the processed per-vial CSV path")
+    dashboard.add_argument("--predictions-root", help="override the prediction JSON directory")
+    dashboard.set_defaults(handler=command_export_dashboard)
     run = subparsers.add_parser("run", help="run the validated Video 5 workflow end to end")
     run.add_argument("--config", default="configs/dataset.yaml")
     run.add_argument("--example-vial", type=int, default=30)

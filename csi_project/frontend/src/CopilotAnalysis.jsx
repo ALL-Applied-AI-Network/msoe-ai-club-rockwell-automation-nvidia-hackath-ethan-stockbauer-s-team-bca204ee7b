@@ -35,53 +35,24 @@ function Detail({ label, value }) {
   )
 }
 
-export default function CopilotAnalysis({ transitionRecords = [] }) {
-  const [scenario, setScenario] = useState('all')
-
-  const records = useMemo(() => {
-    return transitionRecords.filter(
-      (record) =>
-        scenario === 'all' || record.scenario === scenario
-    )
-  }, [transitionRecords, scenario])
-
-  // Prefer the next-fill record so the analysis focuses on
-  // the vial immediately following the recipe transition.
+export default function CopilotAnalysis({ inspections = [] }) {
+  const records = useMemo(
+    () => inspections.filter((record) => record.prediction),
+    [inspections]
+  )
+  const [selectedVial, setSelectedVial] = useState('')
   const selectedRecord =
-    records.find(
-      (record) =>
-        record.scenario === 'residual' &&
-        record.phase === 'next_fill'
-    ) ||
-    records.find((record) => record.phase === 'next_fill') ||
+    records.find((record) => String(record.vial_id) === selectedVial) ||
     records[0]
-
-  // Use the same label field as the other dashboard pages.
-  const rejected = records.filter(
-    (record) => record.label === 'reject'
+  const prediction = selectedRecord?.prediction
+  const previousRecipe = selectedRecord?.previous_recipe_id
+  const nextRecipe = selectedRecord?.recipe_id
+  const expectedColor = colorString(prediction?.expected_rgb)
+  const observedColor = colorString(prediction?.observed_rgb)
+  const imagePath = selectedRecord?.evidence?.[0]?.qa_url
+  const lowConfidence = records.filter(
+    (record) => record.measurement.status === 'low_confidence'
   ).length
-
-  const passed = records.filter(
-    (record) => record.label === 'pass'
-  ).length
-
-  const previousRecipe = selectedRecord?.recipe_before ?? 5
-  const nextRecipe = selectedRecord?.recipe_after ?? 6
-
-  const expectedColor = colorString(
-    selectedRecord?.expected_color_srgb
-  )
-
-  const observedColor = colorString(
-    selectedRecord?.observed_color_srgb
-  )
-
-  const imagePath = selectedRecord?.image
-    ? `/data/images/${selectedRecord.image.split('/').pop()}`
-    : null
-
-  const isRejected = selectedRecord?.label === 'reject'
-  const isResidual = selectedRecord?.scenario === 'residual'
 
   return (
     <div style={styles.page}>
@@ -97,46 +68,47 @@ export default function CopilotAnalysis({ transitionRecords = [] }) {
           </p>
         </div>
 
-        <span style={styles.status}>SIMULATION DATA</span>
+        <span style={styles.status}>OPENCV RESULTS</span>
       </div>
 
       {/* DATA NOTICE */}
       <div style={styles.notice}>
         <strong>Analysis status</strong>
         <p>
-          This page summarizes digital-twin simulation data. Rejection
-          labels are transition proxies, not independently verified
-          production defects. No validated AI prediction is currently
-          connected.
+          This page summarizes measured OpenCV results and descriptive color
+          discrepancies. Expected colors are unvalidated proxies; no result is
+          a verified contamination classification.
         </p>
       </div>
 
       {/* METRICS */}
       <div style={styles.metrics}>
         <Metric
-          label="Records analyzed"
+          label="Inspected vials"
+          value={inspections.length}
+          detail="Exported dataset records"
+        />
+
+        <Metric
+          label="Predictions available"
           value={records.length}
-          detail="Selected dataset records"
+          detail="Descriptive comparisons"
         />
 
         <Metric
-          label="Proxy rejects"
-          value={rejected}
-          detail="Simulation labels"
-        />
-
-        <Metric
-          label="Proxy passes"
-          value={passed}
-          detail="Simulation labels"
+          label="Low confidence"
+          value={lowConfidence}
+          detail="Measurement quality"
         />
 
         <Metric
           label="Recipe transition"
           value={
-            selectedRecord
+            selectedRecord?.is_recipe_transition
               ? `${previousRecipe} → ${nextRecipe}`
-              : '—'
+              : selectedRecord
+                ? `Recipe ${nextRecipe}`
+                : '—'
           }
           detail="Selected evidence record"
         />
@@ -150,18 +122,20 @@ export default function CopilotAnalysis({ transitionRecords = [] }) {
               Transition investigation
             </h3>
             <p style={styles.muted}>
-              Compare clean and residual simulation scenarios
+              Inspect measured and expected color evidence
             </p>
           </div>
 
           <select
-            value={scenario}
-            onChange={(event) => setScenario(event.target.value)}
+            value={selectedRecord ? String(selectedRecord.vial_id) : ''}
+            onChange={(event) => setSelectedVial(event.target.value)}
             style={styles.select}
           >
-            <option value="all">All scenarios</option>
-            <option value="clean">Clean</option>
-            <option value="residual">Residual carryover</option>
+            {records.map((record) => (
+              <option key={record.vial_id} value={record.vial_id}>
+                Vial {record.vial_id} · Recipe {record.recipe_id}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -196,7 +170,7 @@ export default function CopilotAnalysis({ transitionRecords = [] }) {
 
               <div style={styles.colorCard}>
                 <span style={styles.muted}>
-                  Observed simulated color
+                  Observed OpenCV color
                 </span>
 
                 {observedColor ? (
@@ -213,7 +187,7 @@ export default function CopilotAnalysis({ transitionRecords = [] }) {
                 )}
 
                 <span style={styles.small}>
-                  {selectedRecord.scenario || 'No scenario selected'}
+                  Vial {selectedRecord.vial_id}
                 </span>
               </div>
             </div>
@@ -221,44 +195,44 @@ export default function CopilotAnalysis({ transitionRecords = [] }) {
             {/* RECORD DETAILS */}
             <div style={styles.recordDetails}>
               <Detail
-                label="Color error"
+                label="Delta E2000"
                 value={
-                  selectedRecord.color_error == null
+                  prediction?.delta_e_2000 == null
                     ? 'Unavailable'
-                    : Number(selectedRecord.color_error).toFixed(4)
+                    : Number(prediction.delta_e_2000).toFixed(2)
                 }
               />
 
               <Detail
                 label="Vial"
-                value={selectedRecord.vial ?? '—'}
+                value={selectedRecord.vial_id ?? '—'}
               />
 
               <Detail
-                label="Transition position"
+                label="Mismatch index"
                 value={
-                  selectedRecord.vial_index_after_switch ?? '—'
+                  prediction?.mismatch_score == null
+                    ? 'Unavailable'
+                    : Number(prediction.mismatch_score).toFixed(3)
                 }
               />
 
               <div style={styles.detailCard}>
                 <span style={styles.muted}>
-                  Simulation result
+                  Measurement confidence
                 </span>
 
                 <strong
                   style={{
                     ...styles.resultBadge,
-                    color: isRejected ? '#ff8585' : '#69dfad',
-                    background: isRejected
-                      ? 'rgba(255,100,100,.12)'
-                      : 'rgba(70,210,145,.12)',
-                    borderColor: isRejected
-                      ? '#a64c58'
-                      : '#287a60',
+                    color: '#69dfad',
+                    background: 'rgba(70,210,145,.12)',
+                    borderColor: '#287a60',
                   }}
                 >
-                  {isRejected ? 'REJECT' : 'PASS'}
+                  {prediction?.measurement_confidence == null
+                    ? 'Unavailable'
+                    : `${(prediction.measurement_confidence * 100).toFixed(1)}%`}
                 </strong>
               </div>
             </div>
@@ -271,7 +245,7 @@ export default function CopilotAnalysis({ transitionRecords = [] }) {
                 <div style={styles.imageContainer}>
                   <img
                     src={imagePath}
-                    alt="Digital twin transition evidence"
+                    alt="OpenCV color QA evidence"
                     style={styles.image}
                     onError={(event) => {
                       event.currentTarget.style.display = 'none'
@@ -280,16 +254,16 @@ export default function CopilotAnalysis({ transitionRecords = [] }) {
                 </div>
 
                 <span style={styles.small}>
-                  Rendered digital-twin evidence — not a live camera feed
+                  Extracted frame with OpenCV QA overlay
                 </span>
               </div>
             )}
           </>
         ) : (
           <div style={styles.empty}>
-            <strong>No transition records available</strong>
+            <strong>No prediction records available</strong>
             <p style={styles.muted}>
-              There are no records for the selected scenario.
+              Run predictions and export the dashboard artifacts.
             </p>
           </div>
         )}
@@ -302,66 +276,36 @@ export default function CopilotAnalysis({ transitionRecords = [] }) {
         {selectedRecord ? (
           <>
             <div style={styles.explanation}>
-              <strong>
-                {isResidual
-                  ? 'Potential carryover during recipe changeover'
-                  : 'Clean transition baseline'}
-              </strong>
-
-              {isResidual ? (
-                <>
-                  <p>
-                    The simulated transition changes from Recipe{' '}
-                    {previousRecipe} to Recipe {nextRecipe}. In the
-                    residual scenario, the observed color is calculated
-                    using a mixture of the previous recipe color and
-                    the current recipe color.
-                  </p>
-
-                  <p>
-                    This can cause a vial after a recipe change to
-                    differ from its expected color.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p>
-                    This record represents the clean transition
-                    scenario from Recipe {previousRecipe} to Recipe{' '}
-                    {nextRecipe}.
-                  </p>
-
-                  <p>
-                    Use this scenario as a baseline for comparing
-                    the residual carryover examples.
-                  </p>
-                </>
-              )}
+              <strong>Measured color discrepancy</strong>
+              <p>{prediction?.explanation || 'No explanation is available.'}</p>
+              <p>
+                Expected color source:{' '}
+                {prediction?.expected_color_source || 'Unavailable'}.
+              </p>
             </div>
 
             <div style={styles.recommendation}>
               <strong>Suggested operator action</strong>
 
               <p>
-                {isResidual
-                  ? 'Review the first vial after the recipe change and inspect the shared fluid path for remaining material before continuing production.'
-                  : 'Use the clean transition as a baseline and review the next-fill inspection evidence for consistency with the expected recipe color.'}
+                Review the source frame and QA overlay together. Treat the
+                mismatch index as a screening aid, not a probability or a
+                verified contamination decision.
               </p>
             </div>
           </>
         ) : (
           <p style={styles.muted}>
-            Load transition records to display an explanation.
+            Export prediction records to display an explanation.
           </p>
         )}
       </section>
 
       {/* DISCLAIMER */}
       <p style={styles.disclaimer}>
-        Simulation-based analysis only. Color error is the renderer's
-        RGB distance metric, not Delta E 2000. No validated model
-        confidence score or production defect probability is available
-        here. Missing color fields are not treated as measured values.
+        Observed values are OpenCV measurements. Expected colors are
+        unvalidated recipe proxies. Delta E2000 and mismatch indexes describe
+        color difference; they do not establish contamination or defect status.
       </p>
     </div>
   )
