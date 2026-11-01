@@ -1,0 +1,9 @@
+#usda 1.0
+(
+    subLayers = [@csi_line.usda@]
+)
+over Xform "CSI_Line" {
+    over Xform "Facility" (active = false) {}
+    over Xform "MagneMover" (active = false) {}
+    over Xform "TrayInspection" (active = false) {}
+}

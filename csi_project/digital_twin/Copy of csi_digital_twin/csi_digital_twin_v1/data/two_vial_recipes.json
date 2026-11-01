@@ -1,0 +1,28 @@
+[
+  {
+    "vial": 1,
+    "recipe_id": 5,
+    "type": "Triple",
+    "tanks": {
+      "100": 10,
+      "200": 10,
+      "400": 10
+    },
+    "total_ml": 30,
+    "dispense_order": "T200>T400>T100",
+    "color_purpose": "mixed - low even (swapped in)"
+  },
+  {
+    "vial": 2,
+    "recipe_id": 6,
+    "type": "Pair 100+200",
+    "tanks": {
+      "100": 30,
+      "200": 10,
+      "400": 0
+    },
+    "total_ml": 40,
+    "dispense_order": "T200>T100",
+    "color_purpose": "pale orange (fresh ratio)"
+  }
+]
