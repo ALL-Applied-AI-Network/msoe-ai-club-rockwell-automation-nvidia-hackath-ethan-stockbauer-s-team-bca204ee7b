@@ -8,6 +8,7 @@ from mixing_copilot.alignment.pipeline import run_alignment
 from mixing_copilot.audit.manifest import audit_dataset
 from mixing_copilot.config import load_yaml, resolve_path
 from mixing_copilot.dataset.build import build_datasets, extract_features
+from mixing_copilot.dataset.synthetic import process_synthetic_dataset
 from mixing_copilot.extraction.frames import extract_vial_frames
 from mixing_copilot.io.files import atomic_json_dump
 from mixing_copilot.prediction import predict_vial, write_prediction
@@ -119,6 +120,22 @@ def command_predict(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_process_synthetic(args: argparse.Namespace) -> int:
+    result = process_synthetic_dataset(
+        video_path=Path(args.video),
+        frame_labels_path=Path(args.frame_labels),
+        recipes_path=Path(args.recipes),
+        output_root=Path(args.output_root),
+        dataset_id=args.dataset_id,
+        features_config_path=Path(args.features_config),
+        camera_id=args.camera_id,
+        video_id=args.video_id,
+        validate_only=args.validate_only,
+    )
+    print(json.dumps(result, indent=2))
+    return 0
+
+
 def command_run(args: argparse.Namespace) -> int:
     common = argparse.Namespace(config=args.config, camera=None, video_id=5, dry_run=False)
     if not args.skip_audit:
@@ -168,6 +185,29 @@ def build_parser() -> argparse.ArgumentParser:
     predict.add_argument("--config", default="configs/dataset.yaml")
     predict.add_argument("--vial-id", type=int, required=True)
     predict.set_defaults(handler=command_predict)
+    synthetic = subparsers.add_parser(
+        "process-synthetic",
+        help="validate and process an Isaac Sim recipe video without CSI timestamp alignment",
+    )
+    synthetic.add_argument("--video", required=True, help="synthetic MP4 path")
+    synthetic.add_argument("--frame-labels", required=True, help="*_frame_labels.csv path")
+    synthetic.add_argument("--recipes", required=True, help="*_recipes.csv path")
+    synthetic.add_argument("--dataset-id", required=True, help="safe identifier for output folders")
+    synthetic.add_argument("--video-id", type=int, default=1)
+    synthetic.add_argument(
+        "--camera-id",
+        choices=("FillCam", "CapSealCam"),
+        default="FillCam",
+        help="renderer camera identity; defaults to the FillCam ROI assumption",
+    )
+    synthetic.add_argument("--output-root", default=".")
+    synthetic.add_argument("--features-config", default="configs/features.yaml")
+    synthetic.add_argument(
+        "--validate-only",
+        action="store_true",
+        help="validate inputs and write a report without extracting or measuring frames",
+    )
+    synthetic.set_defaults(handler=command_process_synthetic)
     run = subparsers.add_parser("run", help="run the validated Video 5 workflow end to end")
     run.add_argument("--config", default="configs/dataset.yaml")
     run.add_argument("--example-vial", type=int, default=30)
