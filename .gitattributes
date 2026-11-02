@@ -1,3 +1,6 @@
 *.usd filter=lfs diff=lfs merge=lfs -text
 *.usdz filter=lfs diff=lfs merge=lfs -text
 *.usdc filter=lfs diff=lfs merge=lfs -text
+csi_project/digital_twin/Copy[[:space:]]of[[:space:]]csi_digital_twin/csi_digital_twin_v1/dataset/**/*.png filter=lfs diff=lfs merge=lfs -text
+csi_project/digital_twin/Copy[[:space:]]of[[:space:]]csi_digital_twin/csi_digital_twin_v1/dataset/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+csi_project/digital_twin/Copy[[:space:]]of[[:space:]]csi_digital_twin/csi_digital_twin_v1/dataset/**/*.pt filter=lfs diff=lfs merge=lfs -text

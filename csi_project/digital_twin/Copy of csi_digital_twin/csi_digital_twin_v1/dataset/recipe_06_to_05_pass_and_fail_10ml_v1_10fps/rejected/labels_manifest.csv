@@ -1,0 +1,459 @@
+filename,timestamp,video_s,in_fill,vial,recipe_id,type,t100_ml,t200_ml,t400_ml,total_ml,dispense_order,color_purpose,mp4_frame,render_frame,pair_id,scenario,contamination_ml,contamination_tank,recipe_before,recipe_after,label
+frame_000000.png,0.000000,0.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),0,1,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000001.png,0.100000,0.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),1,4,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000002.png,0.200000,0.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),2,7,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000003.png,0.300000,0.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),3,10,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000004.png,0.400000,0.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),4,13,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000005.png,0.500000,0.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),5,16,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000006.png,0.600000,0.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),6,19,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000007.png,0.700000,0.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),7,22,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000008.png,0.800000,0.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),8,25,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000009.png,0.900000,0.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),9,28,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000010.png,1.000000,1.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),10,31,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000011.png,1.100000,1.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),11,34,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000012.png,1.200000,1.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),12,37,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000013.png,1.300000,1.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),13,40,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000014.png,1.400000,1.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),14,43,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000015.png,1.500000,1.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),15,46,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000016.png,1.600000,1.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),16,49,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000017.png,1.700000,1.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),17,52,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000018.png,1.800000,1.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),18,55,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000019.png,1.900000,1.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),19,58,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000020.png,2.000000,2.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),20,61,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000021.png,2.100000,2.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),21,64,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000022.png,2.200000,2.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),22,67,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000023.png,2.300000,2.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),23,70,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000024.png,2.400000,2.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),24,73,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000025.png,2.500000,2.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),25,76,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000026.png,2.600000,2.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),26,79,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000027.png,2.700000,2.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),27,82,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000028.png,2.800000,2.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),28,85,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000029.png,2.900000,2.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),29,88,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000030.png,3.000000,3.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),30,91,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000031.png,3.100000,3.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),31,94,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000032.png,3.200000,3.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),32,97,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000033.png,3.300000,3.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),33,100,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000034.png,3.400000,3.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),34,103,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000035.png,3.500000,3.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),35,106,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000036.png,3.600000,3.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),36,109,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000037.png,3.700000,3.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),37,112,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000038.png,3.800000,3.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),38,115,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000039.png,3.900000,3.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),39,118,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000040.png,4.000000,4.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),40,121,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000041.png,4.100000,4.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),41,124,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000042.png,4.200000,4.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),42,127,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000043.png,4.300000,4.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),43,130,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000044.png,4.400000,4.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),44,133,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000045.png,4.500000,4.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),45,136,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000046.png,4.600000,4.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),46,139,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000047.png,4.700000,4.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),47,142,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000048.png,4.800000,4.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),48,145,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000049.png,4.900000,4.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),49,148,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000050.png,5.000000,5.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),50,151,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000051.png,5.100000,5.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),51,154,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000052.png,5.200000,5.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),52,157,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000053.png,5.300000,5.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),53,160,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000054.png,5.400000,5.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),54,163,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000055.png,5.500000,5.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),55,166,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000056.png,5.600000,5.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),56,169,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000057.png,5.700000,5.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),57,172,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000058.png,5.800000,5.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),58,175,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000059.png,5.900000,5.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),59,178,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000060.png,6.000000,6.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),60,181,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000061.png,6.100000,6.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),61,184,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000062.png,6.200000,6.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),62,187,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000063.png,6.300000,6.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),63,190,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000064.png,6.400000,6.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),64,193,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000065.png,6.500000,6.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),65,196,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000066.png,6.600000,6.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),66,199,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000067.png,6.700000,6.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),67,202,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000068.png,6.800000,6.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),68,205,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000069.png,6.900000,6.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),69,208,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000070.png,7.000000,7.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),70,211,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000071.png,7.100000,7.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),71,214,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000072.png,7.200000,7.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),72,217,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000073.png,7.300000,7.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),73,220,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000074.png,7.400000,7.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),74,223,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000075.png,7.500000,7.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),75,226,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000076.png,7.600000,7.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),76,229,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000077.png,7.700000,7.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),77,232,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000078.png,7.800000,7.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),78,235,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000079.png,7.900000,7.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),79,238,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000080.png,8.000000,8.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),80,241,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000081.png,8.100000,8.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),81,244,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000082.png,8.200000,8.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),82,247,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000083.png,8.300000,8.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),83,250,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000084.png,8.400000,8.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),84,253,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000085.png,8.500000,8.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),85,256,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000086.png,8.600000,8.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),86,259,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000087.png,8.700000,8.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),87,262,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000088.png,8.800000,8.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),88,265,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000089.png,8.900000,8.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),89,268,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000090.png,9.000000,9.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),90,271,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000091.png,9.100000,9.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),91,274,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000092.png,9.200000,9.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),92,277,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000093.png,9.300000,9.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),93,280,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000094.png,9.400000,9.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),94,283,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000095.png,9.500000,9.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),95,286,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000096.png,9.600000,9.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),96,289,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000097.png,9.700000,9.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),97,292,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000098.png,9.800000,9.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),98,295,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000099.png,9.900000,9.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),99,298,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000100.png,10.000000,10.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),100,301,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000101.png,10.100000,10.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),101,304,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000102.png,10.200000,10.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),102,307,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000103.png,10.300000,10.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),103,310,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000104.png,10.400000,10.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),104,313,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000105.png,10.500000,10.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),105,316,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000106.png,10.600000,10.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),106,319,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000107.png,10.700000,10.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),107,322,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000108.png,10.800000,10.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),108,325,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000109.png,10.900000,10.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),109,328,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000110.png,11.000000,11.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),110,331,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000111.png,11.100000,11.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),111,334,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000112.png,11.200000,11.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),112,337,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000113.png,11.300000,11.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),113,340,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000114.png,11.400000,11.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),114,343,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000115.png,11.500000,11.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),115,346,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000116.png,11.600000,11.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),116,349,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000117.png,11.700000,11.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),117,352,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000118.png,11.800000,11.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),118,355,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000119.png,11.900000,11.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),119,358,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000120.png,12.000000,12.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),120,361,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000121.png,12.100000,12.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),121,364,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000122.png,12.200000,12.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),122,367,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000123.png,12.300000,12.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),123,370,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000124.png,12.400000,12.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),124,373,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000125.png,12.500000,12.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),125,376,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000126.png,12.600000,12.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),126,379,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000127.png,12.700000,12.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),127,382,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000128.png,12.800000,12.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),128,385,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000129.png,12.900000,12.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),129,388,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000130.png,13.000000,13.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),130,391,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000131.png,13.100000,13.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),131,394,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000132.png,13.200000,13.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),132,397,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000133.png,13.300000,13.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),133,400,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000134.png,13.400000,13.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),134,403,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000135.png,13.500000,13.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),135,406,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000136.png,13.600000,13.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),136,409,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000137.png,13.700000,13.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),137,412,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000138.png,13.800000,13.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),138,415,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000139.png,13.900000,13.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),139,418,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000140.png,14.000000,14.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),140,421,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000141.png,14.100000,14.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),141,424,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000142.png,14.200000,14.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),142,427,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000143.png,14.300000,14.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),143,430,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000144.png,14.400000,14.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),144,433,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000145.png,14.500000,14.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),145,436,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000146.png,14.600000,14.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),146,439,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000147.png,14.700000,14.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),147,442,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000148.png,14.800000,14.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),148,445,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000149.png,14.900000,14.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),149,448,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000150.png,15.000000,15.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),150,451,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000151.png,15.100000,15.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),151,454,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000152.png,15.200000,15.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),152,457,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000153.png,15.300000,15.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),153,460,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000154.png,15.400000,15.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),154,463,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000155.png,15.500000,15.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),155,466,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000156.png,15.600000,15.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),156,469,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000157.png,15.700000,15.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),157,472,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000158.png,15.800000,15.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),158,475,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000159.png,15.900000,15.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),159,478,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000160.png,16.000000,16.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),160,481,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000161.png,16.100000,16.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),161,484,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000162.png,16.200000,16.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),162,487,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000163.png,16.300000,16.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),163,490,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000164.png,16.400000,16.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),164,493,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000165.png,16.500000,16.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),165,496,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000166.png,16.600000,16.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),166,499,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000167.png,16.700000,16.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),167,502,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000168.png,16.800000,16.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),168,505,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000169.png,16.900000,16.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),169,508,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000170.png,17.000000,17.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),170,511,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000171.png,17.100000,17.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),171,514,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000172.png,17.200000,17.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),172,517,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000173.png,17.300000,17.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),173,520,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000174.png,17.400000,17.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),174,523,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000175.png,17.500000,17.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),175,526,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000176.png,17.600000,17.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),176,529,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000177.png,17.700000,17.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),177,532,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000178.png,17.800000,17.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),178,535,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000179.png,17.900000,17.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),179,538,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000180.png,18.000000,18.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),180,541,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000181.png,18.100000,18.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),181,544,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000182.png,18.200000,18.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),182,547,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000183.png,18.300000,18.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),183,550,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000184.png,18.400000,18.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),184,553,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000185.png,18.500000,18.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),185,556,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000186.png,18.600000,18.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),186,559,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000187.png,18.700000,18.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),187,562,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000188.png,18.800000,18.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),188,565,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000189.png,18.900000,18.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),189,568,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000190.png,19.000000,19.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),190,571,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000191.png,19.100000,19.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),191,574,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000192.png,19.200000,19.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),192,577,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000193.png,19.300000,19.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),193,580,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000194.png,19.400000,19.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),194,583,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000195.png,19.500000,19.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),195,586,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000196.png,19.600000,19.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),196,589,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000197.png,19.700000,19.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),197,592,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000198.png,19.800000,19.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),198,595,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000199.png,19.900000,19.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),199,598,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000200.png,20.000000,20.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),200,601,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000201.png,20.100000,20.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),201,604,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000202.png,20.200000,20.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),202,607,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000203.png,20.300000,20.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),203,610,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000204.png,20.400000,20.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),204,613,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000205.png,20.500000,20.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),205,616,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000206.png,20.600000,20.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),206,619,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000207.png,20.700000,20.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),207,622,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000208.png,20.800000,20.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),208,625,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000209.png,20.900000,20.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),209,628,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000210.png,21.000000,21.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),210,631,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000211.png,21.100000,21.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),211,634,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000212.png,21.200000,21.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),212,637,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000213.png,21.300000,21.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),213,640,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000214.png,21.400000,21.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),214,643,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000215.png,21.500000,21.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),215,646,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000216.png,21.600000,21.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),216,649,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000217.png,21.700000,21.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),217,652,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000218.png,21.800000,21.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),218,655,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000219.png,21.900000,21.900000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),219,658,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000220.png,22.000000,22.000000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),220,661,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000221.png,22.100000,22.100000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),221,664,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000222.png,22.200000,22.200000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),222,667,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000223.png,22.300000,22.300000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),223,670,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000224.png,22.400000,22.400000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),224,673,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000225.png,22.500000,22.500000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),225,676,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000226.png,22.600000,22.600000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),226,679,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000227.png,22.700000,22.700000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),227,682,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000228.png,22.800000,22.800000,1,1,6,Pair 100+200,30.0,10.0,,40.0,T200>T100,pale orange (fresh ratio),228,686,r06_to_r05,rejected,10.0,,6,5,reject
+frame_000229.png,22.900000,22.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),229,1,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000230.png,23.000000,23.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),230,4,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000231.png,23.100000,23.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),231,7,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000232.png,23.200000,23.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),232,10,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000233.png,23.300000,23.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),233,13,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000234.png,23.400000,23.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),234,16,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000235.png,23.500000,23.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),235,19,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000236.png,23.600000,23.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),236,22,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000237.png,23.700000,23.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),237,25,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000238.png,23.800000,23.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),238,28,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000239.png,23.900000,23.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),239,31,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000240.png,24.000000,24.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),240,34,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000241.png,24.100000,24.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),241,37,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000242.png,24.200000,24.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),242,40,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000243.png,24.300000,24.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),243,43,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000244.png,24.400000,24.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),244,46,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000245.png,24.500000,24.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),245,49,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000246.png,24.600000,24.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),246,52,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000247.png,24.700000,24.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),247,55,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000248.png,24.800000,24.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),248,58,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000249.png,24.900000,24.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),249,61,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000250.png,25.000000,25.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),250,64,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000251.png,25.100000,25.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),251,67,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000252.png,25.200000,25.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),252,70,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000253.png,25.300000,25.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),253,73,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000254.png,25.400000,25.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),254,76,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000255.png,25.500000,25.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),255,79,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000256.png,25.600000,25.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),256,82,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000257.png,25.700000,25.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),257,85,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000258.png,25.800000,25.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),258,88,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000259.png,25.900000,25.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),259,91,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000260.png,26.000000,26.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),260,94,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000261.png,26.100000,26.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),261,97,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000262.png,26.200000,26.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),262,100,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000263.png,26.300000,26.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),263,103,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000264.png,26.400000,26.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),264,106,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000265.png,26.500000,26.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),265,109,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000266.png,26.600000,26.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),266,112,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000267.png,26.700000,26.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),267,115,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000268.png,26.800000,26.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),268,118,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000269.png,26.900000,26.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),269,121,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000270.png,27.000000,27.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),270,124,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000271.png,27.100000,27.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),271,127,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000272.png,27.200000,27.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),272,130,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000273.png,27.300000,27.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),273,133,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000274.png,27.400000,27.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),274,136,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000275.png,27.500000,27.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),275,139,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000276.png,27.600000,27.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),276,142,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000277.png,27.700000,27.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),277,145,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000278.png,27.800000,27.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),278,148,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000279.png,27.900000,27.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),279,151,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000280.png,28.000000,28.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),280,154,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000281.png,28.100000,28.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),281,157,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000282.png,28.200000,28.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),282,160,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000283.png,28.300000,28.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),283,163,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000284.png,28.400000,28.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),284,166,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000285.png,28.500000,28.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),285,169,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000286.png,28.600000,28.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),286,172,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000287.png,28.700000,28.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),287,175,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000288.png,28.800000,28.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),288,178,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000289.png,28.900000,28.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),289,181,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000290.png,29.000000,29.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),290,184,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000291.png,29.100000,29.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),291,187,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000292.png,29.200000,29.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),292,190,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000293.png,29.300000,29.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),293,193,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000294.png,29.400000,29.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),294,196,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000295.png,29.500000,29.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),295,199,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000296.png,29.600000,29.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),296,202,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000297.png,29.700000,29.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),297,205,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000298.png,29.800000,29.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),298,208,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000299.png,29.900000,29.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),299,211,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000300.png,30.000000,30.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),300,214,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000301.png,30.100000,30.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),301,217,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000302.png,30.200000,30.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),302,220,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000303.png,30.300000,30.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),303,223,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000304.png,30.400000,30.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),304,226,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000305.png,30.500000,30.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),305,229,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000306.png,30.600000,30.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),306,232,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000307.png,30.700000,30.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),307,235,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000308.png,30.800000,30.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),308,238,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000309.png,30.900000,30.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),309,241,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000310.png,31.000000,31.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),310,244,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000311.png,31.100000,31.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),311,247,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000312.png,31.200000,31.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),312,250,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000313.png,31.300000,31.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),313,253,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000314.png,31.400000,31.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),314,256,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000315.png,31.500000,31.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),315,259,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000316.png,31.600000,31.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),316,262,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000317.png,31.700000,31.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),317,265,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000318.png,31.800000,31.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),318,268,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000319.png,31.900000,31.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),319,271,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000320.png,32.000000,32.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),320,274,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000321.png,32.100000,32.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),321,277,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000322.png,32.200000,32.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),322,280,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000323.png,32.300000,32.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),323,283,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000324.png,32.400000,32.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),324,286,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000325.png,32.500000,32.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),325,289,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000326.png,32.600000,32.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),326,292,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000327.png,32.700000,32.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),327,295,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000328.png,32.800000,32.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),328,298,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000329.png,32.900000,32.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),329,301,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000330.png,33.000000,33.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),330,304,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000331.png,33.100000,33.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),331,307,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000332.png,33.200000,33.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),332,310,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000333.png,33.300000,33.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),333,313,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000334.png,33.400000,33.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),334,316,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000335.png,33.500000,33.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),335,319,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000336.png,33.600000,33.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),336,322,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000337.png,33.700000,33.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),337,325,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000338.png,33.800000,33.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),338,328,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000339.png,33.900000,33.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),339,331,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000340.png,34.000000,34.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),340,334,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000341.png,34.100000,34.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),341,337,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000342.png,34.200000,34.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),342,340,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000343.png,34.300000,34.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),343,343,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000344.png,34.400000,34.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),344,346,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000345.png,34.500000,34.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),345,349,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000346.png,34.600000,34.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),346,352,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000347.png,34.700000,34.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),347,355,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000348.png,34.800000,34.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),348,358,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000349.png,34.900000,34.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),349,361,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000350.png,35.000000,35.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),350,364,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000351.png,35.100000,35.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),351,367,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000352.png,35.200000,35.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),352,370,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000353.png,35.300000,35.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),353,373,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000354.png,35.400000,35.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),354,376,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000355.png,35.500000,35.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),355,379,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000356.png,35.600000,35.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),356,382,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000357.png,35.700000,35.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),357,385,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000358.png,35.800000,35.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),358,388,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000359.png,35.900000,35.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),359,391,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000360.png,36.000000,36.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),360,394,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000361.png,36.100000,36.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),361,397,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000362.png,36.200000,36.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),362,400,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000363.png,36.300000,36.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),363,403,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000364.png,36.400000,36.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),364,406,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000365.png,36.500000,36.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),365,409,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000366.png,36.600000,36.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),366,412,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000367.png,36.700000,36.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),367,415,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000368.png,36.800000,36.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),368,418,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000369.png,36.900000,36.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),369,421,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000370.png,37.000000,37.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),370,424,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000371.png,37.100000,37.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),371,427,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000372.png,37.200000,37.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),372,430,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000373.png,37.300000,37.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),373,433,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000374.png,37.400000,37.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),374,436,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000375.png,37.500000,37.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),375,439,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000376.png,37.600000,37.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),376,442,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000377.png,37.700000,37.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),377,445,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000378.png,37.800000,37.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),378,448,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000379.png,37.900000,37.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),379,451,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000380.png,38.000000,38.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),380,454,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000381.png,38.100000,38.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),381,457,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000382.png,38.200000,38.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),382,460,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000383.png,38.300000,38.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),383,463,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000384.png,38.400000,38.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),384,466,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000385.png,38.500000,38.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),385,469,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000386.png,38.600000,38.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),386,472,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000387.png,38.700000,38.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),387,475,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000388.png,38.800000,38.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),388,478,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000389.png,38.900000,38.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),389,481,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000390.png,39.000000,39.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),390,484,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000391.png,39.100000,39.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),391,487,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000392.png,39.200000,39.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),392,490,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000393.png,39.300000,39.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),393,493,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000394.png,39.400000,39.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),394,496,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000395.png,39.500000,39.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),395,499,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000396.png,39.600000,39.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),396,502,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000397.png,39.700000,39.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),397,505,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000398.png,39.800000,39.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),398,508,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000399.png,39.900000,39.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),399,511,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000400.png,40.000000,40.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),400,514,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000401.png,40.100000,40.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),401,517,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000402.png,40.200000,40.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),402,520,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000403.png,40.300000,40.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),403,523,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000404.png,40.400000,40.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),404,526,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000405.png,40.500000,40.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),405,529,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000406.png,40.600000,40.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),406,532,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000407.png,40.700000,40.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),407,535,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000408.png,40.800000,40.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),408,538,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000409.png,40.900000,40.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),409,541,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000410.png,41.000000,41.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),410,544,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000411.png,41.100000,41.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),411,547,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000412.png,41.200000,41.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),412,550,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000413.png,41.300000,41.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),413,553,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000414.png,41.400000,41.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),414,556,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000415.png,41.500000,41.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),415,559,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000416.png,41.600000,41.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),416,562,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000417.png,41.700000,41.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),417,565,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000418.png,41.800000,41.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),418,568,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000419.png,41.900000,41.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),419,571,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000420.png,42.000000,42.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),420,574,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000421.png,42.100000,42.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),421,577,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000422.png,42.200000,42.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),422,580,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000423.png,42.300000,42.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),423,583,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000424.png,42.400000,42.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),424,586,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000425.png,42.500000,42.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),425,589,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000426.png,42.600000,42.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),426,592,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000427.png,42.700000,42.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),427,595,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000428.png,42.800000,42.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),428,598,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000429.png,42.900000,42.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),429,601,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000430.png,43.000000,43.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),430,604,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000431.png,43.100000,43.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),431,607,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000432.png,43.200000,43.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),432,610,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000433.png,43.300000,43.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),433,613,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000434.png,43.400000,43.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),434,616,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000435.png,43.500000,43.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),435,619,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000436.png,43.600000,43.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),436,622,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000437.png,43.700000,43.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),437,625,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000438.png,43.800000,43.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),438,628,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000439.png,43.900000,43.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),439,631,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000440.png,44.000000,44.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),440,634,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000441.png,44.100000,44.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),441,637,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000442.png,44.200000,44.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),442,640,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000443.png,44.300000,44.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),443,643,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000444.png,44.400000,44.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),444,646,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000445.png,44.500000,44.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),445,649,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000446.png,44.600000,44.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),446,652,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000447.png,44.700000,44.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),447,655,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000448.png,44.800000,44.800000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),448,658,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000449.png,44.900000,44.900000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),449,661,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000450.png,45.000000,45.000000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),450,664,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000451.png,45.100000,45.100000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),451,667,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000452.png,45.200000,45.200000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),452,670,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000453.png,45.300000,45.300000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),453,673,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000454.png,45.400000,45.400000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),454,676,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000455.png,45.500000,45.500000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),455,679,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000456.png,45.600000,45.600000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),456,682,r06_to_r05,rejected,10.0,T200,6,5,reject
+frame_000457.png,45.700000,45.700000,1,2,5,Triple,10.0,10.0,10.0,30.0,T200>T400>T100,mixed - low even (swapped in),457,686,r06_to_r05,rejected,10.0,T200,6,5,reject

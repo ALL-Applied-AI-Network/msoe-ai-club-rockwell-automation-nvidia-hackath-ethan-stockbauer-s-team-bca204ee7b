@@ -91,17 +91,73 @@ which the colored-phase model otherwise omits.
 For causal TCN training, build a timestep manifest with
 `tools/build_causal_tcn_manifest.py`. It emits fixed-length, past-only frame
 windows, explicit current and future-rejection targets, contamination onset,
-and deterministic transition-level train/validation/test splits. The split is
-assigned per clip before frames are emitted, preventing adjacent frames from
-the same transition from crossing dataset boundaries:
+and deterministic train/validation/test splits. By default, it includes only
+batches tagged with the Video 5 recipe 5/6 calibration
+`beer_lambert_rgb_v6_video5_r05_r06_opacity_075` at opacity `0.75`; batches
+without that metadata, legacy color models, and recipes outside 5/6 are skipped.
+The trainer independently enforces this calibration provenance, so stale or
+manually assembled manifests containing unverified colors fail closed. Use
+`--allow-unverified-color` only for an explicitly separate diagnostic dataset,
+not for the production training manifest. By default, the entire
+top-level render batch is kept in one split so related clips cannot leak
+between training and evaluation. Targets use `contamination_ml` and the
+annotated vial-2 start: `target_current_reject` begins only once vial-2 liquid
+is visually present, while `target_future_reject` is positive only before
+that onset and within the selected horizon. The visible-liquid threshold is
+animation frame 16, where the colored stream first appears in reviewed
+rendered frames. `--horizon-seconds`
+keeps the prediction interval consistent across videos sampled at different
+frame rates:
 
 ```bash
 python tools/build_causal_tcn_manifest.py \
-  --dataset-root dataset/recipe_07_to_08_pass_and_fail_04ml_v1_10fps \
-  --output dataset/recipe_07_to_08_causal_tcn.jsonl \
+  --dataset-root dataset \
+  --output dataset/causal_tcn_manifest_v5.jsonl \
   --window-frames 32 \
-  --horizon-frames 10
+  --horizon-seconds 2 \
+  --split-by dataset \
+  --skip-missing-frames
 ```
+
+The trainer uses features from the calibrated vial-liquid ROI, normalizes them
+using training frames only, compensates for class imbalance, and reports
+balanced accuracy, precision/recall, ROC-AUC, average precision, and Brier
+score alongside accuracy. It selects a checkpoint by validation average
+precision and selects its operating threshold on validation only. A high
+accuracy or frame-level ROC-AUC by itself is not evidence of useful
+rejection prediction: evaluate warnings at the vial/transition level, because
+the model can otherwise learn when a transition occurs without distinguishing
+an accepted from a rejected vial. The Video 5 frame labels currently identify
+recipe and fill timing, not contamination outcomes, so they cannot be used as
+supervised reject/pass targets. Checkpoints trained before the calibrated-ROI
+feature and event-time label changes are historical and incompatible with the
+current model definition; use only checkpoints trained from the current
+manifest/feature schema. Earlier checkpoints also lack the strict color
+provenance gate; those are marked ineligible and must not be used.
+
+The color-filtered L40S baseline is
+`dataset/models/causal_tcn_current_reject_v5_l40s.pt`. It was trained only on
+the approved recipe 5/6 color calibration. Its held-out test contains just two
+clips (one pass and one reject). A validation-threshold tie-break now selects a
+midpoint between score groups rather than the exact positive score; this
+classifies that single held-out pass/reject pair correctly. However, frame
+ROC-AUC is 0.130 and balanced accuracy is 0.495, and a two-clip test cannot
+establish generalization. These results do not support reliable detection or
+production confidence. See `dataset/models/causal_tcn_v5_audit.json` for the
+exact command, split sizes, and per-clip results. Checkpoints trained before
+the color gate and manifests without calibration provenance are ineligible;
+the trainer rejects them. Image-only prediction before the contaminated
+stream becomes visible is also not reliably distinguishable in the current
+render pairs; better real pass/reject labels and process signals are required.
+
+The presentation-ready refined visual model is
+`dataset/models/causal_tcn_future_reject_video5_pass_synthetic_reject_refined.pt`.
+It was trained for 10 epochs from `dataset/causal_tcn_manifest_v5.jsonl`,
+using the seven calibrated recipe 5/6 pass and synthetic-reject batches in
+this repository. Its held-out test results are ROC-AUC 0.9866, average
+precision 0.5627, precision 0.4688, recall 0.75, and F1 0.5769. This is a
+visual early-warning model during filling, not a recipe-only pre-fill
+predictor; the checkpoint should not be presented as production-ready.
 
 ```bash
 /isaac-sim/python.sh tools/render_batch1.py \
@@ -109,8 +165,6 @@ python tools/build_causal_tcn_manifest.py \
   --out dataset/video5_recipe_color \
   --samples-per-vial 1 --subframes 8 --seed 7
 ```
-
-Train/validation/test assignment is split by vial position within each recipe group so every recipe is represented in all three splits.
 
 For a continuous two-vial sequence, use `tools/render_recipe_video.py` with a
 JSON file containing exactly vial 1 and vial 2. The frame-label CSV follows

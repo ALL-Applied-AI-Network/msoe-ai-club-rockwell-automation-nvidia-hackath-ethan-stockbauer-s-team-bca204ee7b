@@ -1,0 +1,3 @@
+pair_id,scenario,contamination_ml,recipe_before,recipe_after,video,labels,frames,fps
+r05_to_r06,accepted,0.0,5,6,accepted/videos/r05_to_r06_pass.mp4,accepted/labels/r05_to_r06_pass.csv,458,10
+r05_to_r06,rejected,2.0,5,6,rejected/videos/r05_to_r06_fail_02ml.mp4,rejected/labels/r05_to_r06_fail_02ml.csv,458,10

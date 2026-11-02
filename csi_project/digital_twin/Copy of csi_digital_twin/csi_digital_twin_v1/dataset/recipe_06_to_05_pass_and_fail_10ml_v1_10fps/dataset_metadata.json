@@ -1,0 +1,37 @@
+{
+  "ordered_pairs": true,
+  "recipe_ids": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "recipe_pairs": [
+    [
+      6,
+      5
+    ]
+  ],
+  "scenarios": [
+    "accepted",
+    "rejected"
+  ],
+  "contamination_ml": [
+    10.0
+  ],
+  "frames_per_vial": 229,
+  "animation_sampling_step": 3,
+  "fps": 10,
+  "liquid_opacity": 0.75,
+  "liquid_height_scale": 0.25,
+  "stream_opacity": 0.42,
+  "liquid_color_flow_gated": true,
+  "color_model": "beer_lambert_rgb_v6_video5_r05_r06_opacity_075",
+  "stream_surface_alignment": "nozzle_anchored_vertical_stretch_v1"
+}
