@@ -114,9 +114,28 @@ does not require a feature configuration.
 
 ## Exporting results to the React dashboard
 
+### Causal TCN synthetic early-warning examples
+
+The trained Causal TCN is separate from the OpenCV/Delta E discrepancy analysis. It consumes a
+causal 32-frame FillCam history, extracts 19 calibrated visual features per frame, and uses the
+normalization, class-weight correction, and decision threshold stored in Ethan's checkpoint.
+Generate one matched held-out synthetic PASS/REJECT demonstration pair with:
+
+```powershell
+.\.tools\python311\python.exe -m mixing_copilot.cli predict-causal-tcn
+```
+
+This writes `artifacts/ml_predictions/causal_tcn_examples.json`. The command requires the 32 input
+frames referenced by each selected manifest record to be real PNG files. Git LFS pointer files are
+rejected rather than treated as images. It does not train or modify the checkpoint.
+
+The emitted score is a class-weight-corrected sigmoid model score, not a calibrated physical
+contamination probability. Labels are synthetic Isaac Sim scenario labels. The model has not been
+validated against physical CSI rejection outcomes.
+
 The dashboard uses a static, versioned export of existing pipeline artifacts. This command reads
-the processed CSVs and any available per-vial prediction JSON files; it does not rerun OpenCV or the
-Causal TCN:
+the processed CSVs, available per-vial rule-based prediction JSON files, and the optional Causal TCN
+artifact; it does not rerun OpenCV or the Causal TCN:
 
 ```powershell
 .\.tools\python311\python.exe -m mixing_copilot.cli export-dashboard `
@@ -128,6 +147,11 @@ It writes `csi_project/frontend/public/generated/mixing_copilot.json` and copies
 extracted frames and QA overlays into `csi_project/frontend/public/generated/images/`. Absolute
 filesystem paths are replaced by browser-relative URLs. Missing predictions and images remain null
 or unavailable rather than being fabricated.
+
+If `artifacts/ml_predictions/causal_tcn_examples.json` is absent, Copilot Analysis displays:
+`Trained model available. No compatible inference sequence loaded.` Synthetic model examples are
+exported as a separate top-level `ml_prediction` object and are never attached to real CSI vial
+records.
 
 The dashboard labels OpenCV pixel values as measurements and Delta E2000 results as descriptive,
 rule-based discrepancy reviews. Expected colors remain unvalidated recipe-color proxies;

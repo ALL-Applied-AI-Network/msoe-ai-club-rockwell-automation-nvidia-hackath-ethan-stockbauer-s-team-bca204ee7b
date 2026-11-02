@@ -529,7 +529,10 @@ function App() {
 
         {/* COPILOT ANALYSIS */}
         {page === 'Copilot Analysis' && (
-          <CopilotAnalysis inspections={opencvInspections} />
+          <CopilotAnalysis
+            inspections={opencvInspections}
+            mlPrediction={dashboardData?.ml_prediction}
+          />
         )}
 
         {/* CAMERAS */}

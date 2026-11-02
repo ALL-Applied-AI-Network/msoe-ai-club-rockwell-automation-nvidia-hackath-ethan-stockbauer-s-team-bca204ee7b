@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-11-02T04:36:55.526717Z",
+  "model": {
+    "model_name": "Causal TCN",
+    "model_type": "causal_tcn",
+    "model_version": "ethan_causal_tcn_v1",
+    "purpose": "Predict a future synthetic rejection from early-fill visual observations.",
+    "training_domain": "synthetic_isaac_sim_recipe_5_6",
+    "target": "target_future_reject",
+    "horizon_seconds": 2.0,
+    "input_shape": [
+      1,
+      19,
+      32
+    ],
+    "feature_count": 19,
+    "history_frames": 32,
+    "camera_id": "FillCam",
+    "checkpoint_id": "causal_tcn_future_reject_video5_pass_synthetic_reject_refined.pt",
+    "checkpoint_sha256": "81c9a85303d6a3c9015cb2666090125a40433c9a43924a1d6197b15c4c5b0c85",
+    "decision_threshold": 0.46506,
+    "score_semantics": "Class-weight-corrected sigmoid model score; not a calibrated physical contamination probability.",
+    "validated_on_real_csi": false,
+    "test_metrics": {
+      "loss": 0.307797,
+      "accuracy": 0.976,
+      "majority_baseline_accuracy": 0.9782,
+      "balanced_accuracy": 0.8655,
+      "precision": 0.4688,
+      "recall": 0.75,
+      "f1": 0.5769,
+      "average_precision": 0.5627,
+      "roc_auc": 0.9866,
+      "brier_score": 0.017057,
+      "positive_examples": 20,
+      "negative_examples": 896,
+      "examples": 916
+    },
+    "clip_level_metrics": {
+      "decision_threshold": 3e-06,
+      "validation": {
+        "accuracy": 1.0,
+        "majority_baseline_accuracy": 0.5,
+        "balanced_accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "average_precision": 1.0,
+        "roc_auc": 1.0,
+        "brier_score": 0.499996,
+        "positive_examples": 1,
+        "negative_examples": 1,
+        "examples": 2
+      },
+      "test": {
+        "accuracy": 0.5,
+        "majority_baseline_accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "average_precision": 1.0,
+        "roc_auc": 1.0,
+        "brier_score": 0.499998,
+        "positive_examples": 1,
+        "negative_examples": 1,
+        "examples": 2
+      }
+    }
+  },
+  "examples": [
+    {
+      "example_id": "test-pass-frame-233",
+      "source_clip": "recipe_05_to_06_pass_and_fail_08ml_v1_10fps/accepted/r05_to_r06_pass",
+      "source_split": "test",
+      "camera_id": "FillCam",
+      "observation_frame": 233,
+      "observation_timestamp_s": 23.3,
+      "observation_stage": "before_visible_contamination",
+      "window_start_frame": 202,
+      "window_end_frame": 233,
+      "actual_synthetic_label": "PASS",
+      "actual_target_label": "PASS",
+      "contamination_ml": 0.0,
+      "evidence_image_path": "C:\\Users\\emman\\OneDrive\\Desktop\\Hackathon\\msoe-ai-club-rockwell-automation-nvidia-hackath-ethan-stockbauer-s-team-bca204ee7b\\csi_project\\digital_twin\\Copy of csi_digital_twin\\csi_digital_twin_v1\\dataset\\recipe_05_to_06_pass_and_fail_08ml_v1_10fps\\accepted\\frames\\r05_to_r06_pass\\frame_000233.png",
+      "raw_model_logit": 3.739588975906372,
+      "score": 0.5183583498001099,
+      "threshold": 0.46506,
+      "decision": "REJECT",
+      "target": "target_future_reject",
+      "input_shape": [
+        1,
+        19,
+        32
+      ],
+      "frames_supplied": 32,
+      "frames_used": 32
+    },
+    {
+      "example_id": "test-reject-frame-233",
+      "source_clip": "recipe_05_to_06_pass_and_fail_08ml_v1_10fps/rejected/r05_to_r06_fail_08ml",
+      "source_split": "test",
+      "camera_id": "FillCam",
+      "observation_frame": 233,
+      "observation_timestamp_s": 23.3,
+      "observation_stage": "before_visible_contamination",
+      "window_start_frame": 202,
+      "window_end_frame": 233,
+      "actual_synthetic_label": "REJECT",
+      "actual_target_label": "REJECT",
+      "contamination_ml": 8.0,
+      "evidence_image_path": "C:\\Users\\emman\\OneDrive\\Desktop\\Hackathon\\msoe-ai-club-rockwell-automation-nvidia-hackath-ethan-stockbauer-s-team-bca204ee7b\\csi_project\\digital_twin\\Copy of csi_digital_twin\\csi_digital_twin_v1\\dataset\\recipe_05_to_06_pass_and_fail_08ml_v1_10fps\\rejected\\frames\\r05_to_r06_fail_08ml\\frame_000233.png",
+      "raw_model_logit": 3.862330675125122,
+      "score": 0.5488952994346619,
+      "threshold": 0.46506,
+      "decision": "REJECT",
+      "target": "target_future_reject",
+      "input_shape": [
+        1,
+        19,
+        32
+      ],
+      "frames_supplied": 32,
+      "frames_used": 32
+    }
+  ]
+}
