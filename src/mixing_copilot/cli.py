@@ -12,7 +12,12 @@ from mixing_copilot.dataset.build import build_datasets, extract_features
 from mixing_copilot.dataset.synthetic import process_synthetic_dataset
 from mixing_copilot.extraction.frames import extract_vial_frames
 from mixing_copilot.io.files import atomic_json_dump
+from mixing_copilot.models.causal_tcn_inference import generate_demo_predictions
 from mixing_copilot.prediction import predict_vial, write_prediction
+
+DIGITAL_TWIN_ROOT = Path(
+    "csi_project/digital_twin/Copy of csi_digital_twin/csi_digital_twin_v1"
+)
 
 
 def _dataset_config(path: str) -> tuple[dict, Path]:
@@ -144,8 +149,41 @@ def command_export_dashboard(args: argparse.Namespace) -> int:
         per_frame_path=Path(args.per_frame) if args.per_frame else None,
         per_vial_path=Path(args.per_vial) if args.per_vial else None,
         predictions_root=Path(args.predictions_root) if args.predictions_root else None,
+        ml_predictions_path=(
+            Path(args.ml_predictions) if args.ml_predictions else None
+        ),
     )
     print(json.dumps({"output": result["output_path"], "summary": result["summary"]}, indent=2))
+    return 0
+
+
+def command_predict_causal_tcn(args: argparse.Namespace) -> int:
+    result = generate_demo_predictions(
+        checkpoint_path=Path(args.checkpoint),
+        manifest_path=Path(args.manifest),
+        output_path=Path(args.output),
+        camera_id=args.camera_id,
+        split=args.split,
+    )
+    print(
+        json.dumps(
+            {
+                "output": result["output_path"],
+                "model": result["model"]["model_name"],
+                "target": result["model"]["target"],
+                "examples": [
+                    {
+                        "example_id": item["example_id"],
+                        "decision": item["decision"],
+                        "actual_synthetic_label": item["actual_synthetic_label"],
+                        "score": item["score"],
+                    }
+                    for item in result["examples"]
+                ],
+            },
+            indent=2,
+        )
+    )
     return 0
 
 
@@ -232,7 +270,31 @@ def build_parser() -> argparse.ArgumentParser:
     dashboard.add_argument("--per-frame", help="override the processed per-frame CSV path")
     dashboard.add_argument("--per-vial", help="override the processed per-vial CSV path")
     dashboard.add_argument("--predictions-root", help="override the prediction JSON directory")
+    dashboard.add_argument(
+        "--ml-predictions", help="override the synthetic Causal TCN prediction artifact"
+    )
     dashboard.set_defaults(handler=command_export_dashboard)
+    causal = subparsers.add_parser(
+        "predict-causal-tcn",
+        help="generate a matched synthetic PASS/REJECT demo with Ethan's trained checkpoint",
+    )
+    causal.add_argument(
+        "--checkpoint",
+        default=str(
+            DIGITAL_TWIN_ROOT
+            / "dataset/models/causal_tcn_future_reject_video5_pass_synthetic_reject_refined.pt"
+        ),
+    )
+    causal.add_argument(
+        "--manifest",
+        default=str(DIGITAL_TWIN_ROOT / "dataset/causal_tcn_manifest_v5.jsonl"),
+    )
+    causal.add_argument(
+        "--output", default="artifacts/ml_predictions/causal_tcn_examples.json"
+    )
+    causal.add_argument("--camera-id", choices=("FillCam",), default="FillCam")
+    causal.add_argument("--split", choices=("train", "validation", "test"), default="test")
+    causal.set_defaults(handler=command_predict_causal_tcn)
     run = subparsers.add_parser("run", help="run the validated Video 5 workflow end to end")
     run.add_argument("--config", default="configs/dataset.yaml")
     run.add_argument("--example-vial", type=int, default=30)

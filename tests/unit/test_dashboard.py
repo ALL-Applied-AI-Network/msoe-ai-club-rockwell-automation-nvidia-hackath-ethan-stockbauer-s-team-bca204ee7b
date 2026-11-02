@@ -122,6 +122,59 @@ def _write_fixture(tmp_path):
         ),
         encoding="utf-8",
     )
+    ml_root = output_root / "artifacts" / "ml_predictions"
+    ml_root.mkdir(parents=True)
+    ml_evidence = output_root / "synthetic" / "frame_000233.png"
+    ml_evidence.parent.mkdir(parents=True)
+    ml_evidence.write_bytes(b"synthetic-frame")
+    (ml_root / "causal_tcn_examples.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "1.0",
+                "model": {
+                    "model_name": "Causal TCN",
+                    "model_type": "causal_tcn",
+                    "model_version": "fixture-v1",
+                    "purpose": "Predict a future synthetic rejection.",
+                    "training_domain": "synthetic_isaac_sim_recipe_5_6",
+                    "target": "target_future_reject",
+                    "horizon_seconds": 2.0,
+                    "input_shape": [1, 19, 32],
+                    "feature_count": 19,
+                    "history_frames": 32,
+                    "camera_id": "FillCam",
+                    "checkpoint_id": "fixture.pt",
+                    "checkpoint_sha256": "abc123",
+                    "decision_threshold": 0.46506,
+                    "score_semantics": "Model score, not a probability.",
+                    "validated_on_real_csi": False,
+                },
+                "examples": [
+                    {
+                        "example_id": "test-reject-frame-233",
+                        "source_clip": "fixture/reject",
+                        "source_split": "test",
+                        "camera_id": "FillCam",
+                        "observation_frame": 233,
+                        "observation_timestamp_s": 23.3,
+                        "observation_stage": "before_visible_contamination",
+                        "window_start_frame": 202,
+                        "window_end_frame": 233,
+                        "raw_model_logit": 2.0,
+                        "score": 0.7,
+                        "threshold": 0.46506,
+                        "decision": "REJECT",
+                        "target": "target_future_reject",
+                        "actual_synthetic_label": "REJECT",
+                        "actual_target_label": "REJECT",
+                        "contamination_ml": 8.0,
+                        "evidence_image_path": str(ml_evidence),
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
     return output_root, public_root
 
 
@@ -131,7 +184,7 @@ def test_dashboard_export_is_ordered_versioned_and_browser_safe(tmp_path):
 
     result = export_dashboard(output_root, public_root, generated_at=generated_at)
 
-    assert result["schema_version"] == "1.0"
+    assert result["schema_version"] == "1.1"
     assert result["generated_at_utc"] == "2026-11-01T12:30:00Z"
     assert [item["vial_id"] for item in result["inspections"]] == [1, 2]
     assert result["summary"] == {
@@ -153,10 +206,28 @@ def test_dashboard_export_is_ordered_versioned_and_browser_safe(tmp_path):
     ]
     assert first["evidence"][0]["qa_url"] == "/generated/images/qa_vial0001_late_fill.jpg"
     assert (public_root / "generated" / "images" / "frame_vial0001_late_fill.jpg").is_file()
+    assert result["ml_prediction"]["status"] == "available"
+    assert result["ml_prediction"]["validated_on_real_csi"] is False
+    ml_example = result["ml_prediction"]["examples"][0]
+    assert ml_example["decision"] == "REJECT"
+    assert ml_example["actual_synthetic_label"] == "REJECT"
+    assert ml_example["evidence_url"] == (
+        "/generated/images/ml_test-reject-frame-233.png"
+    )
+    assert (
+        public_root / "generated" / "images" / "ml_test-reject-frame-233.png"
+    ).is_file()
+    assert "ml_prediction" not in first
 
 
 def test_dashboard_export_preserves_missing_predictions_and_images(tmp_path):
     output_root, public_root = _write_fixture(tmp_path)
+    (
+        output_root
+        / "artifacts"
+        / "ml_predictions"
+        / "causal_tcn_examples.json"
+    ).unlink()
 
     result = export_dashboard(output_root, public_root)
 
@@ -171,6 +242,8 @@ def test_dashboard_export_preserves_missing_predictions_and_images(tmp_path):
     )
     assert "output_path" not in serialized
     assert serialized["inspections"][1]["prediction"] is None
+    assert serialized["ml_prediction"]["status"] == "unavailable"
+    assert serialized["ml_prediction"]["examples"] == []
 
 
 def test_dashboard_export_requires_processed_tables(tmp_path):

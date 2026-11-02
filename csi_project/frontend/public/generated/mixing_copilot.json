@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-01T06:16:23.236675Z",
+  "generated_at_utc": "2026-11-02T04:38:26.047413Z",
   "inspections": [
     {
       "camera_id": "vial_fill",
@@ -2477,12 +2477,126 @@
       "video_id": 5
     }
   ],
+  "ml_prediction": {
+    "camera_id": "FillCam",
+    "checkpoint_id": "causal_tcn_future_reject_video5_pass_synthetic_reject_refined.pt",
+    "checkpoint_sha256": "81c9a85303d6a3c9015cb2666090125a40433c9a43924a1d6197b15c4c5b0c85",
+    "clip_level_metrics": {
+      "decision_threshold": 3e-06,
+      "test": {
+        "accuracy": 0.5,
+        "average_precision": 1.0,
+        "balanced_accuracy": 0.5,
+        "brier_score": 0.499998,
+        "examples": 2,
+        "f1": 0.0,
+        "majority_baseline_accuracy": 0.5,
+        "negative_examples": 1,
+        "positive_examples": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "roc_auc": 1.0
+      },
+      "validation": {
+        "accuracy": 1.0,
+        "average_precision": 1.0,
+        "balanced_accuracy": 1.0,
+        "brier_score": 0.499996,
+        "examples": 2,
+        "f1": 1.0,
+        "majority_baseline_accuracy": 0.5,
+        "negative_examples": 1,
+        "positive_examples": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "roc_auc": 1.0
+      }
+    },
+    "decision_threshold": 0.46506,
+    "examples": [
+      {
+        "actual_synthetic_label": "PASS",
+        "actual_target_label": "PASS",
+        "camera_id": "FillCam",
+        "contamination_ml": 0.0,
+        "decision": "REJECT",
+        "evidence_url": "/generated/images/ml_test-pass-frame-233.png",
+        "example_id": "test-pass-frame-233",
+        "observation_frame": 233,
+        "observation_stage": "before_visible_contamination",
+        "observation_timestamp_s": 23.3,
+        "raw_model_logit": 3.739588975906372,
+        "score": 0.5183583498001099,
+        "source_clip": "recipe_05_to_06_pass_and_fail_08ml_v1_10fps/accepted/r05_to_r06_pass",
+        "source_split": "test",
+        "target": "target_future_reject",
+        "threshold": 0.46506,
+        "window_end_frame": 233,
+        "window_start_frame": 202
+      },
+      {
+        "actual_synthetic_label": "REJECT",
+        "actual_target_label": "REJECT",
+        "camera_id": "FillCam",
+        "contamination_ml": 8.0,
+        "decision": "REJECT",
+        "evidence_url": "/generated/images/ml_test-reject-frame-233.png",
+        "example_id": "test-reject-frame-233",
+        "observation_frame": 233,
+        "observation_stage": "before_visible_contamination",
+        "observation_timestamp_s": 23.3,
+        "raw_model_logit": 3.862330675125122,
+        "score": 0.5488952994346619,
+        "source_clip": "recipe_05_to_06_pass_and_fail_08ml_v1_10fps/rejected/r05_to_r06_fail_08ml",
+        "source_split": "test",
+        "target": "target_future_reject",
+        "threshold": 0.46506,
+        "window_end_frame": 233,
+        "window_start_frame": 202
+      }
+    ],
+    "feature_count": 19,
+    "history_frames": 32,
+    "horizon_seconds": 2.0,
+    "input_shape": [
+      1,
+      19,
+      32
+    ],
+    "message": null,
+    "model_name": "Causal TCN",
+    "model_type": "causal_tcn",
+    "model_version": "ethan_causal_tcn_v1",
+    "purpose": "Predict a future synthetic rejection from early-fill visual observations.",
+    "score_semantics": "Class-weight-corrected sigmoid model score; not a calibrated physical contamination probability.",
+    "status": "available",
+    "target": "target_future_reject",
+    "test_metrics": {
+      "accuracy": 0.976,
+      "average_precision": 0.5627,
+      "balanced_accuracy": 0.8655,
+      "brier_score": 0.017057,
+      "examples": 916,
+      "f1": 0.5769,
+      "loss": 0.307797,
+      "majority_baseline_accuracy": 0.9782,
+      "negative_examples": 896,
+      "positive_examples": 20,
+      "precision": 0.4688,
+      "recall": 0.75,
+      "roc_auc": 0.9866
+    },
+    "training_domain": "synthetic_isaac_sim_recipe_5_6",
+    "validated_on_real_csi": false
+  },
   "provenance": {
     "discrepancy_semantics": "descriptive rule-based comparison, not contamination",
     "expected_color_semantics": "unvalidated recipe-color proxy",
     "integration_mode": "static_artifact_export",
     "measurement_semantics": "OpenCV pixel measurements",
     "mismatch_score_semantics": "normalized mismatch index, not probability",
+    "ml_prediction_artifact": "C:\\Users\\emman\\OneDrive\\Desktop\\Hackathon\\msoe-ai-club-rockwell-automation-nvidia-hackath-ethan-stockbauer-s-team-bca204ee7b\\artifacts\\ml_predictions\\causal_tcn_examples.json",
+    "ml_prediction_artifact_sha256": "6080e4d80ffed082be307bbae8a94830724b977b0a3a96858f9656091baefe62",
     "per_frame_path": "C:\\Users\\emman\\OneDrive\\Desktop\\Hackathon\\msoe-ai-club-rockwell-automation-nvidia-hackath-ethan-stockbauer-s-team-bca204ee7b\\data\\processed\\per_frame.csv",
     "per_frame_sha256": "d9d510f1b4106e3e33d7a26d19b07ccb9ecf9744a4c120bfa903ecc1a078d34b",
     "per_vial_path": "C:\\Users\\emman\\OneDrive\\Desktop\\Hackathon\\msoe-ai-club-rockwell-automation-nvidia-hackath-ethan-stockbauer-s-team-bca204ee7b\\data\\processed\\per_vial.csv",
@@ -2490,7 +2604,7 @@
     "prediction_files_found": 3,
     "source": "mixing_copilot_opencv"
   },
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "summary": {
     "discrepancy_reviews": 3,
     "frame_records": 149,

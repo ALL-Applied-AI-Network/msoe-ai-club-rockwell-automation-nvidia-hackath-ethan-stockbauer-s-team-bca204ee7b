@@ -35,12 +35,13 @@ function Detail({ label, value }) {
   )
 }
 
-export default function CopilotAnalysis({ inspections = [] }) {
+export default function CopilotAnalysis({ inspections = [], mlPrediction }) {
   const records = useMemo(
     () => inspections.filter((record) => record.prediction),
     [inspections]
   )
   const [selectedVial, setSelectedVial] = useState('')
+  const [selectedMlExample, setSelectedMlExample] = useState('')
   const selectedRecord =
     records.find((record) => String(record.vial_id) === selectedVial) ||
     records[0]
@@ -53,6 +54,12 @@ export default function CopilotAnalysis({ inspections = [] }) {
   const lowConfidence = records.filter(
     (record) => record.measurement.status === 'low_confidence'
   ).length
+  const mlExamples = mlPrediction?.examples || []
+  const selectedMlRecord =
+    mlExamples.find((example) => example.example_id === selectedMlExample) ||
+    mlExamples[0]
+  const mlAvailable =
+    mlPrediction?.status === 'available' && Boolean(selectedMlRecord)
 
   return (
     <div style={styles.page}>
@@ -113,6 +120,148 @@ export default function CopilotAnalysis({ inspections = [] }) {
           detail="Selected evidence record"
         />
       </div>
+
+      {/* CAUSAL TCN EARLY WARNING */}
+      <section style={styles.panel}>
+        <div style={styles.panelHeader}>
+          <div>
+            <div style={styles.eyebrow}>SYNTHETIC-TRAINED MODEL</div>
+            <h3 style={styles.heading}>Causal TCN — Early Rejection Prediction</h3>
+            <p style={styles.muted}>
+              Predict a future rejection from early-fill visual observations
+            </p>
+          </div>
+
+          <span
+            style={mlAvailable ? styles.mlAvailableBadge : styles.mlUnavailableBadge}
+          >
+            {mlAvailable ? 'MODEL RESULT LOADED' : 'MODEL AVAILABLE'}
+          </span>
+        </div>
+
+        <div style={styles.mlFacts}>
+          <Detail label="Model" value={mlPrediction?.model_name || 'Causal TCN'} />
+          <Detail
+            label="Input"
+            value={`${mlPrediction?.history_frames || 32} frames × ${mlPrediction?.feature_count || 19} visual features`}
+          />
+          <Detail label="Source" value="NVIDIA Isaac Sim synthetic data" />
+          <Detail
+            label="Target"
+            value={mlPrediction?.target || 'Future rejection'}
+          />
+        </div>
+
+        {mlAvailable ? (
+          <>
+            <div style={styles.mlSelectorRow}>
+              <div>
+                <strong style={styles.mlSelectorTitle}>Synthetic demonstration</strong>
+                <p style={styles.muted}>
+                  Held-out examples remain separate from real CSI vial records.
+                </p>
+              </div>
+              <select
+                value={selectedMlRecord.example_id}
+                onChange={(event) => setSelectedMlExample(event.target.value)}
+                style={styles.select}
+              >
+                {mlExamples.map((example) => (
+                  <option key={example.example_id} value={example.example_id}>
+                    {example.actual_synthetic_label} · Frame {example.observation_frame}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div style={styles.mlResultGrid}>
+              <div style={styles.mlDecisionCard}>
+                <span style={styles.muted}>Predicted result</span>
+                <strong
+                  style={
+                    selectedMlRecord.decision === 'REJECT'
+                      ? styles.rejectDecision
+                      : styles.passDecision
+                  }
+                >
+                  {selectedMlRecord.decision || 'Unavailable'}
+                </strong>
+                <span style={styles.small}>
+                  Actual synthetic label: {selectedMlRecord.actual_synthetic_label || 'Unavailable'}
+                </span>
+              </div>
+
+              <Detail
+                label="Model score"
+                value={
+                  selectedMlRecord.score == null
+                    ? 'Unavailable'
+                    : Number(selectedMlRecord.score).toFixed(4)
+                }
+              />
+              <Detail
+                label="Saved threshold"
+                value={
+                  selectedMlRecord.threshold == null
+                    ? 'Unavailable'
+                    : Number(selectedMlRecord.threshold).toFixed(4)
+                }
+              />
+              <Detail
+                label="Observation"
+                value={
+                  selectedMlRecord.observation_timestamp_s == null
+                    ? `Frame ${selectedMlRecord.observation_frame}`
+                    : `${Number(selectedMlRecord.observation_timestamp_s).toFixed(1)} s · Frame ${selectedMlRecord.observation_frame}`
+                }
+              />
+            </div>
+
+            <div style={styles.mlContext}>
+              <div>
+                <span style={styles.muted}>Source clip</span>
+                <p style={styles.mlPath}>{selectedMlRecord.source_clip}</p>
+              </div>
+              <div>
+                <span style={styles.muted}>Causal observation window</span>
+                <p style={styles.mlPath}>
+                  Frames {selectedMlRecord.window_start_frame}–{selectedMlRecord.window_end_frame}
+                  {' · '}{selectedMlRecord.observation_stage?.replaceAll('_', ' ') || 'stage unavailable'}
+                </p>
+              </div>
+            </div>
+
+            {selectedMlRecord.evidence_url && (
+              <div style={styles.evidence}>
+                <h4 style={styles.heading}>Current synthetic observation</h4>
+                <div style={styles.imageContainer}>
+                  <img
+                    src={selectedMlRecord.evidence_url}
+                    alt="Synthetic FillCam observation used by the Causal TCN"
+                    style={styles.image}
+                  />
+                </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <div style={styles.empty}>
+            <strong>
+              {mlPrediction?.message ||
+                'Trained model available. No compatible inference sequence loaded.'}
+            </strong>
+          </div>
+        )}
+
+        <div style={styles.mlLimitation}>
+          <strong>Experimental model trained on synthetic data.</strong>
+          <p>
+            Predictions are not validated for physical CSI rejection detection.
+            The model score is separate from OpenCV Delta E2000 discrepancy scoring
+            and is not a calibrated physical contamination probability.
+          </p>
+        </div>
+      </section>
 
       {/* TRANSITION INVESTIGATION */}
       <section style={styles.panel}>
@@ -520,6 +669,105 @@ const styles = {
     padding: '5px 10px',
     fontSize: 11,
     letterSpacing: 0.5,
+  },
+
+  mlAvailableBadge: {
+    color: '#69dfad',
+    background: 'rgba(70,210,145,.12)',
+    border: '1px solid #287a60',
+    borderRadius: 20,
+    padding: '8px 12px',
+    fontSize: 10,
+    fontWeight: 700,
+  },
+
+  mlUnavailableBadge: {
+    color: '#d8bd75',
+    background: 'rgba(213,176,77,.10)',
+    border: '1px solid #76612f',
+    borderRadius: 20,
+    padding: '8px 12px',
+    fontSize: 10,
+    fontWeight: 700,
+  },
+
+  mlFacts: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(175px, 1fr))',
+    gap: 12,
+    marginBottom: 18,
+  },
+
+  mlSelectorRow: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: 14,
+    flexWrap: 'wrap',
+    borderTop: '1px solid #29415d',
+    paddingTop: 18,
+    marginBottom: 14,
+  },
+
+  mlSelectorTitle: {
+    color: '#ffffff',
+    fontSize: 13,
+  },
+
+  mlResultGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+    gap: 12,
+  },
+
+  mlDecisionCard: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 9,
+    padding: 14,
+    background: '#172a40',
+    border: '1px solid #29415d',
+    borderRadius: 9,
+  },
+
+  passDecision: {
+    color: '#69dfad',
+    fontSize: 21,
+  },
+
+  rejectDecision: {
+    color: '#ff8f8f',
+    fontSize: 21,
+  },
+
+  mlContext: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+    gap: 12,
+    marginTop: 14,
+    padding: 14,
+    background: '#0b1728',
+    border: '1px solid #29415d',
+    borderRadius: 9,
+  },
+
+  mlPath: {
+    color: '#e7f2ff',
+    fontSize: 11,
+    lineHeight: 1.6,
+    margin: '5px 0 0',
+    overflowWrap: 'anywhere',
+  },
+
+  mlLimitation: {
+    marginTop: 18,
+    padding: 15,
+    color: '#f0d998',
+    background: 'rgba(213,176,77,.08)',
+    border: '1px solid #76612f',
+    borderRadius: 9,
+    fontSize: 11,
+    lineHeight: 1.7,
   },
 
   evidence: {

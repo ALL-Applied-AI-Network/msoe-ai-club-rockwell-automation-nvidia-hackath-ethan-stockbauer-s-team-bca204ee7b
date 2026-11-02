@@ -3,6 +3,8 @@ from __future__ import annotations
 import ast
 import json
 import math
+import os
+import re
 import shutil
 from datetime import UTC, datetime
 from pathlib import Path
@@ -13,7 +15,7 @@ import pandas as pd
 
 from mixing_copilot.io.files import atomic_json_dump, sha256_file
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "1.1"
 PREFERRED_EVIDENCE_STAGES = ("late_fill", "post_fill", "mid_fill", "early_fill", "pre_fill")
 
 
@@ -92,6 +94,126 @@ def _load_predictions(predictions_root: Path) -> dict[int, dict[str, Any]]:
     return predictions
 
 
+def _unavailable_ml_prediction() -> dict[str, Any]:
+    return {
+        "status": "unavailable",
+        "model_name": "Causal TCN",
+        "model_type": "causal_tcn",
+        "purpose": "Predict a future rejection from early-fill visual observations.",
+        "training_domain": "synthetic_isaac_sim",
+        "target": None,
+        "horizon_seconds": None,
+        "input_shape": [1, 19, 32],
+        "feature_count": 19,
+        "history_frames": 32,
+        "validated_on_real_csi": False,
+        "score_semantics": "Model score, not a calibrated physical contamination probability.",
+        "message": "Trained model available. No compatible inference sequence loaded.",
+        "examples": [],
+    }
+
+
+def _copy_ml_evidence(
+    source: Path | None, image_root: Path, example_id: str
+) -> str | None:
+    if source is None:
+        return None
+    source_path = str(source.resolve())
+    if os.name == "nt" and not source_path.startswith("\\\\?\\"):
+        source_path = f"\\\\?\\{source_path}"
+    if not os.path.isfile(source_path):
+        return None
+    safe_id = re.sub(r"[^a-zA-Z0-9_-]+", "-", example_id).strip("-") or "example"
+    suffix = source.suffix.lower() or ".png"
+    filename = f"ml_{safe_id}{suffix}"
+    destination = image_root / filename
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source_path, destination)
+    return f"/generated/images/{filename}"
+
+
+def _load_ml_prediction(
+    path: Path, output_root: Path, image_root: Path
+) -> dict[str, Any]:
+    if not path.is_file():
+        return _unavailable_ml_prediction()
+    with path.open(encoding="utf-8") as handle:
+        artifact = json.load(handle)
+    model = artifact.get("model")
+    examples = artifact.get("examples")
+    if not isinstance(model, dict) or not isinstance(examples, list):
+        raise ValueError("Causal TCN artifact must contain model and examples")
+    exported_examples = []
+    for example in examples:
+        if not isinstance(example, dict):
+            raise ValueError("Causal TCN examples must be objects")
+        example_id = str(example.get("example_id") or "example")
+        evidence_path = _relative_source_path(
+            output_root, example.get("evidence_image_path")
+        )
+        exported_examples.append(
+            {
+                "example_id": example_id,
+                "source_clip": _json_value(example.get("source_clip")),
+                "source_split": _json_value(example.get("source_split")),
+                "camera_id": _json_value(example.get("camera_id")),
+                "observation_frame": _number(
+                    example.get("observation_frame"), integer=True
+                ),
+                "observation_timestamp_s": _number(
+                    example.get("observation_timestamp_s")
+                ),
+                "observation_stage": _json_value(example.get("observation_stage")),
+                "window_start_frame": _number(
+                    example.get("window_start_frame"), integer=True
+                ),
+                "window_end_frame": _number(
+                    example.get("window_end_frame"), integer=True
+                ),
+                "raw_model_logit": _number(example.get("raw_model_logit")),
+                "score": _number(example.get("score")),
+                "threshold": _number(example.get("threshold")),
+                "decision": _json_value(example.get("decision")),
+                "target": _json_value(example.get("target")),
+                "actual_synthetic_label": _json_value(
+                    example.get("actual_synthetic_label")
+                ),
+                "actual_target_label": _json_value(example.get("actual_target_label")),
+                "contamination_ml": _number(example.get("contamination_ml")),
+                "evidence_url": _copy_ml_evidence(
+                    evidence_path, image_root, example_id
+                ),
+            }
+        )
+    if not exported_examples:
+        return _unavailable_ml_prediction()
+    return {
+        "status": "available",
+        "model_name": _json_value(model.get("model_name")) or "Causal TCN",
+        "model_type": _json_value(model.get("model_type")) or "causal_tcn",
+        "model_version": _json_value(model.get("model_version")),
+        "purpose": _json_value(model.get("purpose")),
+        "training_domain": _json_value(model.get("training_domain")),
+        "target": _json_value(model.get("target")),
+        "horizon_seconds": _number(model.get("horizon_seconds")),
+        "input_shape": [
+            _number(value, integer=True) for value in model.get("input_shape") or []
+        ],
+        "feature_count": _number(model.get("feature_count"), integer=True),
+        "history_frames": _number(model.get("history_frames"), integer=True),
+        "camera_id": _json_value(model.get("camera_id")),
+        "checkpoint_id": _json_value(model.get("checkpoint_id")),
+        "checkpoint_sha256": _json_value(model.get("checkpoint_sha256")),
+        "decision_threshold": _number(model.get("decision_threshold")),
+        "score_semantics": _json_value(model.get("score_semantics")),
+        "validated_on_real_csi": False,
+        "message": None,
+        "test_metrics": _json_value(model.get("test_metrics")),
+        "clip_level_metrics": _json_value(model.get("clip_level_metrics")),
+        "examples": exported_examples,
+    }
+
+
 def _prediction_payload(
     prediction: dict[str, Any] | None, evidence: list[dict[str, Any]]
 ) -> dict[str, Any] | None:
@@ -140,6 +262,7 @@ def export_dashboard(
     per_frame_path: Path | None = None,
     per_vial_path: Path | None = None,
     predictions_root: Path | None = None,
+    ml_predictions_path: Path | None = None,
     generated_at: datetime | None = None,
 ) -> dict[str, Any]:
     """Export existing pipeline artifacts without rerunning measurement or prediction logic."""
@@ -151,6 +274,10 @@ def export_dashboard(
     per_vial_path = (per_vial_path or output_root / "data" / "processed" / "per_vial.csv").resolve()
     predictions_root = (
         predictions_root or output_root / "artifacts" / "predictions"
+    ).resolve()
+    ml_predictions_path = (
+        ml_predictions_path
+        or output_root / "artifacts" / "ml_predictions" / "causal_tcn_examples.json"
     ).resolve()
     for path in (per_frame_path, per_vial_path):
         if not path.is_file():
@@ -176,6 +303,9 @@ def export_dashboard(
     generated_root = frontend_public_root / "generated"
     image_root = generated_root / "images"
     predictions = _load_predictions(predictions_root)
+    ml_prediction = _load_ml_prediction(
+        ml_predictions_path, output_root, image_root
+    )
     inspections: list[dict[str, Any]] = []
     previous_recipe_id: int | None = None
 
@@ -296,6 +426,12 @@ def export_dashboard(
             "per_vial_path": str(per_vial_path),
             "per_vial_sha256": sha256_file(per_vial_path),
             "prediction_files_found": len(predictions),
+            "ml_prediction_artifact": (
+                str(ml_predictions_path) if ml_predictions_path.is_file() else None
+            ),
+            "ml_prediction_artifact_sha256": (
+                sha256_file(ml_predictions_path) if ml_predictions_path.is_file() else None
+            ),
             "measurement_semantics": "OpenCV pixel measurements",
             "discrepancy_semantics": "descriptive rule-based comparison, not contamination",
             "mismatch_score_semantics": "normalized mismatch index, not probability",
@@ -320,6 +456,7 @@ def export_dashboard(
         },
         "inspections": inspections,
         "transitions": transitions,
+        "ml_prediction": ml_prediction,
     }
     destination = generated_root / "mixing_copilot.json"
     atomic_json_dump(payload, destination)
